@@ -1,0 +1,17 @@
+extends: existence
+message: "Possible acronym '%s'. Confirm it is defined on first use."
+level: suggestion
+nonword: true
+tokens:
+  - "\\b[A-Z]{2,6}s?\\b"
+exceptions:
+  - "AI"
+  - "API"
+  - "URL"
+  - "PDF"
+  - "HTML"
+  - "CSS"
+  - "JSON"
+  - "YAML"
+  - "README"
+  - "MIT"

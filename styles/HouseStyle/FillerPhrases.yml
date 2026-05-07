@@ -1,0 +1,13 @@
+extends: existence
+message: "Remove filler phrase '%s' unless it is necessary for meaning."
+level: suggestion
+ignorecase: true
+tokens:
+  - "it is important to note"
+  - "it should be noted"
+  - "needless to say"
+  - "in conclusion"
+  - "in summary"
+  - "at the end of the day"
+  - "moving forward"
+  - "as we navigate"

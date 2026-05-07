@@ -1,0 +1,18 @@
+extends: existence
+message: "Prefer a simpler word than '%s'."
+level: warning
+ignorecase: true
+tokens:
+  - leverage
+  - utilize
+  - best-in-class
+  - world-class
+  - seamless
+  - robust
+  - synergy
+  - operationalize
+  - unlock value
+  - move the needle
+  - drive alignment
+  - low-hanging fruit
+  - north star

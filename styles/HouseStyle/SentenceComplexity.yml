@@ -1,0 +1,6 @@
+extends: occurrence
+message: "This sentence has more than 3 commas. Consider splitting it."
+level: suggestion
+scope: sentence
+max: 3
+token: ","

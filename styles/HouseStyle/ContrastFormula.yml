@@ -1,0 +1,8 @@
+extends: existence
+message: "This reads like a contrast formula. State the point directly."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - "\\b(?:this|it|that|ai assistance|automation|the system)\\s+(?:is|does)\\s+not\\b[^.]{0,160}\\.\\s+(?:it\\s+is|it's|the\\s+(?:failure|point|answer|standard|skill)\\s+is)\\b"
+  - "\\bnot\\s+(?:just|only)\\b[^.]{0,160}\\bbut\\b"

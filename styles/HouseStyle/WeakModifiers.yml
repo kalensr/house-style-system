@@ -1,0 +1,11 @@
+extends: existence
+message: "This phrase can weaken clarity. Be more specific than '%s'."
+level: suggestion
+ignorecase: true
+tokens:
+  - very
+  - really
+  - clearly
+  - significantly
+  - various
+  - quite

@@ -1,0 +1,8 @@
+extends: existence
+message: "This reads like a contrast cluster. Use direct ownership language instead."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - "\\b(?:a|the)\\s+[^.]{1,80}\\bcan\\b[^.]{1,160}\\.\\s+(?:it|they|a\\s+[^.]{1,80}|the\\s+[^.]{1,80})\\s+cannot\\b"
+  - "\\bnot\\s+the\\b[^.]{1,120}\\.\\s+\\bnot\\s+the\\b[^.]{1,120}\\.\\s+\\bnot\\s+the\\b"

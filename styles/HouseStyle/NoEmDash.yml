@@ -1,0 +1,6 @@
+extends: existence
+message: "Use a comma, colon, or sentence break instead of an em dash."
+level: error
+nonword: true
+tokens:
+  - "—"

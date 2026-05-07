@@ -1,0 +1,11 @@
+extends: existence
+message: "This sounds like a stock conclusion. State the decision, implication, or next step directly."
+level: warning
+ignorecase: true
+tokens:
+  - "serves as a testament"
+  - "stands as a testament"
+  - "paving the way"
+  - "the future is bright"
+  - "only time will tell"
+  - "beacon of hope"
