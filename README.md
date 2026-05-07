@@ -67,7 +67,7 @@ house-style-system/
 │   ├── house-style-system.md
 │   └── test-fixtures/style-gate/
 ├── research/
-│   └── house-style-taxonomy-assessment-public.pdf
+│   └── house-style-system-assessment.pdf
 ├── scripts/
 │   ├── style_gate.sh
 │   └── test-style-gate.sh
@@ -125,7 +125,7 @@ See [docs/customizing.md](docs/customizing.md).
 
 ## Research Note
 
-Read the public research artifact as a browser-friendly PDF: [house-style-taxonomy-assessment-public.pdf](research/house-style-taxonomy-assessment-public.pdf).
+Read the public research artifact as a browser-friendly PDF: [House Style System Assessment](research/house-style-system-assessment.pdf).
 
 It explains the style-risk taxonomy behind this system and credits the research, synthesis, and AI-collaboration process used to prepare the assessment.
 

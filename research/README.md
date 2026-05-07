@@ -4,7 +4,7 @@ This folder holds the public-ready research artifact behind the House Style Syst
 
 ## Read The Assessment
 
-- [house-style-taxonomy-assessment-public.pdf](house-style-taxonomy-assessment-public.pdf)
+- [House Style System Assessment](house-style-system-assessment.pdf)
 
 ## Abstract
 
