@@ -8,6 +8,14 @@ This repo gives you a working house style guide, a small Vale style gate, test f
 
 ![House Style Rules Engine Map](assets/house-style-rules-engine-map.png)
 
+## Start Here
+
+- Use the writing standard: [HOUSE_STYLE.md](HOUSE_STYLE.md)
+- Run the style gate: [scripts/style_gate.sh](scripts/style_gate.sh)
+- Read the Codex setup guide: [docs/codex-handoff.md](docs/codex-handoff.md)
+- Install the optional Codex skill: [codex-skills/house-style-system/SKILL.md](codex-skills/house-style-system/SKILL.md)
+- Review repo readiness: [docs/repo-evaluation.md](docs/repo-evaluation.md)
+
 ## What This Is
 
 House Style System is a lightweight writing quality framework.
@@ -31,11 +39,16 @@ Style signals are review prompts. They are not proof.
 
 ## Quick Start
 
-Install Vale:
+Install Vale.
+
+macOS with Homebrew:
 
 ```sh
 brew install vale
 ```
+
+Other platforms: use the official Vale install instructions for your operating
+system, then confirm `vale --version` works in your terminal.
 
 Run the style gate:
 
@@ -51,6 +64,44 @@ Run the fixture test:
 
 Use `HOUSE_STYLE.md` as your starter standard. Edit the rules, examples, and fixtures as your own house style becomes clearer.
 
+## Optional Codex Skill
+
+This repo includes an optional Codex skill:
+
+```text
+codex-skills/house-style-system/SKILL.md
+```
+
+The skill helps Codex:
+
+- recognize when to apply the House Style System,
+- choose the right writing domain,
+- preserve meaning while revising,
+- check repeated words and repeated phrases,
+- use repo docs in the right priority order,
+- run the style gate at deliverable checkpoints,
+- keep authorship detection out of scope.
+
+Install it:
+
+```sh
+mkdir -p ~/.codex/skills
+rm -rf ~/.codex/skills/house-style-system
+cp -R codex-skills/house-style-system ~/.codex/skills/
+```
+
+Restart Codex after installing the skill.
+
+Then use a prompt like:
+
+```text
+Use the house-style-system skill. Review this draft as a blog post. Preserve my
+meaning, flag unsupported claims, reduce generic phrasing, and run the style
+gate if you edit the file.
+```
+
+For a complete setup handoff, see [docs/codex-handoff.md](docs/codex-handoff.md).
+
 ## Repo Map
 
 ```text
@@ -61,11 +112,15 @@ house-style-system/
 │   └── house-style-rules-engine-map.png
 ├── docs/
 │   ├── ai-authorship-boundary.md
+│   ├── codex-handoff.md
 │   ├── customizing.md
 │   ├── domain-modes.md
 │   ├── examples.md
 │   ├── house-style-system.md
+│   ├── repo-evaluation.md
 │   └── test-fixtures/style-gate/
+├── codex-skills/
+│   └── house-style-system/SKILL.md
 ├── research/
 │   └── house-style-system-assessment.pdf
 ├── scripts/
