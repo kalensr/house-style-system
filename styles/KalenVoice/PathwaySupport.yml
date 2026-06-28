@@ -1,0 +1,7 @@
+extends: existence
+message: "Future-state language needs a visible path: steps, rationale, evidence, sequence, owner, timeline, or risk."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - "\\b(?:vision|mission|strategy|roadmap|future state|next level|transformation)\\b[^.]{0,180}\\b(?:does not name|without naming|without a visible|without the)\\b[^.]{0,140}\\b(?:steps|path|pathway|owner|timeline|evidence|rationale|risks?)\\b"

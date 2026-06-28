@@ -26,6 +26,47 @@ Every sentence should help the reader understand the point, make a decision, tak
 - Use direct claims, ownership language, or specific standards instead.
 - Do not use Unicode em dash characters.
 
+## Kalen Voice Review Layer
+
+Use this first-slice review layer when Kalen asks for his leadership or
+strategy prose to be checked against recurring voice risks. It can also support
+reflection and public essays. Use it for speeches, books, and executive prose
+when Kalen asks for that review.
+
+This layer is a small set of review prompts. It points to a pattern Kalen may
+choose to preserve:
+
+```text
+concrete pressure or opportunity
+-> reflective question
+-> discernment, thinking, or strategy
+-> principle
+-> path or next step
+-> service or mission horizon when the piece calls for it
+```
+
+Automation checks only repeatable risks:
+
+- generic openings,
+- abstract leadership openings,
+- future-state claims with no visible path,
+- group claims without evidence or an explicit assumption,
+- generic executive polish,
+- repeated contrast formulas.
+
+Run the optional checks with `./scripts/style_gate.sh --kalen-voice <file>`.
+
+Human review owns the deeper questions:
+
+- Does the draft preserve the lived situation?
+- Is the unresolved question still visible when it matters?
+- Did editing remove real pressure, gratitude, uncertainty, or conviction?
+- Does the piece move from insight to action?
+- Does it fit the audience and domain?
+
+Do not use this layer to imitate private writing samples, certify authorship, or
+claim that a clean gate means a draft is ready. It is a review aid.
+
 ## AI-Assisted Writing Rules
 
 AI output is draft material.
@@ -71,6 +112,15 @@ Use the core rules everywhere. Add the right mode for the work.
 - Keep evidence close to the claim it supports.
 - State the tradeoff plainly.
 - End with the action needed.
+
+### Kalen Leadership Reflection
+
+- Consider starting from a real situation, question, pressure, or opportunity.
+- Let the reader see the tension before the conclusion when the piece is reflective.
+- Preserve first-person inquiry when it helps the reader follow the thinking.
+- Preserve discernment language when it belongs to the source and audience.
+- Show the path from idea to action.
+- Tie leadership to service, team, organization, community, or mission when that horizon matters.
 
 ### Blog Or Public Essay
 

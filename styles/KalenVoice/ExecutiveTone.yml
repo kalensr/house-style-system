@@ -1,0 +1,13 @@
+extends: existence
+message: "This sounds like generic executive polish. Replace it with the concrete subject, action, and consequence."
+level: warning
+ignorecase: true
+tokens:
+  - "strategic initiatives"
+  - "drive alignment"
+  - "unlock value"
+  - "drive outcomes"
+  - "value creation"
+  - "empower stakeholders"
+  - "innovative transformation"
+  - "transformative outcomes"

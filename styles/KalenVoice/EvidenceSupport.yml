@@ -1,0 +1,7 @@
+extends: existence
+message: "This group claim may need evidence, an example, a lived observation, or an explicit assumption."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "\\b(?:teams|communities|businesses|leaders|organizations)\\s+need\\s+(?:better leadership|stronger examples|more alignment|greater clarity)\\b"

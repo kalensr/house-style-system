@@ -1,0 +1,9 @@
+extends: existence
+message: "This opens with abstraction. Voice review usually wants a concrete moment, pressure, question, or decision."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "^\\s*(?:Leadership|Transformation|Strategy|Technology|Innovation)\\s+is\\s+important\\s+because\\b"
+  - "^\\s*(?:Great|Effective|Modern)\\s+leaders\\s+(?:must|need to|should)\\b"
+  - "^\\s*(?:Every|All)\\s+(?:organization|leader|team)\\s+(?:needs|must|should)\\b"

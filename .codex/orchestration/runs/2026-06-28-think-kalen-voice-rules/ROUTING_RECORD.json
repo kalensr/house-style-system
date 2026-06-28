@@ -1,0 +1,95 @@
+{
+  "schema_version": "pathway-routing-record.v1",
+  "created_at": "2026-06-28",
+  "workspace": "/Users/kalenhowellsr/Projects/house-style-system",
+  "route": {
+    "pathway": "think-plus-build",
+    "task_type": "mixed-docs-code-feature-implementation",
+    "risk": "medium",
+    "orchestration_mode": "full",
+    "artifact_policy": "durable-artifacts",
+    "persona_flow": [
+      "orchestrator",
+      "explorer",
+      "analyst",
+      "decision-reviewer",
+      "worker",
+      "reviewer"
+    ],
+    "safe_lane": [
+      "intake",
+      "fanout",
+      "review"
+    ],
+    "review_required": true
+  },
+  "source_truth": {
+    "implementation": [
+      "README.md",
+      "HOUSE_STYLE.md",
+      ".vale.ini",
+      ".vale-kalen.ini",
+      "scripts/style_gate.sh",
+      "scripts/test-style-gate.sh",
+      "styles/HouseStyle/*.yml",
+      "styles/KalenVoice/*.yml",
+      "codex-skills/house-style-system/SKILL.md"
+    ],
+    "voice_design": {
+      "policy": "Private context supplied by the user was used in-session only for high-level design.",
+      "omitted": "No private source titles, paths, excerpts, or inventory categories are recorded in this repo artifact."
+    },
+    "privacy_boundary": "Use synthetic fixtures only; do not commit private excerpts or private source metadata."
+  },
+  "plan_file": "docs/plans/2026-06-28-kalen-voice-rules-engine.md",
+  "phase2_resolver": {
+    "consulted": true,
+    "files_used": [
+      "context-first-engineering references",
+      "pathway-1-orchestration skill",
+      "safe-lane-intake skill",
+      "safe-lane-fanout skill",
+      "safe-lane-review skill",
+      "command-adapter registry and selected adapter docs"
+    ],
+    "routing_change_summary": "Escalated from Think path only to mixed Think plus bounded Build because the request requires implementation, evals, commit, and push."
+  },
+  "subagents": [
+    {
+      "role": "explorer",
+      "status": "completed",
+      "purpose": "Map repo integration points."
+    },
+    {
+      "role": "analyst",
+      "status": "completed",
+      "purpose": "Extract candidate review patterns from private context without recording source inventory."
+    },
+    {
+      "role": "decision-reviewer",
+      "status": "completed",
+      "purpose": "Review architecture, eval strategy, and blind spots."
+    }
+  ],
+  "validation": {
+    "required_commands": [
+      "./scripts/test-style-gate.sh",
+      "./scripts/eval-kalen-voice.sh",
+      "./scripts/style_gate.sh",
+      "./scripts/style_gate.sh docs/evals/kalen-voice/README.md",
+      "./scripts/style_gate.sh --kalen-voice docs/evals/kalen-voice/positive-leadership-reflection.md",
+      "private-source leakage search run from shell; pattern list not committed",
+      "git diff --check"
+    ],
+    "red_green_required": true
+  },
+  "stop_conditions": [
+    "private source leakage",
+    "unsupported voice claims",
+    "invented biography or personal experience",
+    "missing source-of-truth authority",
+    "repeated validation failure",
+    "destructive git operation"
+  ],
+  "status": "validated_pending_git_closeout"
+}
