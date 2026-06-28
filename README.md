@@ -12,6 +12,7 @@ This repo gives you a working house style guide, a small Vale style gate, test f
 
 - Use the writing standard: [HOUSE_STYLE.md](HOUSE_STYLE.md)
 - Run the style gate: [scripts/style_gate.sh](scripts/style_gate.sh)
+- Run the Kalen voice eval: [scripts/eval-kalen-voice.sh](scripts/eval-kalen-voice.sh)
 - Read the Codex setup guide: [docs/codex-handoff.md](docs/codex-handoff.md)
 - Install the optional Codex skill: [codex-skills/house-style-system/SKILL.md](codex-skills/house-style-system/SKILL.md)
 - Review repo readiness: [docs/repo-evaluation.md](docs/repo-evaluation.md)
@@ -28,6 +29,10 @@ It helps writers and teams:
 - define what automation checks,
 - define what human review owns,
 - test style rules with examples.
+
+It also includes a public-safe Kalen voice review layer. That layer uses synthetic
+fixtures and deterministic rules to flag repeatable review risks without
+committing private writing samples.
 
 ## What This Is Not
 
@@ -62,6 +67,23 @@ Run the fixture test:
 ./scripts/test-style-gate.sh
 ```
 
+Run the Kalen voice eval:
+
+```sh
+./scripts/eval-kalen-voice.sh
+```
+
+Run Kalen voice review on a specific draft:
+
+```sh
+./scripts/style_gate.sh --kalen-voice path/to/draft.md
+```
+
+With no file arguments, `style_gate.sh` scans normal Markdown docs and skips
+test fixtures, eval fixtures, and implementation plans. Pass explicit paths
+when you want to check one of those files. The Kalen voice layer is opt-in and
+only runs when you pass `--kalen-voice`.
+
 Use `HOUSE_STYLE.md` as your starter standard. Edit the rules, examples, and fixtures as your own house style becomes clearer.
 
 ## Optional Codex Skill
@@ -77,6 +99,7 @@ The skill helps Codex:
 - recognize when to apply the House Style System,
 - choose the right writing domain,
 - preserve meaning while revising,
+- apply Kalen voice review prompts when that layer applies,
 - check repeated words and repeated phrases,
 - use repo docs in the right priority order,
 - run the style gate at deliverable checkpoints,
@@ -115,8 +138,10 @@ house-style-system/
 │   ├── codex-handoff.md
 │   ├── customizing.md
 │   ├── domain-modes.md
+│   ├── evals/
 │   ├── examples.md
 │   ├── house-style-system.md
+│   ├── plans/
 │   ├── repo-evaluation.md
 │   └── test-fixtures/style-gate/
 ├── codex-skills/
@@ -125,10 +150,13 @@ house-style-system/
 │   └── house-style-system-assessment.pdf
 ├── scripts/
 │   ├── style_gate.sh
+│   ├── eval-kalen-voice.sh
 │   └── test-style-gate.sh
 ├── styles/
-│   └── HouseStyle/
-└── .vale.ini
+│   ├── HouseStyle/
+│   └── KalenVoice/
+├── .vale.ini
+└── .vale-kalen.ini
 ```
 
 ## The Default Operating Rule
@@ -161,6 +189,9 @@ The default rules are conservative. They flag common writing risks:
 - overloaded sentences,
 - undefined acronym candidates,
 - repeated contrast scaffolding.
+
+The optional Kalen voice layer flags public-safe review patterns only when you
+run `./scripts/style_gate.sh --kalen-voice <file>`.
 
 Warnings are meant to slow you down, not force mechanical rewrites.
 

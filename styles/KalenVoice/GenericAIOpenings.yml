@@ -1,0 +1,13 @@
+extends: existence
+message: "This opening sounds generic. Start with the real situation, question, pressure, or decision."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - "^\\s*in today's fast-paced world\\b"
+  - "^\\s*in today's rapidly evolving landscape\\b"
+  - "^\\s*at the intersection of\\b"
+  - "^\\s*this comprehensive guide\\b"
+  - "^\\s*unlock the power of\\b"
+  - "^\\s*delve into\\b"
+  - "^\\s*as we navigate\\b"

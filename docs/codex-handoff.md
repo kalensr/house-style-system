@@ -4,11 +4,12 @@ Use this document to hand the House Style System repo to Codex and get set up.
 
 ## What This Repo Gives Codex
 
-This repo gives Codex three useful things:
+This repo gives Codex four useful things:
 
 1. A written style standard in `HOUSE_STYLE.md`.
 2. A repeatable Vale style gate in `scripts/style_gate.sh`.
 3. An optional Codex skill in `codex-skills/house-style-system/SKILL.md`.
+4. A public-safe Kalen voice rules eval in `scripts/eval-kalen-voice.sh`.
 
 The skill teaches Codex when to use the style system, how to choose a writing
 domain, how to handle repeated phrasing, and when to run validation.
@@ -43,12 +44,17 @@ Run:
 ```sh
 ./scripts/style_gate.sh HOUSE_STYLE.md docs/examples.md
 ./scripts/test-style-gate.sh
+./scripts/eval-kalen-voice.sh
+./scripts/style_gate.sh --kalen-voice docs/evals/kalen-voice/positive-leadership-reflection.md
 ```
 
 Expected result:
 
 - the style gate finishes without errors,
 - the fixture test prints `test-style-gate: passed`.
+- the voice eval prints `eval-kalen-voice: passed`.
+- the opt-in Kalen voice style gate finishes without errors on the positive
+  control.
 
 ## Paste-Ready Codex Prompt
 
@@ -66,6 +72,10 @@ repeated phrasing, preserve my meaning, and run ./scripts/style_gate.sh when
 you edit files in this repo.
 
 Do not treat style signals as proof of authorship. Use them as review prompts.
+When Kalen asks for voice review on leadership, strategy, reflection, public
+essay, or executive prose, apply the Kalen voice review layer. Treat it as a
+set of prompts, not a model or score. Run ./scripts/style_gate.sh --kalen-voice
+on the draft when a file path is available. Do not invent personal details.
 ```
 
 ## Common Workflows
@@ -100,6 +110,25 @@ rules for my audience. Keep the rules small, explain what automation can check,
 and leave truth, evidence, and judgment with human review.
 ```
 
+### Run The Kalen Voice Eval
+
+Tell Codex:
+
+```text
+Use the house-style-system skill. Run ./scripts/eval-kalen-voice.sh and explain
+whether the synthetic positive and negative controls behaved as expected.
+```
+
+### Review Kalen Voice On A Draft
+
+Tell Codex:
+
+```text
+Use the house-style-system skill. Review this draft with the Kalen voice review
+layer, treat the rules as prompts, and run ./scripts/style_gate.sh --kalen-voice
+<file> if you edit or inspect a repo file.
+```
+
 ## What Codex Should Not Do
 
 Codex should not:
@@ -108,7 +137,8 @@ Codex should not:
 - infer authorship from style signals,
 - rewrite source quotes just to satisfy a style rule,
 - treat a clean style gate as proof that a document is true or ready,
-- add broad rules that are hard to test.
+- add broad rules that are hard to test,
+- commit private writing samples as fixtures.
 
 ## Handoff Checklist
 
@@ -120,5 +150,6 @@ Before you rely on the setup:
 - Vale is installed.
 - `./scripts/style_gate.sh HOUSE_STYLE.md docs/examples.md` passes.
 - `./scripts/test-style-gate.sh` passes.
+- `./scripts/eval-kalen-voice.sh` passes.
 - The user understands the boundary: automation checks style risks; human
   review owns truth, evidence, judgment, and final accountability.
