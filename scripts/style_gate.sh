@@ -33,4 +33,5 @@ if [[ "${STYLE_GATE_PRINT_FILES:-0}" == "1" ]]; then
   exit 0
 fi
 
+export NO_COLOR="${NO_COLOR:-1}"
 vale --config "$CONFIG" "${FILES[@]}"

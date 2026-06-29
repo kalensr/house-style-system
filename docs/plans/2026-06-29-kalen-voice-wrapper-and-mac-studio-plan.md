@@ -104,6 +104,9 @@ The update path must not change:
 - [x] 2026-06-29: Pull-request-style review found no blockers. Wrapper
   delegates to the existing `style_gate.sh --kalen-voice` path, docs preserve
   opt-in scope, and the Mac Studio plan does not perform live mutation.
+- [x] 2026-06-29: Mac Studio execution found a portability bug: Vale emitted
+  colored counts remotely, which broke exact clean-output checks. Updated
+  `scripts/style_gate.sh` to default automation output to `NO_COLOR=1`.
 - [ ] Commit and push if clean.
 
 ## Files To Inspect Or Edit
@@ -201,6 +204,13 @@ Ready to execute. The plan is bounded, reversible, and has concrete validation.
 - If skill install is later approved, copy from the validated checkout only
   after local and remote validation pass.
 
+## Surprises And Discoveries
+
+- 2026-06-29: Mac Studio's Vale output included terminal color codes in the
+  clean summary. The wrapper itself was clean, but `scripts/test-style-gate.sh`
+  could not match the colored text. Defaulting the style gate to `NO_COLOR=1`
+  keeps automation output stable across hosts.
+
 ## Outcomes And Retrospective
 
 - Added `scripts/review-kalen-voice.sh` as the memorable wrapper for Kalen voice
@@ -210,6 +220,7 @@ Ready to execute. The plan is bounded, reversible, and has concrete validation.
 - Added `docs/plans/2026-06-29-mac-studio-house-style-update.md` as the safe
   Mac Studio apply plan.
 - Did not mutate Mac Studio in this run.
-- Validation passed locally. Git closeout proof is recorded in the final
-  user-facing closeout because the final commit and push occur after this plan
-  is edited.
+- During Mac Studio execution, fixed host-portable Vale output by setting
+  `NO_COLOR=1` in `scripts/style_gate.sh`.
+- Git closeout proof is recorded in the final user-facing closeout because the
+  final commit and push occur after this plan is edited.
