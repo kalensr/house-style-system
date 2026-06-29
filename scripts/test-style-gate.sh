@@ -83,4 +83,29 @@ if grep -q "docs/plans/" <<<"$default_output"; then
   exit 1
 fi
 
+fake_vale_dir="$(mktemp -d)"
+trap 'rm -f "$fake_vale_dir/vale"; rmdir "$fake_vale_dir"' EXIT
+printf '%s\n' \
+  '#!/usr/bin/env bash' \
+  'if [[ -z "${NO_COLOR+x}" ]]; then' \
+  '  echo "NO_COLOR_UNSET"' \
+  'else' \
+  '  echo "NO_COLOR=$NO_COLOR"' \
+  'fi' > "$fake_vale_dir/vale"
+chmod +x "$fake_vale_dir/vale"
+
+no_color_default_output="$(PATH="$fake_vale_dir:$PATH" ./scripts/style_gate.sh docs/evals/kalen-voice/positive-leadership-reflection.md)"
+if [[ "$no_color_default_output" != "NO_COLOR=1" ]]; then
+  echo "Expected style gate to disable color by default" >&2
+  echo "$no_color_default_output" >&2
+  exit 1
+fi
+
+color_override_output="$(PATH="$fake_vale_dir:$PATH" STYLE_GATE_COLOR=1 ./scripts/style_gate.sh docs/evals/kalen-voice/positive-leadership-reflection.md)"
+if [[ "$color_override_output" != "NO_COLOR_UNSET" ]]; then
+  echo "Expected STYLE_GATE_COLOR=1 to preserve Vale color behavior" >&2
+  echo "$color_override_output" >&2
+  exit 1
+fi
+
 echo "test-style-gate: passed"

@@ -3,12 +3,12 @@
 ## Purpose
 
 Apply the House Style System updates to Mac Studio safely after the repo change
-has been committed and pushed from MacBook Pro. This plan is for a future
-explicit apply step. It was not executed during the wrapper implementation run.
+has been committed and pushed from MacBook Pro. The initial plan was written as
+a future apply step; Kalen later approved execution over `ssh kalen-macos-ts`.
 
 ## Current Evidence
 
-Read-only checks on 2026-06-29:
+Read-only checks on 2026-06-29 before execution:
 
 - `ssh kalen-macos-ts 'hostname'` returned `KalensMacStudio`.
 - `~/Projects/house-style-system` was not present on Mac Studio.
@@ -16,6 +16,16 @@ Read-only checks on 2026-06-29:
 - Repo-memory was advisory only and did not mutate any repo. Its Mac Studio
   host snapshot was not production proof because it was generated from the
   MacBook shell context.
+
+Execution checks on 2026-06-29:
+
+- `ssh kalen-macos-ts` reached host `KalensMacStudio`.
+- Mac Studio reported macOS `26.5.1`.
+- Git was available at `/opt/homebrew/bin/git`.
+- Vale was available at `/opt/homebrew/bin/vale`.
+- The repo was cloned to `/Users/kalenhowellsr/Projects/house-style-system`.
+- Live proof is recorded in
+  `docs/evidence/2026-06-29-mac-studio-house-style-rollout.md`.
 
 ## Safety Boundaries
 
@@ -115,9 +125,8 @@ ssh kalen-macos-ts '
   cd "$HOME/Projects/house-style-system"
   git status --short --branch
   test -z "$(git status --porcelain)"
-  git branch --show-current
+  test "$(git branch --show-current)" = "main"
   git fetch origin --prune
-  git switch main
   git pull --ff-only origin main
 '
 ```
@@ -125,7 +134,7 @@ ssh kalen-macos-ts '
 Expected:
 
 - Worktree is clean before update.
-- Branch is or can safely switch to `main`.
+- Branch is already `main`.
 - Pull fast-forwards only.
 
 ### 5. Validate Repo On Mac Studio
@@ -162,7 +171,8 @@ ssh kalen-macos-ts '
   set -e
   cd "$HOME/Projects/house-style-system"
   test -d "$HOME/.codex/skills"
-  rsync -a --delete codex-skills/house-style-system/ "$HOME/.codex/skills/house-style-system/"
+  mkdir -p "$HOME/.codex/skills/house-style-system"
+  rsync -a codex-skills/house-style-system/ "$HOME/.codex/skills/house-style-system/"
   test -f "$HOME/.codex/skills/house-style-system/SKILL.md"
 '
 ```
@@ -170,7 +180,8 @@ ssh kalen-macos-ts '
 Expected:
 
 - Installed skill exists at `~/.codex/skills/house-style-system/SKILL.md`.
-- No other skill directories are changed.
+- Only files under `~/.codex/skills/house-style-system/` are updated.
+- Stale files are not deleted automatically.
 
 Restart Codex or the relevant agent runtime after this copy if skill discovery
 does not refresh automatically.
@@ -186,15 +197,19 @@ ssh kalen-macos-ts '
   git status --short --branch
   git rev-parse HEAD
   git rev-parse origin/main
+  git ls-remote origin refs/heads/main
   ./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md
+  test -f "$HOME/.codex/skills/house-style-system/SKILL.md"
+  grep -q "review-kalen-voice.sh" "$HOME/.codex/skills/house-style-system/SKILL.md"
 '
 ```
 
 Expected:
 
 - Worktree clean.
-- Local `HEAD` equals `origin/main`.
+- Local `HEAD`, `origin/main`, and remote `refs/heads/main` match.
 - Wrapper runs successfully on Mac Studio.
+- Installed skill file exists and references the wrapper.
 
 ## Recovery Notes
 
@@ -205,3 +220,41 @@ Expected:
 - If fast-forward fails, report divergence and wait for a human decision.
 - If skill copy fails after repo validation, leave the repo checkout intact and
   report the installed skill path state.
+
+## Execution Receipt
+
+2026-06-29 execution over `ssh kalen-macos-ts` completed with these boundaries:
+
+- Repo was missing on Mac Studio, so it was cloned to
+  `/Users/kalenhowellsr/Projects/house-style-system`.
+- The Mac Studio checkout was updated on `main`.
+- The first validation run found a portability issue: Vale colorized the clean
+  count on Mac Studio, which broke exact output matching in
+  `scripts/test-style-gate.sh`.
+- The fix was made in `scripts/style_gate.sh` by defaulting automation output to
+  `NO_COLOR=1`.
+- After the fix was committed and pushed, Mac Studio fast-forwarded to
+  `263df6147ea4f05fde8360badf004881804579f7`.
+- Mac Studio validation passed:
+  `./scripts/test-style-gate.sh`,
+  `./scripts/eval-kalen-voice.sh`,
+  `./scripts/style_gate.sh`, and
+  `./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md`.
+- The installed Codex skill was refreshed from the validated checkout with
+  `rsync -a` into `~/.codex/skills/house-style-system/`.
+- Final remote proof at that checkpoint showed `HEAD == origin/main ==
+  263df6147ea4f05fde8360badf004881804579f7`.
+- The wrapper smoke test passed on Mac Studio, and the installed skill contained
+  the wrapper reference.
+- Live evidence for the remote proof is stored in
+  `docs/evidence/2026-06-29-mac-studio-house-style-rollout.md`.
+
+These areas were not changed:
+
+- broker or credential settings,
+- Caddy, launchd, or Tailscale settings,
+- Notion, Linear, or Model Context Protocol settings,
+- q-lab or model-runtime configuration,
+- host packages.
+
+No destructive command was run.
