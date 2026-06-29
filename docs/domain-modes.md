@@ -31,7 +31,7 @@ Use when Kalen asks to review leadership or strategy prose against his recurring
 voice risks. It can also support reflection and public essays. Use it for
 speeches, books, and executive prose when Kalen asks for that review.
 
-Run the optional checks with `./scripts/style_gate.sh --kalen-voice <file>`.
+Run the optional checks with `./scripts/review-kalen-voice.sh <file>`.
 
 Check:
 

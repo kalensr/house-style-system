@@ -45,7 +45,7 @@ Run:
 ./scripts/style_gate.sh HOUSE_STYLE.md docs/examples.md
 ./scripts/test-style-gate.sh
 ./scripts/eval-kalen-voice.sh
-./scripts/style_gate.sh --kalen-voice docs/evals/kalen-voice/positive-leadership-reflection.md
+./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md
 ```
 
 Expected result:
@@ -53,8 +53,7 @@ Expected result:
 - the style gate finishes without errors,
 - the fixture test prints `test-style-gate: passed`.
 - the voice eval prints `eval-kalen-voice: passed`.
-- the opt-in Kalen voice style gate finishes without errors on the positive
-  control.
+- the Kalen voice wrapper finishes without errors on the positive control.
 
 ## Paste-Ready Codex Prompt
 
@@ -74,8 +73,8 @@ you edit files in this repo.
 Do not treat style signals as proof of authorship. Use them as review prompts.
 When Kalen asks for voice review on leadership, strategy, reflection, public
 essay, or executive prose, apply the Kalen voice review layer. Treat it as a
-set of prompts, not a model or score. Run ./scripts/style_gate.sh --kalen-voice
-on the draft when a file path is available. Do not invent personal details.
+set of prompts, not a model or score. Run ./scripts/review-kalen-voice.sh on
+the draft when a file path is available. Do not invent personal details.
 ```
 
 ## Common Workflows
@@ -125,7 +124,7 @@ Tell Codex:
 
 ```text
 Use the house-style-system skill. Review this draft with the Kalen voice review
-layer, treat the rules as prompts, and run ./scripts/style_gate.sh --kalen-voice
+layer, treat the rules as prompts, and run ./scripts/review-kalen-voice.sh
 <file> if you edit or inspect a repo file.
 ```
 

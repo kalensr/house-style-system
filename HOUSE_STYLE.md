@@ -54,7 +54,7 @@ Automation checks only repeatable risks:
 - generic executive polish,
 - repeated contrast formulas.
 
-Run the optional checks with `./scripts/style_gate.sh --kalen-voice <file>`.
+Run the optional checks with `./scripts/review-kalen-voice.sh <file>`.
 
 Human review owns the deeper questions:
 

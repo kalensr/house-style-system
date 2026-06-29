@@ -48,8 +48,8 @@ short question. Otherwise choose the closest domain and state the choice.
 3. If the active project has `docs/examples.md`, use it for rewrite patterns.
 4. If the active project has `./scripts/style_gate.sh`, run it at deliverable
    checkpoints when files were edited.
-   When Kalen voice review applies and a file path is available, run
-   `./scripts/style_gate.sh --kalen-voice <file>`.
+   When Kalen voice review applies and `./scripts/review-kalen-voice.sh`
+   exists, run `./scripts/review-kalen-voice.sh <file>`.
 5. If no local files exist, use the fallback rules in this skill.
 
 ## Fallback Core Rules
@@ -178,7 +178,8 @@ and balance the surrounding prose.
 6. If editing files and a local `style_gate.sh` exists, run it at the
    checkpoint.
 7. If Kalen voice review applies and a file path is available, run
-   `./scripts/style_gate.sh --kalen-voice <file>`.
+   `./scripts/review-kalen-voice.sh <file>` when available. If the wrapper is
+   missing, run `./scripts/style_gate.sh --kalen-voice <file>`.
 8. If Kalen voice rules were changed or reviewed, run
    `./scripts/eval-kalen-voice.sh` when available.
 9. If the gate reports issues, rewrite only the violating text and rerun.

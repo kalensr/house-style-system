@@ -76,7 +76,7 @@ For Kalen voice changes, also update or run:
 
 ```sh
 ./scripts/eval-kalen-voice.sh
-./scripts/style_gate.sh --kalen-voice path/to/draft.md
+./scripts/review-kalen-voice.sh path/to/draft.md
 ```
 
 Keep new rules at `suggestion` or `warning` unless the pattern is always wrong.

@@ -13,7 +13,7 @@ Run:
 
 ```sh
 ./scripts/eval-kalen-voice.sh
-./scripts/style_gate.sh --kalen-voice docs/evals/kalen-voice/positive-leadership-reflection.md
+./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md
 ```
 
 Passing this eval means the deterministic checks behaved on these fixtures. It does not prove a draft is true, useful, or fully in Kalen's voice. Human review still owns evidence, judgment, audience fit, and final approval.
