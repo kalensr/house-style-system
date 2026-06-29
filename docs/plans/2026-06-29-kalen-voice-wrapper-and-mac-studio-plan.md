@@ -210,4 +210,6 @@ Ready to execute. The plan is bounded, reversible, and has concrete validation.
 - Added `docs/plans/2026-06-29-mac-studio-house-style-update.md` as the safe
   Mac Studio apply plan.
 - Did not mutate Mac Studio in this run.
-- Validation passed locally. Git closeout remains.
+- Validation passed locally. Git closeout proof is recorded in the final
+  user-facing closeout because the final commit and push occur after this plan
+  is edited.
