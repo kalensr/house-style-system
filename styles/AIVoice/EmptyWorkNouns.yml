@@ -1,0 +1,8 @@
+extends: existence
+message: "This uses an empty work noun. Name the actual task, decision, system, or operating change."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "\\bthe\\s+work\\s+is\\s+not\\s+only\\s+selecting\\s+or\\s+replacing\\s+systems\\b"
+  - "\\bnot\\s+only\\s+selecting\\s+or\\s+replacing\\s+systems\\b"

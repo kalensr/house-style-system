@@ -68,7 +68,8 @@ Those belong in human review.
 1. Create a fixture under `docs/test-fixtures/style-gate/`.
 2. Run `./scripts/test-style-gate.sh` and confirm the fixture is not covered yet.
 3. Add a Vale rule in `styles/HouseStyle/` for default house-style behavior.
-   Use `styles/KalenVoice/` for opt-in Kalen voice review behavior.
+   Use `styles/KalenVoice/` for opt-in Kalen voice review behavior. Use
+   `styles/AIVoice/` for opt-in stock AI voice review behavior.
 4. Update `scripts/test-style-gate.sh`.
 5. Run the test again.
 
@@ -78,6 +79,18 @@ For Kalen voice changes, also update or run:
 ./scripts/eval-kalen-voice.sh
 ./scripts/review-kalen-voice.sh path/to/draft.md
 ```
+
+For AI voice changes, also update or run:
+
+```sh
+./scripts/eval-ai-voice.sh
+./scripts/review-ai-voice.sh path/to/draft.md
+```
+
+AI voice rules should stay tied to visible sentence patterns. Good candidates
+include vague need framing, empty work nouns, familiar-pattern openings, and
+abstract coordination language. Keep deeper voice fit in the runbook and human
+review.
 
 Keep new rules at `suggestion` or `warning` unless the pattern is always wrong.
 

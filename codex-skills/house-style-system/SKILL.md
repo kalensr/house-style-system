@@ -19,7 +19,9 @@ Use this skill when the user asks for:
 - Kalen voice review, leadership reflection, public essay voice, or personal
   voice preservation,
 - blog, public essay, business, executive, report, student, social, or
-  informal writing.
+  informal writing,
+- AI voice avoidance, common AI phrases, recruiter-facing voice drift, or
+  personal positioning prose.
 
 Do not use it for rough notes unless the user asks for style review.
 
@@ -31,6 +33,7 @@ If the user names a domain, use it. If not, default to `plain`.
 | --- | --- |
 | executive memo, leadership update, decision brief | `executive` |
 | Kalen voice review, leadership reflection, personal essay | `kalen-leadership-reflection` |
+| recruiter, executive search, cover letter, career positioning | `personal-positioning` |
 | business doc, recommendation, status update | `business` |
 | blog, public writing, article, essay for publication | `blog` |
 | report, research brief, analysis package | `long-form-report` |
@@ -46,11 +49,16 @@ short question. Otherwise choose the closest domain and state the choice.
 1. If the active project has `HOUSE_STYLE.md`, follow it.
 2. If the active project has `docs/domain-modes.md`, use it for domain checks.
 3. If the active project has `docs/examples.md`, use it for rewrite patterns.
-4. If the active project has `./scripts/style_gate.sh`, run it at deliverable
+4. If the active project has `docs/chatgpt-project/ai-voice-avoidance-runbook.md`,
+   use it for AI voice avoidance in executive, recruiter-facing, public, and
+   leadership writing.
+5. If the active project has `./scripts/style_gate.sh`, run it at deliverable
    checkpoints when files were edited.
    When Kalen voice review applies and `./scripts/review-kalen-voice.sh`
    exists, run `./scripts/review-kalen-voice.sh <file>`.
-5. If no local files exist, use the fallback rules in this skill.
+   When AI voice review applies and `./scripts/review-ai-voice.sh` exists, run
+   `./scripts/review-ai-voice.sh <file>`.
+6. If no local files exist, use the fallback rules in this skill.
 
 ## Fallback Core Rules
 
@@ -69,6 +77,9 @@ short question. Otherwise choose the closest domain and state the choice.
 - Do not add unsupported claims.
 - Watch for repeated vocabulary. Keep terms that carry the argument, but vary
   or cut repeated framing words that stop adding meaning.
+- Remove the default AI business voice. Watch for abstract labels before
+  concrete facts, role-fit framing, polished but impersonal business language,
+  broad diagnosis before proof, and nouns stacked in place of visible action.
 
 ## Kalen Voice Review Checks
 
@@ -111,6 +122,10 @@ visible. Do not turn personal reflection into generic executive prose.
 
 `executive`: state the answer or recommendation early. Make tradeoffs and risks
 visible. Name owners, dates, and next steps. Remove throat-clearing.
+
+`personal-positioning`: open politely. State the role family directly. Show the
+before state and what changed. Use proof across career stages. State the current
+search boundary and close with a plain invitation. Do not over-teach the fit.
 
 `business`: clarify the decision, update, recommendation, and risk. Name the
 owner and next step. Separate facts from judgment.
@@ -180,10 +195,14 @@ and balance the surrounding prose.
 7. If Kalen voice review applies and a file path is available, run
    `./scripts/review-kalen-voice.sh <file>` when available. If the wrapper is
    missing, run `./scripts/style_gate.sh --kalen-voice <file>`.
-8. If Kalen voice rules were changed or reviewed, run
+8. If AI voice review applies and a file path is available, run
+   `./scripts/review-ai-voice.sh <file>` when available.
+9. If Kalen voice rules were changed or reviewed, run
    `./scripts/eval-kalen-voice.sh` when available.
-9. If the gate reports issues, rewrite only the violating text and rerun.
-10. In the final response, state the domain used and whether validation ran.
+10. If AI voice rules were changed or reviewed, run
+   `./scripts/eval-ai-voice.sh` when available.
+11. If the gate reports issues, rewrite only the violating text and rerun.
+12. In the final response, state the domain used and whether validation ran.
 
 ## Stop Rules
 

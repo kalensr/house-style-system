@@ -25,6 +25,24 @@ Check:
 - Is the tradeoff plain?
 - Are dates, owners, and open questions visible?
 
+## Personal Positioning Or Recruiter-Facing Writing
+
+Use when the writing supports recruiter outreach or executive search. This mode
+also fits career positioning, biographies, cover letters, and role-fit
+materials.
+
+Check:
+
+- Does the opening sound human and professional?
+- Is the role family stated directly?
+- Is the before state visible?
+- Is the change or after state visible?
+- Does proof come before broad positioning?
+- Are career stages used as evidence rather than a duty list?
+- Is the current search boundary clear?
+- Does the close invite a conversation without over-filtering the reader?
+- Are role-fit phrases replaced with plain operating language?
+
 ## Kalen Leadership Reflection
 
 Use when Kalen asks to review leadership or strategy prose against his recurring

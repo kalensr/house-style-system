@@ -13,8 +13,12 @@ This repo gives you a working house style guide, a small Vale style gate, test f
 - Use the writing standard: [HOUSE_STYLE.md](HOUSE_STYLE.md)
 - Run the style gate: [scripts/style_gate.sh](scripts/style_gate.sh)
 - Run Kalen voice review: [scripts/review-kalen-voice.sh](scripts/review-kalen-voice.sh)
+- Run AI voice review: [scripts/review-ai-voice.sh](scripts/review-ai-voice.sh)
 - Run the Kalen voice eval: [scripts/eval-kalen-voice.sh](scripts/eval-kalen-voice.sh)
+- Run the AI voice eval: [scripts/eval-ai-voice.sh](scripts/eval-ai-voice.sh)
 - Read the Codex setup guide: [docs/codex-handoff.md](docs/codex-handoff.md)
+- Create a ChatGPT writing Project: [docs/chatgpt-project/README.md](docs/chatgpt-project/README.md)
+- Block common AI voice patterns: [docs/chatgpt-project/ai-voice-avoidance-runbook.md](docs/chatgpt-project/ai-voice-avoidance-runbook.md)
 - Install the optional Codex skill: [codex-skills/house-style-system/SKILL.md](codex-skills/house-style-system/SKILL.md)
 - Review repo readiness: [docs/repo-evaluation.md](docs/repo-evaluation.md)
 
@@ -74,17 +78,30 @@ Run the Kalen voice eval:
 ./scripts/eval-kalen-voice.sh
 ```
 
+Run the AI voice eval:
+
+```sh
+./scripts/eval-ai-voice.sh
+```
+
 Run Kalen voice review on a specific draft:
 
 ```sh
 ./scripts/review-kalen-voice.sh path/to/draft.md
 ```
 
+Run AI voice review on a specific draft:
+
+```sh
+./scripts/review-ai-voice.sh path/to/draft.md
+```
+
 With no file arguments, `style_gate.sh` scans normal Markdown docs and skips
 test fixtures, eval fixtures, and implementation plans. Pass explicit paths
 when you want to check one of those files. The Kalen voice layer is opt-in and
 only runs when you use `review-kalen-voice.sh` or pass `--kalen-voice` to
-`style_gate.sh`.
+`style_gate.sh`. The AI voice layer is also opt-in and only runs when you use
+`review-ai-voice.sh` or pass `--ai-voice` to `style_gate.sh`.
 
 Use `HOUSE_STYLE.md` as your starter standard. Edit the rules, examples, and fixtures as your own house style becomes clearer.
 
@@ -102,6 +119,7 @@ The skill helps Codex:
 - choose the right writing domain,
 - preserve meaning while revising,
 - apply Kalen voice review prompts when that layer applies,
+- apply AI voice avoidance prompts when that layer applies,
 - check repeated words and repeated phrases,
 - use repo docs in the right priority order,
 - run the style gate at deliverable checkpoints,
@@ -153,13 +171,17 @@ house-style-system/
 ├── scripts/
 │   ├── style_gate.sh
 │   ├── review-kalen-voice.sh
+│   ├── review-ai-voice.sh
 │   ├── eval-kalen-voice.sh
+│   ├── eval-ai-voice.sh
 │   └── test-style-gate.sh
 ├── styles/
+│   ├── AIVoice/
 │   ├── HouseStyle/
 │   └── KalenVoice/
 ├── .vale.ini
-└── .vale-kalen.ini
+├── .vale-kalen.ini
+└── .vale-ai-voice.ini
 ```
 
 ## The Default Operating Rule
@@ -196,6 +218,10 @@ The default rules are conservative. They flag common writing risks:
 The optional Kalen voice layer flags public-safe review patterns only when you
 run `./scripts/review-kalen-voice.sh <file>` or explicitly pass
 `--kalen-voice` to `style_gate.sh`.
+
+The optional AI voice layer flags common generated business and recruiter voice
+patterns only when you run `./scripts/review-ai-voice.sh <file>` or explicitly
+pass `--ai-voice` to `style_gate.sh`.
 
 Warnings are meant to slow you down, not force mechanical rewrites.
 

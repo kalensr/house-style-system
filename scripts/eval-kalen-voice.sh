@@ -13,6 +13,7 @@ POSITIVE="docs/evals/kalen-voice/positive-leadership-reflection.md"
 NEGATIVE="docs/evals/kalen-voice/negative-generic-executive.md"
 SUPPORTED_GROUP="docs/evals/kalen-voice/near-miss-supported-group-claim.md"
 SUPPORTED_PATH="docs/evals/kalen-voice/near-miss-supported-pathway.md"
+SUPPORTED_FUTURE_STATE="docs/evals/kalen-voice/near-miss-supported-future-state.md"
 QUOTED_MID_DOC="docs/evals/kalen-voice/near-miss-quoted-generic-phrase.md"
 
 positive_output="$(./scripts/style_gate.sh --kalen-voice "$POSITIVE" 2>&1 || true)"
@@ -36,7 +37,7 @@ for rule in \
   fi
 done
 
-for fixture in "$SUPPORTED_GROUP" "$SUPPORTED_PATH" "$QUOTED_MID_DOC"; do
+for fixture in "$SUPPORTED_GROUP" "$SUPPORTED_PATH" "$SUPPORTED_FUTURE_STATE" "$QUOTED_MID_DOC"; do
   output="$(./scripts/style_gate.sh --kalen-voice "$fixture" 2>&1 || true)"
   if grep -q "KalenVoice" <<<"$output"; then
     echo "Expected no Kalen voice rule alerts for $fixture" >&2

@@ -6,7 +6,9 @@ The House Style System has three layers:
 2. Automated checks through Vale.
 3. Human review for truth, evidence, judgment, and tone.
 
-The system works best when those layers stay separate.
+The default gate stays broad and conservative. Optional review layers add more
+specific checks for Kalen voice and stock AI business voice. The system works
+best when those layers stay separate.
 
 ## Operating Model
 
@@ -26,6 +28,14 @@ Automation should catch objective or repeatable risks:
 - overloaded sentences,
 - acronym candidates,
 - repeated contrast scaffolding.
+
+Optional review layers can also catch repeated voice risks:
+
+- unsupported Kalen voice claims,
+- future-state language with no visible path,
+- vague business-need framing,
+- empty work nouns,
+- stock AI pattern-recognition openings.
 
 ## What Human Review Owns
 
