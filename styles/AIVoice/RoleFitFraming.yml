@@ -1,0 +1,8 @@
+extends: existence
+message: "This sounds like generated role-fit framing. State the role family directly."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "\\bthe\\s+roles\\s+that\\s+fit\\s+me\\s+best\\b"
+  - "\\broles\\s+that\\s+fit\\s+me\\s+best\\b"

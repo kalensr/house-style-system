@@ -4,4 +4,4 @@ level: suggestion
 ignorecase: true
 nonword: true
 tokens:
-  - "\\b(?:teams|communities|businesses|leaders|organizations)\\s+need\\s+(?:better leadership|stronger examples|more alignment|greater clarity)\\b"
+  - "\\b(?:teams|communities|businesses|leaders|organizations)\\s+need\\s+(?:better|stronger|more|greater|bold)\\s+(?:leadership|examples|alignment|clarity|vision)\\b"

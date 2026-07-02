@@ -1,0 +1,7 @@
+extends: existence
+message: "This before-state label sounds flattened. Prefer specific facts about the system, vendor model, incident, or support condition."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "\\btechnology\\s+was\\s+small,\\s+reactive,\\s+and\\s+heavily\\s+dependent\\s+on\\s+outside\\s+vendors\\b"

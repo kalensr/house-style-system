@@ -1,0 +1,7 @@
+extends: existence
+message: "This coordinates abstract categories. Say what someone sees, decides, changes, or owns."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "\\bleadership\\s+visibility\\s+move\\s+together\\b"

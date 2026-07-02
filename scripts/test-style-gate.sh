@@ -59,6 +59,27 @@ expect_kalen_rule "docs/test-fixtures/style-gate/fail-detached-leadership-claim.
 expect_kalen_rule "docs/test-fixtures/style-gate/fail-generic-executive-tone.md" "KalenVoice.ExecutiveTone"
 expect_wrapper_rule "docs/test-fixtures/style-gate/fail-generic-ai-opening.md" "KalenVoice.GenericAIOpenings"
 
+expect_ai_rule() {
+  local fixture="$1"
+  local rule="$2"
+  local output
+
+  output="$(./scripts/review-ai-voice.sh "$fixture" 2>&1 || true)"
+  if ! grep -q "$rule" <<<"$output"; then
+    echo "Expected $rule through review-ai-voice wrapper for $fixture" >&2
+    echo "$output" >&2
+    exit 1
+  fi
+}
+
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-role-fit-framing.md" "AIVoice.RoleFitFraming"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-abstract-business-need.md" "AIVoice.AbstractBusinessNeed"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-pattern-recognition-opening.md" "AIVoice.PatternRecognitionOpening"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-diagnostic-adjective-stack.md" "AIVoice.DiagnosticAdjectiveStack"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-vague-consequence.md" "AIVoice.VagueConsequence"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-coordinated-abstraction.md" "AIVoice.CoordinatedAbstraction"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-empty-work-noun.md" "AIVoice.EmptyWorkNouns"
+
 wrapper_positive_output="$(./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md 2>&1 || true)"
 if ! grep -q "0 errors, 0 warnings and 0 suggestions" <<<"$wrapper_positive_output"; then
   echo "Expected review-kalen-voice wrapper positive control to be clean" >&2
@@ -105,6 +126,13 @@ color_override_output="$(PATH="$fake_vale_dir:$PATH" STYLE_GATE_COLOR=1 ./script
 if [[ "$color_override_output" != "NO_COLOR_UNSET" ]]; then
   echo "Expected STYLE_GATE_COLOR=1 to preserve Vale color behavior" >&2
   echo "$color_override_output" >&2
+  exit 1
+fi
+
+mixed_voice_output="$(./scripts/style_gate.sh --ai-voice --kalen-voice docs/test-fixtures/style-gate/fail-ai-role-fit-framing.md 2>&1 || true)"
+if ! grep -q "choose only one voice layer" <<<"$mixed_voice_output"; then
+  echo "Expected style gate to reject mixed voice layers" >&2
+  echo "$mixed_voice_output" >&2
   exit 1
 fi
 

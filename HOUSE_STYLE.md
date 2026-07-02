@@ -71,6 +71,26 @@ claim that a clean gate means a draft is ready. It is a review aid.
 
 AI output is draft material.
 
+Do not only imitate Kalen's voice. Remove the default AI business voice.
+
+Default AI voice often shows up as:
+
+- abstract labels before concrete facts,
+- polished but impersonal business language,
+- broad diagnosis before proof,
+- nouns stacked in place of visible action,
+- claims that compress several real events into one vague phrase.
+
+When a sentence sounds generated, repair it by naming the real thing:
+
+1. actor,
+2. action,
+3. system or workflow,
+4. before state,
+5. friction or risk,
+6. decision or ownership,
+7. result or after state.
+
 Human review owns:
 
 - truth,
@@ -112,6 +132,18 @@ Use the core rules everywhere. Add the right mode for the work.
 - Keep evidence close to the claim it supports.
 - State the tradeoff plainly.
 - End with the action needed.
+
+### Personal Positioning Or Recruiter-Facing Writing
+
+- Open politely.
+- State the role family directly.
+- Show the before state.
+- Name what changed.
+- Prove the pattern across career stages.
+- State the current search boundary.
+- Close with a plain invitation.
+- Do not over-teach the fit.
+- Avoid role-fit framing such as `the roles that fit me best`.
 
 ### Kalen Leadership Reflection
 
