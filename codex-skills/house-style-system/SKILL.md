@@ -109,6 +109,37 @@ Check:
 - Do not invent biographical details, family details, spiritual experiences,
   dates, quotes, accomplishments, citations, or business results.
 
+### No Dramatic Punctuation Sentences
+
+Kalen's voice does not use short declarative sentences as dramatic
+punctuation. Treat this as a hard review rule for public writing, personal
+reflection, blog drafts, social posts, and leadership writing.
+
+Flag and rewrite sentences that combine these traits:
+
+- short declarative sentence used for rhythm or drama;
+- abstract noun or vague pronoun as the subject;
+- implied significance without explanation;
+- missing actor, object, standard, mechanism, or consequence;
+- sentence sounds quotable but cannot answer "what exactly do you mean?"
+
+Prefer sentences that carry a complete thought. An average sentence length near
+or above 12 syllables is acceptable in Kalen's voice. Sentences under 8
+syllables should be rare, and usually should be cut or folded into a fuller
+sentence unless they state a concrete fact, decision, or boundary.
+
+Before keeping a short sentence, ask:
+
+- Does this sentence name the actor and the action?
+- Does it explain the standard, mechanism, or consequence?
+- Is it doing meaning work, or only adding rhythm?
+- Would Kalen say this plainly in conversation?
+
+Rewrite dramatic compression into concrete operating language. For example,
+replace a line like "It raises the standard" with a fuller claim such as:
+"I built a system I can trust because I know where the information came from,
+I reviewed it, and I know why it is still valuable."
+
 Use automation for repeatable surface signals only. Human review owns audience
 fit, evidence, judgment, and whether the draft still sounds right to Kalen.
 
