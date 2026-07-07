@@ -4,17 +4,21 @@ Use this document to hand the House Style System repo to Codex and get set up.
 
 ## What This Repo Gives Codex
 
-This repo gives Codex five useful things:
+This repo gives Codex seven useful things:
 
 1. A written style standard in `HOUSE_STYLE.md`.
 2. A repeatable Vale style gate in `scripts/style_gate.sh`.
 3. An optional Codex skill in `codex-skills/house-style-system/SKILL.md`.
 4. A public-safe Kalen voice rules eval in `scripts/eval-kalen-voice.sh`.
 5. An optional AI voice review layer in `scripts/eval-ai-voice.sh`.
+6. An optional Center of Gravity review layer in
+   `scripts/eval-center-of-gravity.sh`.
+7. An optional No Dramatic Punctuation review layer in
+   `scripts/eval-dramatic-punctuation.sh`.
 
 The skill teaches Codex when to use the style system and how to choose a
-writing domain. It also covers repeated phrasing, stock AI business voice, and
-validation.
+writing domain. It also covers repeated phrasing, stock AI business voice,
+human-centered subject framing, and validation.
 
 ## One-Time Setup
 
@@ -48,8 +52,12 @@ Run:
 ./scripts/test-style-gate.sh
 ./scripts/eval-kalen-voice.sh
 ./scripts/eval-ai-voice.sh
+./scripts/eval-center-of-gravity.sh
+./scripts/eval-dramatic-punctuation.sh
 ./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md
 ./scripts/review-ai-voice.sh docs/test-fixtures/style-gate/fail-ai-empty-work-noun.md
+./scripts/review-center-of-gravity.sh docs/test-fixtures/style-gate/fail-cog-ai-protagonist.md
+./scripts/review-dramatic-punctuation.sh docs/test-fixtures/style-gate/fail-dp-vague-punchline.md
 ```
 
 Expected result:
@@ -58,8 +66,12 @@ Expected result:
 - the fixture test prints `test-style-gate: passed`.
 - the voice eval prints `eval-kalen-voice: passed`.
 - the AI voice eval prints `eval-ai-voice: passed`.
+- the Center of Gravity eval prints `eval-center-of-gravity: passed`.
+- the No Dramatic Punctuation eval prints `eval-dramatic-punctuation: passed`.
 - the Kalen voice wrapper finishes without errors on the positive control.
 - the AI voice wrapper flags the stock AI voice fixture.
+- the Center of Gravity wrapper flags the AI protagonist fixture.
+- the No Dramatic Punctuation wrapper flags the vague punchline fixture.
 
 ## Paste-Ready Codex Prompt
 
@@ -86,6 +98,20 @@ the draft when a file path is available. Do not invent personal details.
 When Kalen asks for personal positioning, recruiter-facing writing, cover
 letters, or AI voice review, apply the AI voice review layer. Run
 ./scripts/review-ai-voice.sh on the draft when a file path is available.
+
+When Kalen asks whether AI, agents, abstract work, or nominalized actions have
+become the subject, apply the Center of Gravity layer. Keep people, teams,
+customers, organizations, decisions, and workflows visible when those are the
+real subject. Run ./scripts/review-center-of-gravity.sh on the draft when a file
+path is available.
+
+When Kalen asks for No Dramatic Punctuation review, or when public, leadership,
+personal-positioning, blog, or social writing uses short lines as punchlines,
+apply the No Dramatic Punctuation layer. Fold vague pronoun lines, abstract
+subject lines, or fragments into concrete sentences that name the actor,
+action, standard, mechanism, or consequence. Run
+./scripts/review-dramatic-punctuation.sh on the draft when a file path is
+available.
 ```
 
 ## Common Workflows
@@ -148,6 +174,25 @@ Use the house-style-system skill. Run ./scripts/eval-ai-voice.sh and explain
 whether the fail fixtures and near-miss controls behaved as expected.
 ```
 
+### Run The Center Of Gravity Eval
+
+Tell Codex:
+
+```text
+Use the house-style-system skill. Run ./scripts/eval-center-of-gravity.sh and
+explain whether the fail fixtures and near-miss controls behaved as expected.
+```
+
+### Run The No Dramatic Punctuation Eval
+
+Tell Codex:
+
+```text
+Use the house-style-system skill. Run ./scripts/eval-dramatic-punctuation.sh
+and explain whether the fail fixtures and near-miss controls behaved as
+expected.
+```
+
 ### Review AI Voice On A Draft
 
 Tell Codex:
@@ -156,6 +201,29 @@ Tell Codex:
 Use the house-style-system skill. Review this draft for stock AI business
 voice, treat the rules as prompts, and run ./scripts/review-ai-voice.sh <file>
 if you edit or inspect a repo file.
+```
+
+### Review Center Of Gravity On A Draft
+
+Tell Codex:
+
+```text
+Use the house-style-system skill. Review this draft for Center of Gravity:
+identify whether the sentence, paragraph, and topic keep the real person, team,
+customer, organization, decision, or workflow as the subject. Run
+./scripts/review-center-of-gravity.sh <file> if you edit or inspect a repo file.
+```
+
+### Review No Dramatic Punctuation On A Draft
+
+Tell Codex:
+
+```text
+Use the house-style-system skill. Review this draft for No Dramatic
+Punctuation: identify short lines, fragments, or one-sentence paragraphs that
+imply significance without naming the actor, action, standard, mechanism, or
+consequence. Run ./scripts/review-dramatic-punctuation.sh <file> if you edit or
+inspect a repo file.
 ```
 
 ## What Codex Should Not Do
@@ -181,5 +249,7 @@ Before you rely on the setup:
 - `./scripts/test-style-gate.sh` passes.
 - `./scripts/eval-kalen-voice.sh` passes.
 - `./scripts/eval-ai-voice.sh` passes.
+- `./scripts/eval-center-of-gravity.sh` passes.
+- `./scripts/eval-dramatic-punctuation.sh` passes.
 - The user understands the boundary: automation checks style risks; human
   review owns truth, evidence, judgment, and final accountability.

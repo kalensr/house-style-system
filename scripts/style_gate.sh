@@ -7,24 +7,36 @@ cd "$ROOT"
 CONFIG="$ROOT/.vale.ini"
 MODE="house"
 ARGS=()
+
+select_optional_layer() {
+  local next_mode="$1"
+  local next_config="$2"
+
+  if [[ "$MODE" != "house" ]]; then
+    echo "style-gate: choose only one optional review layer: --kalen-voice, --ai-voice, --center-of-gravity, or --dramatic-punctuation" >&2
+    exit 2
+  fi
+
+  MODE="$next_mode"
+  CONFIG="$next_config"
+}
+
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --kalen-voice)
-      if [[ "$MODE" == "ai" ]]; then
-        echo "style-gate: choose only one voice layer: --kalen-voice or --ai-voice" >&2
-        exit 2
-      fi
-      MODE="kalen"
-      CONFIG="$ROOT/.vale-kalen.ini"
+      select_optional_layer "kalen" "$ROOT/.vale-kalen.ini"
       shift
       ;;
     --ai-voice)
-      if [[ "$MODE" == "kalen" ]]; then
-        echo "style-gate: choose only one voice layer: --kalen-voice or --ai-voice" >&2
-        exit 2
-      fi
-      MODE="ai"
-      CONFIG="$ROOT/.vale-ai-voice.ini"
+      select_optional_layer "ai" "$ROOT/.vale-ai-voice.ini"
+      shift
+      ;;
+    --center-of-gravity)
+      select_optional_layer "center-of-gravity" "$ROOT/.vale-center-of-gravity.ini"
+      shift
+      ;;
+    --dramatic-punctuation)
+      select_optional_layer "dramatic-punctuation" "$ROOT/.vale-dramatic-punctuation.ini"
       shift
       ;;
     *)
