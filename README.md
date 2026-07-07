@@ -25,8 +25,12 @@ Optional review layers:
 
 - Kalen voice review: [scripts/review-kalen-voice.sh](scripts/review-kalen-voice.sh)
 - AI voice review: [scripts/review-ai-voice.sh](scripts/review-ai-voice.sh)
+- Center of Gravity review: [scripts/review-center-of-gravity.sh](scripts/review-center-of-gravity.sh)
+- No Dramatic Punctuation review: [scripts/review-dramatic-punctuation.sh](scripts/review-dramatic-punctuation.sh)
 - Kalen voice eval: [scripts/eval-kalen-voice.sh](scripts/eval-kalen-voice.sh)
 - AI voice eval: [scripts/eval-ai-voice.sh](scripts/eval-ai-voice.sh)
+- Center of Gravity eval: [scripts/eval-center-of-gravity.sh](scripts/eval-center-of-gravity.sh)
+- No Dramatic Punctuation eval: [scripts/eval-dramatic-punctuation.sh](scripts/eval-dramatic-punctuation.sh)
 
 Assistant setup:
 
@@ -89,6 +93,8 @@ Run the optional evals when you change voice rules:
 ```sh
 ./scripts/eval-kalen-voice.sh
 ./scripts/eval-ai-voice.sh
+./scripts/eval-center-of-gravity.sh
+./scripts/eval-dramatic-punctuation.sh
 ```
 
 Run Kalen voice review on a specific draft:
@@ -103,12 +109,30 @@ Run AI voice review on a specific draft:
 ./scripts/review-ai-voice.sh path/to/draft.md
 ```
 
+Run Center of Gravity review on a specific draft:
+
+```sh
+./scripts/review-center-of-gravity.sh path/to/draft.md
+```
+
+Run No Dramatic Punctuation review on a specific draft:
+
+```sh
+./scripts/review-dramatic-punctuation.sh path/to/draft.md
+```
+
 With no file arguments, `style_gate.sh` scans normal Markdown docs and skips
 test fixtures, eval fixtures, and implementation plans. Pass explicit paths
 when you want to check one of those files. The Kalen voice layer is opt-in and
 only runs when you use `review-kalen-voice.sh` or pass `--kalen-voice` to
 `style_gate.sh`. The AI voice layer is also opt-in and only runs when you use
 `review-ai-voice.sh` or pass `--ai-voice` to `style_gate.sh`.
+The Center of Gravity layer is opt-in and only runs when you use
+`review-center-of-gravity.sh` or pass `--center-of-gravity` to
+`style_gate.sh`.
+The No Dramatic Punctuation layer is opt-in and only runs when you use
+`review-dramatic-punctuation.sh` or pass `--dramatic-punctuation` to
+`style_gate.sh`.
 
 Use [HOUSE_STYLE.md](HOUSE_STYLE.md) as your starter standard. Edit the rules,
 examples, and fixtures as your own house style becomes clearer.
@@ -124,6 +148,8 @@ Use the optional layers only when they fit the work:
 | House style | `./scripts/style_gate.sh <file>` | General writing quality checks |
 | Kalen voice | `./scripts/review-kalen-voice.sh <file>` | Leadership, reflection, public essay, or Kalen voice review |
 | AI voice | `./scripts/review-ai-voice.sh <file>` | Generic AI business or recruiter prose needs review |
+| Center of Gravity | `./scripts/review-center-of-gravity.sh <file>` | AI, agents, abstract work, or nominalized action may be displacing people as the subject |
+| No Dramatic Punctuation | `./scripts/review-dramatic-punctuation.sh <file>` | Short lines, fragments, or one-sentence paragraphs imply significance without explanation |
 
 The optional layers are review aids. They do not detect authorship.
 
@@ -142,6 +168,9 @@ The skill helps Codex:
 - preserve meaning while revising,
 - apply Kalen voice review prompts when that layer applies,
 - apply AI voice avoidance prompts when that layer applies,
+- apply Center of Gravity prompts when the draft loses the human actor,
+- apply No Dramatic Punctuation prompts when short lines are only adding
+  rhythm,
 - check repeated words and repeated phrases,
 - use repo docs in the right priority order,
 - run the style gate at deliverable checkpoints,
@@ -216,6 +245,8 @@ Run these before publishing changes:
 ./scripts/test-style-gate.sh
 ./scripts/eval-kalen-voice.sh
 ./scripts/eval-ai-voice.sh
+./scripts/eval-center-of-gravity.sh
+./scripts/eval-dramatic-punctuation.sh
 git diff --check
 ```
 
@@ -238,6 +269,7 @@ house-style-system/
 │   ├── examples.md
 │   ├── house-style-system.md
 │   ├── plans/
+│   ├── research/
 │   ├── repo-evaluation.md
 │   └── test-fixtures/style-gate/
 ├── codex-skills/
@@ -252,16 +284,24 @@ house-style-system/
 │   ├── style_gate.sh
 │   ├── review-kalen-voice.sh
 │   ├── review-ai-voice.sh
+│   ├── review-center-of-gravity.sh
+│   ├── review-dramatic-punctuation.sh
 │   ├── eval-kalen-voice.sh
 │   ├── eval-ai-voice.sh
+│   ├── eval-center-of-gravity.sh
+│   ├── eval-dramatic-punctuation.sh
 │   └── test-style-gate.sh
 ├── styles/
 │   ├── AIVoice/
+│   ├── CenterOfGravity/
+│   ├── DramaticPunctuation/
 │   ├── HouseStyle/
 │   └── KalenVoice/
 ├── .vale.ini
 ├── .vale-kalen.ini
-└── .vale-ai-voice.ini
+├── .vale-ai-voice.ini
+├── .vale-center-of-gravity.ini
+└── .vale-dramatic-punctuation.ini
 ```
 
 ## The Default Operating Rule
@@ -304,6 +344,25 @@ run `./scripts/review-kalen-voice.sh <file>` or explicitly pass
 The optional AI voice layer flags common generated business and recruiter voice
 patterns only when you run `./scripts/review-ai-voice.sh <file>` or explicitly
 pass `--ai-voice` to `style_gate.sh`.
+
+The optional Center of Gravity layer flags sentences that make AI, agents,
+abstract work, or nominalized actions the subject. Use it when people or teams
+should carry the action. It also applies when customers, organizations,
+decisions, or workflows should carry the action.
+Run it with `./scripts/review-center-of-gravity.sh <file>` or explicitly pass
+`--center-of-gravity` to `style_gate.sh`.
+
+The optional No Dramatic Punctuation layer flags short lines that use vague
+pronouns, abstract subjects, or fragments for emphasis without explanation. It
+keeps the rule measurable while leaving rhythm, audience fit, and voice fit to
+human review.
+Run it with `./scripts/review-dramatic-punctuation.sh <file>` or explicitly
+pass `--dramatic-punctuation` to `style_gate.sh`.
+
+For the research basis and eval roadmap, read
+[docs/research/center-of-gravity-writing-eval.md](docs/research/center-of-gravity-writing-eval.md)
+and
+[docs/research/no-dramatic-punctuation-eval.md](docs/research/no-dramatic-punctuation-eval.md).
 
 Warnings are meant to slow you down, not force mechanical rewrites.
 

@@ -24,6 +24,10 @@ Use this skill when the user asks for any of the following:
 - house style, style gate, plain language, or a writing quality review,
 - drafting, rewriting, editing, polishing, or humanizing prose,
 - removing AI-sounding or generic business and recruiter voice,
+- Center of Gravity review, human-centered framing, or actor/action clarity
+  when AI or agents have become the protagonist,
+- No Dramatic Punctuation review when short lines or fragments create drama
+  without enough actor, action, standard, mechanism, or consequence,
 - executive memo, decision brief, or leadership update,
 - leadership reflection, public essay, or personal voice review,
 - blog, report, business doc, social post, or informal note,
@@ -60,9 +64,14 @@ Use this source-priority ladder:
 4. If it has `docs/chatgpt-project/ai-voice-avoidance-runbook.md`, use it for AI
    voice avoidance in executive, recruiter-facing, public, and leadership
    writing.
-5. If it has a style gate script and you edited files, run the gate at the
+5. If it has `docs/research/center-of-gravity-writing-eval.md`, use it for
+   Center of Gravity review when people, teams, customers, organizations,
+   decisions, or workflows should stay visible as the subject.
+6. If it has `docs/research/no-dramatic-punctuation-eval.md`, use it for
+   short-line, fragment, and staccato-emphasis review.
+7. If it has a style gate script and you edited files, run the gate at the
    checkpoint (see Deterministic Gate below).
-6. If none of these are present, use the self-contained rules in this skill and
+8. If none of these are present, use the self-contained rules in this skill and
    its reference files. This is the normal case in Claude Chat.
 
 ## Domain Selection
@@ -136,6 +145,47 @@ The full seven stop patterns are in
 repair recipe, and recruiter sentence order. Read that
 file when doing executive, recruiter-facing, public, or leadership writing.
 
+## Check Center Of Gravity
+
+When writing about people adapting to AI, teams changing work, or organizations
+making decisions, keep the human actor visible. Do not let AI, agents,
+abstract work, or nominalized actions become the protagonist unless they are
+truly the actor.
+
+Ask:
+
+- Sentence: who is the subject, and should they be?
+- Paragraph: what entity controls the paragraph?
+- Topic: what is the piece actually about?
+
+Watch for:
+
+- `AI is...`
+- `agents are...`
+- `the work is...`
+- `this work...`
+- `the pattern...`
+
+Also watch nominalized subjects such as `adoption`, `implementation`,
+`alignment`, or `modernization`. Repair by naming the person, team, customer,
+or organization. You can also name the decision, workflow, or concrete change.
+
+## Check No Dramatic Punctuation
+
+Kalen's public and leadership voice does not use short declarative lines as
+dramatic punctuation. Watch for vague pronoun punchlines, abstract subject
+punchlines, fragments, and one-sentence paragraphs that imply significance
+without explaining it.
+
+Ask:
+
+- Does the line name the actor and action?
+- Does it explain the standard, mechanism, or consequence?
+- Is it doing meaning work, or only adding rhythm?
+
+Keep a short line when it states a concrete fact, decision, or boundary. Cut it
+or fold it into the fuller sentence when it only adds drama.
+
 ## Deterministic Gate
 
 Run these only when a shell and the repo are available, and only on files you
@@ -150,6 +200,12 @@ actually edited. Check that each script exists first.
 
 # Opt-in leadership and reflection voice review
 ./scripts/review-kalen-voice.sh path/to/draft.md
+
+# Opt-in Center of Gravity review
+./scripts/review-center-of-gravity.sh path/to/draft.md
+
+# Opt-in No Dramatic Punctuation review
+./scripts/review-dramatic-punctuation.sh path/to/draft.md
 ```
 
 If the gate reports issues, rewrite only the flagged text, preserve meaning, and
@@ -163,10 +219,14 @@ user run the gate later. Never treat a clean gate as proof the draft is ready.
 3. Revise for substance first, then style.
 4. For executive, recruiter, public, or leadership work, apply the AI voice
    patterns from the reference file.
-5. For publishable or long-form prose, scan for repeated words and verbal tics.
-6. Preserve meaning, facts, and uncertainty.
-7. If you edited repo files and a gate script exists, run it at the checkpoint.
-8. In your final reply, state the domain used and whether the gate ran.
+5. When AI, agents, abstract work, or nominalized actions may have become the
+   protagonist, apply the Center of Gravity check.
+6. When public, leadership, blog, social, or personal-positioning prose uses
+   short lines as punchlines, apply No Dramatic Punctuation review.
+7. For publishable or long-form prose, scan for repeated words and verbal tics.
+8. Preserve meaning, facts, and uncertainty.
+9. If you edited repo files and a gate script exists, run it at the checkpoint.
+10. In your final reply, state the domain used and whether the gate ran.
 
 ## Stop Rules
 

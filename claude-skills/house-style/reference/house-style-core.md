@@ -65,8 +65,9 @@ After: `Use the system thoughtfully.`
 
 Automation flags repeatable surface risks. These include em dashes and filler
 phrases. They also include weak modifiers, jargon, stock conclusions, and
-overloaded sentences. Automation also flags acronym candidates, repeated
-contrast scaffolds, and known AI voice patterns.
+overloaded sentences. Automation also flags acronym candidates and repeated
+contrast scaffolds. It can flag known AI voice patterns, Center of Gravity
+risks, and short dramatic punchline patterns.
 
 ## What Human Review Owns
 

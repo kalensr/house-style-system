@@ -26,6 +26,30 @@ When a sentence sounds AI-generated, name the real thing:
 6. decision or ownership,
 7. result or after state.
 
+## Center Of Gravity Check
+
+AI voice often pushes the wrong noun into subject position. When the real topic
+is people adapting to AI, keep people in subject position. When the topic is
+teams changing work or organizations making decisions, keep that actor visible.
+Do not make AI, agents, abstract work, or nominalized actions the protagonist.
+
+Check three levels:
+
+- Sentence: who is the subject, and should they be?
+- Paragraph: what entity controls the paragraph?
+- Topic: what is the piece actually about?
+
+Watch for:
+
+- `AI is...`
+- `agents are...`
+- `the work is...`
+- `the pattern...`
+- `adoption requires...`
+
+Repair by naming the person, team, customer, or organization. You can also name
+the decision, workflow, or concrete change.
+
 ## Watchword List
 
 Allow these abstract nouns only when the sentence also names the concrete

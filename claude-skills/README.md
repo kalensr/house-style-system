@@ -17,13 +17,14 @@ claude-skills/
 
 The skill applies the House Style System. It helps produce clear, direct,
 plain-language prose fitted to its domain. It removes the default AI business
-voice, pairs a deterministic style gate with judgment-based review, and never
-detects authorship.
+voice and checks whether the right human actor stayed in subject position. It
+pairs a deterministic style gate with judgment-based review. It also checks
+short-line punchlines and never detects authorship.
 
 `SKILL.md` is self-contained. The three reference files add depth and load only
-when needed. The core rules, domain modes, and AI voice patterns are embedded.
-That means the skill works even with no repo and no shell, which is the normal
-case in Claude Chat.
+when needed. The core rules, domain modes, AI voice patterns, and Center of
+Gravity checks are embedded. That means the skill works even with no repo and
+no shell, which is the normal case in Claude Chat.
 
 ## How Each Surface Uses It
 
@@ -34,6 +35,8 @@ the skill runs the deterministic gate on files it edits:
 ./scripts/style_gate.sh path/to/draft.md
 ./scripts/review-ai-voice.sh path/to/draft.md
 ./scripts/review-kalen-voice.sh path/to/draft.md
+./scripts/review-center-of-gravity.sh path/to/draft.md
+./scripts/review-dramatic-punctuation.sh path/to/draft.md
 ```
 
 Claude Chat usually has no shell or repo. There the skill applies the same rules

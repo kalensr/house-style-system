@@ -84,6 +84,40 @@ expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-diagnostic-adjective-stack
 expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-vague-consequence-variant.md" "AIVoice.VagueConsequence"
 expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-empty-work-noun-variant.md" "AIVoice.EmptyWorkNouns"
 
+expect_center_of_gravity_rule() {
+  local fixture="$1"
+  local rule="$2"
+  local output
+
+  output="$(./scripts/review-center-of-gravity.sh "$fixture" 2>&1 || true)"
+  if ! grep -q "$rule" <<<"$output"; then
+    echo "Expected $rule through review-center-of-gravity wrapper for $fixture" >&2
+    echo "$output" >&2
+    exit 1
+  fi
+}
+
+expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-ai-protagonist.md" "CenterOfGravity.ToolProtagonist"
+expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-empty-work-subject.md" "CenterOfGravity.EmptyWorkSubject"
+expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-nominalized-human-action.md" "CenterOfGravity.NominalizedHumanAction"
+
+expect_dramatic_punctuation_rule() {
+  local fixture="$1"
+  local rule="$2"
+  local output
+
+  output="$(./scripts/review-dramatic-punctuation.sh "$fixture" 2>&1 || true)"
+  if ! grep -q "$rule" <<<"$output"; then
+    echo "Expected $rule through review-dramatic-punctuation wrapper for $fixture" >&2
+    echo "$output" >&2
+    exit 1
+  fi
+}
+
+expect_dramatic_punctuation_rule "docs/test-fixtures/style-gate/fail-dp-vague-punchline.md" "DramaticPunctuation.VaguePunchline"
+expect_dramatic_punctuation_rule "docs/test-fixtures/style-gate/fail-dp-abstract-punchline.md" "DramaticPunctuation.AbstractPunchline"
+expect_dramatic_punctuation_rule "docs/test-fixtures/style-gate/fail-dp-fragment-emphasis.md" "DramaticPunctuation.FragmentEmphasis"
+
 wrapper_positive_output="$(./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md 2>&1 || true)"
 if ! grep -q "0 errors, 0 warnings and 0 suggestions" <<<"$wrapper_positive_output"; then
   echo "Expected review-kalen-voice wrapper positive control to be clean" >&2
@@ -134,9 +168,23 @@ if [[ "$color_override_output" != "NO_COLOR_UNSET" ]]; then
 fi
 
 mixed_voice_output="$(./scripts/style_gate.sh --ai-voice --kalen-voice docs/test-fixtures/style-gate/fail-ai-role-fit-framing.md 2>&1 || true)"
-if ! grep -q "choose only one voice layer" <<<"$mixed_voice_output"; then
+if ! grep -q "choose only one optional review layer" <<<"$mixed_voice_output"; then
   echo "Expected style gate to reject mixed voice layers" >&2
   echo "$mixed_voice_output" >&2
+  exit 1
+fi
+
+mixed_optional_output="$(./scripts/style_gate.sh --ai-voice --center-of-gravity docs/test-fixtures/style-gate/fail-cog-ai-protagonist.md 2>&1 || true)"
+if ! grep -q "choose only one optional review layer" <<<"$mixed_optional_output"; then
+  echo "Expected style gate to reject mixed optional review layers" >&2
+  echo "$mixed_optional_output" >&2
+  exit 1
+fi
+
+mixed_dramatic_output="$(./scripts/style_gate.sh --ai-voice --dramatic-punctuation docs/test-fixtures/style-gate/fail-dp-vague-punchline.md 2>&1 || true)"
+if ! grep -q "choose only one optional review layer" <<<"$mixed_dramatic_output"; then
+  echo "Expected style gate to reject mixed dramatic punctuation layers" >&2
+  echo "$mixed_dramatic_output" >&2
   exit 1
 fi
 

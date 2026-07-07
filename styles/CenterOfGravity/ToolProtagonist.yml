@@ -1,0 +1,7 @@
+extends: existence
+message: "This makes AI or agents the protagonist. Name the person, team, customer, or organization doing the work."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "(?:^|[.!?]\\s+)\\s*(?:AI|Artificial\\s+intelligence|Agents?|The\\s+agent|The\\s+agents|Automation)\\s+(?:is|are|will|can|could|should|needs?|helps?|changes?|drives?|creates?|defines?|raises?|becomes?|makes?|turns?|moves?|shapes?|transforms?)\\b"
