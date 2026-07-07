@@ -30,6 +30,23 @@ When a sentence sounds AI-generated, repair it by naming the real thing:
 6. decision or ownership,
 7. result or after state.
 
+Also check the sentence's Center of Gravity. These should not become the
+protagonist by default:
+
+- AI or agents,
+- platforms or systems,
+- abstract work,
+- nominalized actions.
+
+Keep the real subject in view. That subject may be a person, team, customer, or
+organization. It may also be a decision, workflow, or operating change.
+
+Also check for dramatic punctuation. A short line is a risk when it implies
+importance without naming who acts or what happens. It should also name the
+standard, mechanism, or consequence. Lines such as `This matters.` or `The
+standard rises.` should usually be cut or folded into a fuller sentence. Treat
+`No shortcuts.` the same way unless it states a concrete boundary.
+
 ## Canonical Disliked Phrases
 
 These phrases came from Kalen's review of a cover-letter draft. Treat them as
@@ -60,6 +77,12 @@ Use these findings as review guidance:
 - A study comparing human news text with output from six large language models
   found measurable differences in sentence-length distribution, vocabulary
   variety, syntax, and emotional pattern.
+- Research on large language model writing has found higher rates of
+  nominalization and a tendency toward information-dense, noun-heavy prose.
+  Related findings also point to fewer human subjects in some ChatGPT-4 text.
+- Writing pedagogy and discourse research give names to the repair: convert
+  nominalized actions back into verbs, put people or recognizable characters in
+  subject position, and check Theme/Rheme progression across paragraphs.
 - Prompting guidance from OpenAI and Microsoft supports using specific
   instructions, examples, grounding material, and validation instead of broad
   style requests.
@@ -70,6 +93,9 @@ Source links:
 - [Delving Into PubMed Records](https://pmejournal.org/articles/10.5334/pme.1929)
 - [Contrasting Linguistic Patterns in Human and Large Language Model-Generated News Text](https://link.springer.com/article/10.1007/s10462-024-10903-2)
 - [How AI-generated prose diverges from human writing](https://reutersinstitute.politics.ox.ac.uk/news/how-ai-generated-prose-diverges-human-writing-and-why-it-matters)
+- [Do large language models write like humans? Variation in grammatical and rhetorical styles](https://arxiv.org/html/2410.16107v1)
+- [Purdue writing lab: Nominalizations and Subject Position](https://owl.purdue.edu/owl/multilingual/multilingual_students/nominalizations_and_subject_position.html)
+- [Modeling Local Coherence: An Entity-Based Approach](https://aclanthology.org/J08-1001.pdf)
 - [OpenAI prompt engineering best practices](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api)
 - [Microsoft prompt engineering techniques](https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering)
 

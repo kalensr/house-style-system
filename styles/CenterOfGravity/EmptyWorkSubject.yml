@@ -1,0 +1,7 @@
+extends: existence
+message: "This uses a vague subject for human work. Name who is adapting, deciding, reviewing, or owning the change."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "(?:^|[.!?]\\s+)\\s*(?:The\\s+work|This\\s+work|The\\s+pattern|The\\s+system|This|It)\\s+(?:is|are|was|were|becomes?|means?|requires?|needs?|helps?|changes?|creates?|drives?|raises?)\\b[^.]{0,90}\\b(?:AI|agents?|planning|review|delivery|ownership|accountability|architecture|decisions?|workflows?)\\b"

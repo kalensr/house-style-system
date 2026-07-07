@@ -50,10 +50,19 @@ Strengths:
   blog, report, informal, and learning use.
 - `docs/examples.md` gives concrete before and after patterns.
 - `docs/ai-authorship-boundary.md` keeps the safety boundary explicit.
-- `styles/HouseStyle/`, `styles/KalenVoice/`, and `styles/AIVoice/` make
-  repeatable risks visible.
+- `styles/HouseStyle/`, `styles/KalenVoice/`, `styles/AIVoice/`,
+  `styles/CenterOfGravity/`, and `styles/DramaticPunctuation/` make repeatable
+  risks visible.
 - `scripts/review-kalen-voice.sh` gives a local check for Kalen voice risks.
 - `scripts/review-ai-voice.sh` gives a local check for stock AI voice risks.
+- `scripts/review-center-of-gravity.sh` gives a local check for drafts that
+  make AI, agents, abstract work, or nominalized actions the subject.
+- `scripts/review-dramatic-punctuation.sh` gives a local check for short lines
+  that imply significance without explanation.
+- `docs/research/center-of-gravity-writing-eval.md` documents the research
+  basis and eval roadmap for the subject-framing layer.
+- `docs/research/no-dramatic-punctuation-eval.md` documents the research basis
+  and eval roadmap for short-line punchline review.
 - `codex-skills/house-style-system/SKILL.md` already explains the operating
   workflow in a reusable agent format.
 
@@ -79,6 +88,8 @@ Upload or add these files to the ChatGPT Project first:
 6. `docs/domain-modes.md`
 7. `docs/examples.md`
 8. `docs/ai-authorship-boundary.md`
+9. `docs/research/center-of-gravity-writing-eval.md`
+10. `docs/research/no-dramatic-punctuation-eval.md`
 
 Optional sources:
 
@@ -117,6 +128,8 @@ Use the local repo for deterministic checks:
 ./scripts/style_gate.sh path/to/draft.md
 ./scripts/review-kalen-voice.sh path/to/draft.md
 ./scripts/review-ai-voice.sh path/to/draft.md
+./scripts/review-center-of-gravity.sh path/to/draft.md
+./scripts/review-dramatic-punctuation.sh path/to/draft.md
 ```
 
 The Project should ask for proof when claims matter. It should also ask for the

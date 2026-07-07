@@ -1,0 +1,7 @@
+extends: existence
+message: "This fragment is acting as dramatic punctuation. Keep it only for a concrete fact or fold it into the sentence it depends on."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "(?:^|[.!?]\\s+)\\s*(?:No\\s+shortcuts|Full\\s+stop|The\\s+point|The\\s+shift|The\\s+work)\\s*\\."

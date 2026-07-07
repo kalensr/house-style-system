@@ -1,0 +1,7 @@
+extends: existence
+message: "This short line uses a vague pronoun for drama. Fold it into a concrete sentence with actor, action, standard, mechanism, or consequence."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "(?:^|[.!?]\\s+)\\s*(?:This|That|It)\\s+(?:matters|changed?\\s+everything|is\\s+the\\s+point|is\\s+the\\s+shift|is\\s+where\\s+the\\s+work\\s+changes|raises?\\s+the\\s+standard)\\s*\\."

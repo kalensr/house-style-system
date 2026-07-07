@@ -1,0 +1,7 @@
+extends: existence
+message: "This makes an abstract subject carry a dramatic punchline. Name who does what and why it matters."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "(?:^|[.!?]\\s+)\\s*(?:The\\s+(?:work|pattern|standard|shift|moment|future|bar)|This\\s+(?:work|pattern|shift|moment))\\s+(?:matters|changes?\\s+everything|changes?|rises|is\\s+clear|is\\s+different)\\s*\\."

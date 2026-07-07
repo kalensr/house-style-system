@@ -67,6 +67,66 @@ Human review owns the deeper questions:
 Do not use this layer to imitate private writing samples, certify authorship, or
 claim that a clean gate means a draft is ready. It is a review aid.
 
+## Center Of Gravity Review Layer
+
+Use this layer when a draft may be making the wrong thing the subject. It is
+especially useful for AI-assisted writing about teams and engineering work. It
+also helps with leadership, adoption, operating change, and people adapting to
+AI.
+
+The core question:
+
+```text
+What is the real subject of this sentence, paragraph, and topic?
+```
+
+Watch for:
+
+- AI, agents, automation, or systems as the protagonist when people are doing
+  the work,
+- vague subjects such as `the work`, `this work`, `the pattern`, `this`, or
+  `it`,
+- nominalized actions such as `adoption`, `implementation`, `alignment`, or
+  `modernization` carrying the sentence,
+- paragraphs where tools dominate subject position while people disappear.
+
+Prefer sentences where the actor and action are visible:
+
+```text
+Engineering teams are changing how they use AI to review architecture
+decisions.
+```
+
+Run the optional checks with
+`./scripts/review-center-of-gravity.sh <file>`.
+
+Human review owns paragraph and topic fit. Automation only catches repeatable
+surface signs.
+
+## No Dramatic Punctuation Review Layer
+
+Use this layer when a draft uses short lines as drama instead of explanation.
+It is especially useful for public essays and leadership reflection. It also
+applies to social posts, personal positioning, and blog drafts.
+
+Watch for:
+
+- vague pronoun punchlines such as `This matters.`,
+- abstract subject punchlines such as `The standard rises.`,
+- fragments such as `No shortcuts.` when they do not carry a concrete fact,
+- one-sentence paragraphs that imply significance without explaining it.
+
+Prefer sentences that name who acts and what happens. They should also name the
+standard, mechanism, or consequence. A short sentence can stay when it states a
+concrete fact. It can also stay when it states a decision or boundary. Cut it or
+fold it into a fuller sentence when it only adds rhythm.
+
+Run the optional checks with
+`./scripts/review-dramatic-punctuation.sh <file>`.
+
+Human review owns rhythm, audience fit, and final judgment. Automation only
+catches repeatable surface signs.
+
 ## AI-Assisted Writing Rules
 
 AI output is draft material.

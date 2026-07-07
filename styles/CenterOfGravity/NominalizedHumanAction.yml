@@ -1,0 +1,7 @@
+extends: existence
+message: "This makes a nominalized action the subject. Turn it back into people doing, deciding, reviewing, or owning something."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "(?:^|[.!?]\\s+)\\s*(?:Adoption|Adaptation|Implementation|Alignment|Modernization|Transformation|Evaluation|Review|Ownership|Governance|Execution|Strategy|Visibility)\\s+(?:requires?|needs?|creates?|drives?|enables?|improves?|changes?|turns?|becomes?|makes?|helps?)\\b"

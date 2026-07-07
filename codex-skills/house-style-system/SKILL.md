@@ -21,7 +21,11 @@ Use this skill when the user asks for:
 - blog, public essay, business, executive, report, student, social, or
   informal writing,
 - AI voice avoidance, common AI phrases, recruiter-facing voice drift, or
-  personal positioning prose.
+  personal positioning prose,
+- Center of Gravity review, human-centered framing, actor/action clarity, or
+  keeping people and teams as the subject when writing about AI,
+- No Dramatic Punctuation review, short declarative punchlines, staccato
+  emphasis, or fragment lines that imply significance without explanation.
 
 Do not use it for rough notes unless the user asks for style review.
 
@@ -58,6 +62,12 @@ short question. Otherwise choose the closest domain and state the choice.
    exists, run `./scripts/review-kalen-voice.sh <file>`.
    When AI voice review applies and `./scripts/review-ai-voice.sh` exists, run
    `./scripts/review-ai-voice.sh <file>`.
+   When Center of Gravity review applies and
+   `./scripts/review-center-of-gravity.sh` exists, run
+   `./scripts/review-center-of-gravity.sh <file>`.
+   When No Dramatic Punctuation review applies and
+   `./scripts/review-dramatic-punctuation.sh` exists, run
+   `./scripts/review-dramatic-punctuation.sh <file>`.
 6. If no local files exist, use the fallback rules in this skill.
 
 ## Fallback Core Rules
@@ -80,6 +90,11 @@ short question. Otherwise choose the closest domain and state the choice.
 - Remove the default AI business voice. Watch for abstract labels before
   concrete facts, role-fit framing, polished but impersonal business language,
   broad diagnosis before proof, and nouns stacked in place of visible action.
+- Keep the right grammatical center of gravity. When the topic is people,
+  teams, customers, decisions, workflows, or organizations adapting to AI, do
+  not make AI, agents, abstract work, or nominalized actions the protagonist.
+- Do not use short lines as dramatic punctuation. Keep them only when they
+  state a concrete fact, decision, or boundary.
 
 ## Kalen Voice Review Checks
 
@@ -143,6 +158,34 @@ I reviewed it, and I know why it is still valuable."
 
 Use automation for repeatable surface signals only. Human review owns audience
 fit, evidence, judgment, and whether the draft still sounds right to Kalen.
+
+## Center Of Gravity Review
+
+Use this check when a draft may be putting the wrong thing in subject position.
+It applies most often to AI-assisted writing about people and teams. It also
+applies to engineering work and leadership. Use it for adoption, operating
+change, and organizations adapting to AI.
+
+Ask three questions:
+
+- Sentence: who is the grammatical subject, and should they be?
+- Paragraph: what entity controls the paragraph?
+- Topic: what is the piece actually about?
+
+Watch for:
+
+- AI, agents, automation, systems, or platforms as the protagonist when people
+  are doing the work;
+- vague subjects such as `the work`, `this work`, `the pattern`, `this`, or
+  `it`;
+- nominalized actions such as `adoption`, `implementation`, `alignment`,
+  `modernization`, or `evaluation` carrying the sentence;
+- paragraphs where tools dominate subject position while people disappear.
+
+Repair by naming the person, team, customer, or organization. You can also name
+the decision, workflow, or concrete change. Keep AI or agents in the sentence
+when they matter. Make them tools or constraints unless they are truly the
+actor.
 
 ## Domain Checks
 
@@ -229,12 +272,20 @@ and balance the surrounding prose.
    missing, run `./scripts/style_gate.sh --kalen-voice <file>`.
 8. If AI voice review applies and a file path is available, run
    `./scripts/review-ai-voice.sh <file>` when available.
-9. If Kalen voice rules were changed or reviewed, run
+9. If Center of Gravity review applies and a file path is available, run
+   `./scripts/review-center-of-gravity.sh <file>` when available.
+10. If No Dramatic Punctuation review applies and a file path is available, run
+   `./scripts/review-dramatic-punctuation.sh <file>` when available.
+11. If Kalen voice rules were changed or reviewed, run
    `./scripts/eval-kalen-voice.sh` when available.
-10. If AI voice rules were changed or reviewed, run
+12. If AI voice rules were changed or reviewed, run
    `./scripts/eval-ai-voice.sh` when available.
-11. If the gate reports issues, rewrite only the violating text and rerun.
-12. In the final response, state the domain used and whether validation ran.
+13. If Center of Gravity rules were changed or reviewed, run
+   `./scripts/eval-center-of-gravity.sh` when available.
+14. If No Dramatic Punctuation rules were changed or reviewed, run
+   `./scripts/eval-dramatic-punctuation.sh` when available.
+15. If the gate reports issues, rewrite only the violating text and rerun.
+16. In the final response, state the domain used and whether validation ran.
 
 ## Stop Rules
 

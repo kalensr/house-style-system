@@ -42,6 +42,11 @@ primary sources:
   polish.
 - Remove common AI business voice. If a phrase sounds like generated recruiter
   or consultant prose, rewrite it in plain operating language.
+- Keep the right subject in view. When writing about people adapting to AI,
+  teams changing work, or organizations making decisions, do not make AI,
+  agents, abstract work, or nominalized actions the protagonist.
+- Do not use short declarative lines as dramatic punctuation. Keep a short
+  sentence only when it states a concrete fact, decision, or boundary.
 - Treat style signals as review prompts. They are never proof of authorship.
 
 ## Voice Rules
@@ -110,8 +115,13 @@ For final polish:
 1. Check the draft against the house style.
 2. Check for repeated wording and generic phrasing.
 3. Check for AI voice patterns from `ai-voice-avoidance-runbook.md`.
-4. Ask me to run the local style gate when the draft is close to handoff.
-5. If I provide style gate output, fix only the relevant passages.
+4. Check the Center of Gravity: the sentence, paragraph, and topic should keep
+   the real person, team, customer, organization, decision, or workflow visible
+   when that is the subject under discussion.
+5. Check No Dramatic Punctuation: short lines should name the actor, action,
+   standard, mechanism, or consequence instead of acting as a punchline.
+6. Ask me to run the local style gate when the draft is close to handoff.
+7. If I provide style gate output, fix only the relevant passages.
 
 ## Evidence Rules
 
