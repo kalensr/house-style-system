@@ -152,7 +152,8 @@ Why it fails:
 Better:
 
 ```text
-I joined ChemStation during a period of significant operational and technology challenges.
+I joined a mid-sized company during a period of significant operational and
+technology challenges.
 ```
 
 Rule:
@@ -184,7 +185,8 @@ technology had become largely reactive
 Or:
 
 ```text
-software development was outsourced, several systems needed modernization, and the organization was responding to a cybersecurity incident
+software development was outsourced, several systems needed modernization, and
+the organization was working through urgent platform risk
 ```
 
 Rule:
@@ -315,7 +317,8 @@ AI voice:
 The pattern I am most useful in is familiar.
 
 Repair:
-I joined ChemStation during a period of significant operational and technology challenges.
+I joined a mid-sized company during a period of significant operational and
+technology challenges.
 ```
 
 ## Preferred Recruiter-Facing Pattern

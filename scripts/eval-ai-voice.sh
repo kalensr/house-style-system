@@ -42,6 +42,12 @@ expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-vague-consequence.md" "AIV
 expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-coordinated-abstraction.md" "AIVoice.CoordinatedAbstraction"
 expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-empty-work-noun.md" "AIVoice.EmptyWorkNouns"
 
+# Generalization variants: different wording than the runbook examples must still trigger.
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-coordinated-abstraction-variant.md" "AIVoice.CoordinatedAbstraction"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-diagnostic-adjective-stack-variant.md" "AIVoice.DiagnosticAdjectiveStack"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-vague-consequence-variant.md" "AIVoice.VagueConsequence"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-empty-work-noun-variant.md" "AIVoice.EmptyWorkNouns"
+
 expect_ai_clean "docs/evals/ai-voice/near-miss-role-family-direct.md"
 expect_ai_clean "docs/evals/ai-voice/near-miss-abstract-business-need-grounded.md"
 expect_ai_clean "docs/evals/ai-voice/near-miss-pattern-shown-first.md"

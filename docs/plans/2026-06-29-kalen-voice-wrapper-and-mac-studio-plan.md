@@ -4,18 +4,12 @@
 
 Add a small wrapper so Kalen voice review can be run without remembering the
 `--kalen-voice` flag. Also apply the house-style-system updates safely on Mac
-Studio after Kalen approved the remote execution step.
+Studio after Kalen approved the remote execution step. Public copies of this
+plan summarize host-specific details instead of publishing aliases or local
+paths.
 
-The update path must not change:
-
-- broker policy or tokens,
-- credentials,
-- launchd,
-- Caddy,
-- Tailscale,
-- Notion,
-- Linear,
-- Model Context Protocol configuration.
+The update path must not change credentials, broker policy, host services,
+connector settings, or Model Context Protocol configuration.
 
 ## Context Orientation
 
@@ -46,12 +40,12 @@ The update path must not change:
 ### Data and integrations
 
 - No new product data, credentials, or external product integrations.
-- Execution used GitHub remote access and Secure Shell to Mac Studio.
-- The Mac Studio plan began as documentation plus read-only host facts, then
+- Execution used GitHub remote access and a bounded remote shell to a secondary
+  workstation.
+- The remote update plan began as documentation plus read-only host facts, then
   became the approved execution receipt for clone, validation, and skill refresh.
-- Read-only Secure Shell evidence from 2026-06-29: `kalen-macos-ts` reached
-  `KalensMacStudio`; `~/Projects/house-style-system` was missing; `~/.codex/skills`
-  existed.
+- Read-only remote evidence from 2026-06-29 confirmed the expected workstation,
+  a missing repo checkout, and an existing local Codex skills directory.
 
 ### Quality and operations
 
@@ -91,8 +85,7 @@ The update path must not change:
   customization docs, and broker handoff boundaries.
 - [x] 2026-06-29: Ran repo-memory read-only checks. Output is advisory only and
   made no mutations.
-- [x] 2026-06-29: Ran read-only Mac Studio reachability check over
-  `kalen-macos-ts`.
+- [x] 2026-06-29: Ran read-only secondary workstation reachability check.
 - [x] 2026-06-29: Created `scripts/review-kalen-voice.sh`.
 - [x] 2026-06-29: Added wrapper checks to `scripts/test-style-gate.sh`.
 - [x] 2026-06-29: Updated README, house style, handoff docs, customization docs,
@@ -105,14 +98,14 @@ The update path must not change:
 - [x] 2026-06-29: Pull-request-style review of the wrapper found no blockers.
   Wrapper delegates to the existing `style_gate.sh --kalen-voice` path, and
   docs preserve opt-in scope.
-- [x] 2026-06-29: Mac Studio execution found a portability bug: Vale emitted
+- [x] 2026-06-29: Remote execution found a portability bug: Vale emitted
   colored counts remotely, which broke exact clean-output checks. Updated
   `scripts/style_gate.sh` to default automation output to `NO_COLOR=1`.
 - [x] 2026-06-29: Committed and pushed portability fix as `263df61`.
-- [x] 2026-06-29: Cloned repo on Mac Studio, pulled `main`, ran validation,
+- [x] 2026-06-29: Cloned repo on the secondary workstation, pulled `main`, ran validation,
   refreshed installed Codex skill with `rsync -a`, and confirmed wrapper
   reference in the installed skill.
-- [x] 2026-06-29: Recorded live Mac Studio proof at
+- [x] 2026-06-29: Recorded summarized remote proof at
   `docs/evidence/2026-06-29-mac-studio-house-style-rollout.md`.
 - [x] 2026-06-29: Prepared final execution receipt for commit and push after
   validation passed.
@@ -134,9 +127,9 @@ The update path must not change:
 - Keep Kalen voice rules opt-in.
 - Do not duplicate Vale config logic in the wrapper.
 - Do not commit private writing samples.
-- Mac Studio live changes are limited to cloning or updating this repo and
-  refreshing `~/.codex/skills/house-style-system/` from the validated checkout.
-- Do not edit broker, credential, Caddy, launchd, Tailscale, Notion, Linear, or
+- Remote live changes are limited to cloning or updating this repo and refreshing
+  the installed Codex skill from the validated checkout.
+- Do not edit credentials, broker policy, host services, connector settings, or
   Model Context Protocol settings.
 - Do not use destructive Git commands.
 
@@ -189,18 +182,18 @@ Expected:
 ### Findings
 
 - No blocker: wrapper delegates to the existing tested `style_gate.sh` path.
-- No blocker: Mac Studio updates are limited to approved repo and installed
-  skill paths.
+- No blocker: remote workstation updates are limited to the approved repo and
+  installed skill path.
 - Risk: docs could make the wrapper sound global. Mitigation: keep wording
   explicit that Kalen voice review is still opt-in.
 
 ### Open Questions / Assumptions
 
-- Assumption: `~/Projects/house-style-system` is the intended Mac Studio repo
-  path if Kalen later approves applying the update.
-- Assumption: installing or refreshing the bundled Codex skill on Mac Studio
-  should use a controlled copy from the checked-out repo, not direct editing in
-  `~/.codex/skills`.
+- Assumption: the repo should live in the expected user project directory if
+  Kalen later approves applying the update.
+- Assumption: installing or refreshing the bundled Codex skill should use a
+  controlled copy from the checked-out repo, not direct editing in the installed
+  skill directory.
 
 ### Initial Readiness Verdict
 
@@ -213,14 +206,14 @@ path.
 - Re-running the wrapper is read-only except for Vale output.
 - If wrapper validation fails, inspect `scripts/style_gate.sh --kalen-voice`
   first because the wrapper delegates there.
-- If Mac Studio clone or pull fails, stop before install and report the exact
+- If remote clone or pull fails, stop before install and report the exact
   git state.
 - Copy the installed skill from the validated checkout only after local and
   remote validation pass.
 
 ## Surprises And Discoveries
 
-- 2026-06-29: Mac Studio's Vale output included terminal color codes in the
+- 2026-06-29: Remote Vale output included terminal color codes in the
   clean summary. The wrapper itself was clean, but `scripts/test-style-gate.sh`
   could not match the colored text. Defaulting the style gate to `NO_COLOR=1`
   keeps automation output stable across hosts.
@@ -232,10 +225,10 @@ path.
 - Added wrapper regression checks to `scripts/test-style-gate.sh`.
 - Updated docs and the bundled Codex skill to prefer the wrapper.
 - Added `docs/plans/2026-06-29-mac-studio-house-style-update.md` as the safe
-  Mac Studio apply plan.
-- During Mac Studio execution, fixed host-portable Vale output by setting
+  remote apply plan.
+- During remote execution, fixed host-portable Vale output by setting
   `NO_COLOR=1` in `scripts/style_gate.sh`.
-- Cloned the repo on Mac Studio, validated it, and refreshed the installed Codex
-  skill from the validated checkout.
+- Cloned the repo on the secondary workstation, validated it, and refreshed the
+  installed Codex skill from the validated checkout.
 - Git closeout proof is recorded in the final user-facing closeout because the
   final commit and push occur after this plan is edited.

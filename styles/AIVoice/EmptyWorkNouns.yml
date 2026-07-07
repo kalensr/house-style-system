@@ -6,3 +6,6 @@ nonword: true
 tokens:
   - "\\bthe\\s+work\\s+is\\s+not\\s+only\\s+selecting\\s+or\\s+replacing\\s+systems\\b"
   - "\\bnot\\s+only\\s+selecting\\s+or\\s+replacing\\s+systems\\b"
+  - "\\bthe\\s+work\\s+is\\s+not\\s+(?:only|just|merely|simply)\\s+\\w+ing\\b"
+  - "\\bthe\\s+work\\s+is\\s+not\\s+about\\b"
+  - "\\bthe\\s+real\\s+work\\s+is\\s+not\\b"

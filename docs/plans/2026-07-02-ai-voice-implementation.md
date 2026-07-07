@@ -47,8 +47,7 @@ Primary sources:
 - `scripts/style_gate.sh`
 - `scripts/test-style-gate.sh`
 - `scripts/eval-kalen-voice.sh`
-- installed local skill:
-  `/Users/kalenhowellsr/.codex/skills/house-style-system/SKILL.md`
+- installed local skill copied from `codex-skills/house-style-system/SKILL.md`
 
 Observed implementation facts:
 
@@ -58,8 +57,8 @@ Observed implementation facts:
 - `docs/chatgpt-project/ai-voice-avoidance-runbook.md` is source guidance.
   Exact disliked phrases are enforced by deterministic rules. Context-sensitive
   cases stay in human review.
-- `/Users/kalenhowellsr/.codex/skills/house-style-system/SKILL.md` is now
-  installed on this Mac from `codex-skills/house-style-system/SKILL.md`.
+- The installed local skill now matches
+  `codex-skills/house-style-system/SKILL.md`.
 
 ## Constraints
 

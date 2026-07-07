@@ -2,40 +2,33 @@
 
 ## Purpose
 
-Apply the House Style System updates to Mac Studio safely after the repo change
-has been committed and pushed from MacBook Pro. The initial plan was written as
-a future apply step; Kalen later approved execution over `ssh kalen-macos-ts`.
+Apply the House Style System updates to a secondary workstation safely after the
+repo change has been committed and pushed from the primary workstation. The
+initial plan was written as a future apply step. Kalen later approved bounded
+remote execution.
 
 ## Current Evidence
 
 Read-only checks on 2026-06-29 before execution:
 
-- `ssh kalen-macos-ts 'hostname'` returned `KalensMacStudio`.
-- `~/Projects/house-style-system` was not present on Mac Studio.
-- `~/.codex/skills` was present on Mac Studio.
-- Repo-memory was advisory only and did not mutate any repo. Its Mac Studio
-  host snapshot was not production proof because it was generated from the
-  MacBook shell context.
+- Remote access reached the expected secondary workstation.
+- The repo checkout was not yet present there.
+- The local Codex skills directory existed.
+- Repo-memory was advisory only and did not mutate any repo.
 
 Execution checks on 2026-06-29:
 
-- `ssh kalen-macos-ts` reached host `KalensMacStudio`.
-- Mac Studio reported macOS `26.5.1`.
-- Git was available at `/opt/homebrew/bin/git`.
-- Vale was available at `/opt/homebrew/bin/vale`.
-- The repo was cloned to `/Users/kalenhowellsr/Projects/house-style-system`.
+- Remote access reached the expected secondary workstation.
+- Git and Vale were available.
+- The repo was cloned to the expected user project directory.
 - Live proof is recorded in
   `docs/evidence/2026-06-29-mac-studio-house-style-rollout.md`.
 
 ## Safety Boundaries
 
-Do not change these in this update:
-
-- Agent Access Broker policy or tokens.
-- Caddy, launchd, Tailscale, Notion, Linear, Model Context Protocol, or Keychain
-  settings.
-- Any q-lab or model-runtime configuration.
-- Any repo other than `house-style-system`.
+Do not change credentials, broker policy, host services, connector settings,
+model-runtime settings, host package settings, or any repo other than
+`house-style-system`.
 
 Do not run destructive commands:
 
@@ -47,7 +40,7 @@ Do not run destructive commands:
 
 Stop and report instead of continuing when:
 
-- Secure Shell does not reach `KalensMacStudio`.
+- remote access does not reach the expected workstation.
 - The target path exists and has local changes.
 - The target checkout is on a branch other than `main`.
 - `git pull --ff-only` cannot fast-forward.
@@ -61,7 +54,7 @@ Stop and report instead of continuing when:
 Run from MacBook Pro:
 
 ```sh
-cd /Users/kalenhowellsr/Projects/house-style-system
+cd /path/to/house-style-system
 git status --short --branch
 git fetch origin --prune
 git rev-parse HEAD
@@ -75,40 +68,19 @@ Expected:
 - Branch is `main`.
 - `HEAD`, `origin/main`, and remote `refs/heads/main` match.
 
-### 2. Verify Mac Studio Host Read-Only
+### 2. Verify Secondary Workstation Read-Only
 
-Run:
+Run a read-only remote check that confirms:
 
-```sh
-ssh kalen-macos-ts '
-  set -e
-  hostname
-  sw_vers
-  command -v git
-  command -v vale || true
-  test -d "$HOME/.codex/skills" && echo "codex skills dir: present"
-  test -d "$HOME/Projects/house-style-system" && echo "repo: present" || echo "repo: missing"
-'
-```
-
-Expected:
-
-- Hostname is `KalensMacStudio`.
 - Git is available.
 - The Codex skills directory is present.
 - Repo is either missing or cleanly inspectable.
 
 ### 3. Clone If Missing
 
-Only if the repo is missing:
-
-```sh
-ssh kalen-macos-ts '
-  set -e
-  mkdir -p "$HOME/Projects"
-  git clone git@github.com:kalensr/house-style-system.git "$HOME/Projects/house-style-system"
-'
-```
+Only clone the repo if the read-only check shows that it is missing. Use the
+approved remote shell path and clone `git@github.com:kalensr/house-style-system.git`
+into the expected user project directory.
 
 Expected:
 
@@ -117,19 +89,8 @@ Expected:
 
 ### 4. Update If Present
 
-Only if the repo already exists:
-
-```sh
-ssh kalen-macos-ts '
-  set -e
-  cd "$HOME/Projects/house-style-system"
-  git status --short --branch
-  test -z "$(git status --porcelain)"
-  test "$(git branch --show-current)" = "main"
-  git fetch origin --prune
-  git pull --ff-only origin main
-'
-```
+Only update an existing checkout after proving it is clean and already on
+`main`. Fetch from `origin`, then use a fast-forward-only pull from `main`.
 
 Expected:
 
@@ -137,20 +98,9 @@ Expected:
 - Branch is already `main`.
 - Pull fast-forwards only.
 
-### 5. Validate Repo On Mac Studio
+### 5. Validate Repo On Secondary Workstation
 
-Run:
-
-```sh
-ssh kalen-macos-ts '
-  set -e
-  cd "$HOME/Projects/house-style-system"
-  ./scripts/test-style-gate.sh
-  ./scripts/eval-kalen-voice.sh
-  ./scripts/style_gate.sh
-  ./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md
-'
-```
+Run validation from the remote checkout.
 
 Expected:
 
@@ -166,16 +116,9 @@ is `brew install vale`, but it should be approved as a host package change.
 
 Only after repo validation passes:
 
-```sh
-ssh kalen-macos-ts '
-  set -e
-  cd "$HOME/Projects/house-style-system"
-  test -d "$HOME/.codex/skills"
-  mkdir -p "$HOME/.codex/skills/house-style-system"
-  rsync -a codex-skills/house-style-system/ "$HOME/.codex/skills/house-style-system/"
-  test -f "$HOME/.codex/skills/house-style-system/SKILL.md"
-'
-```
+Copy `codex-skills/house-style-system/` from the validated checkout into the
+installed skill directory. Verify that the installed `SKILL.md` exists after
+the copy.
 
 Expected:
 
@@ -188,21 +131,8 @@ does not refresh automatically.
 
 ### 7. Final Proof
 
-Run:
-
-```sh
-ssh kalen-macos-ts '
-  set -e
-  cd "$HOME/Projects/house-style-system"
-  git status --short --branch
-  git rev-parse HEAD
-  git rev-parse origin/main
-  git ls-remote origin refs/heads/main
-  ./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md
-  test -f "$HOME/.codex/skills/house-style-system/SKILL.md"
-  grep -q "review-kalen-voice.sh" "$HOME/.codex/skills/house-style-system/SKILL.md"
-'
-```
+Run a final remote proof that checks repo status, commit equality, wrapper
+validation, installed skill presence, and wrapper reference.
 
 Expected:
 
@@ -223,19 +153,19 @@ Expected:
 
 ## Execution Receipt
 
-2026-06-29 execution over `ssh kalen-macos-ts` completed with these boundaries:
+2026-06-29 remote execution completed with these boundaries:
 
-- Repo was missing on Mac Studio, so it was cloned to
-  `/Users/kalenhowellsr/Projects/house-style-system`.
-- The Mac Studio checkout was updated on `main`.
+- The repo was missing on the secondary workstation, so it was cloned to the
+  expected user project directory.
+- The secondary checkout was updated on `main`.
 - The first validation run found a portability issue: Vale colorized the clean
-  count on Mac Studio, which broke exact output matching in
+  count on the secondary workstation, which broke exact output matching in
   `scripts/test-style-gate.sh`.
 - The fix was made in `scripts/style_gate.sh` by defaulting automation output to
   `NO_COLOR=1`.
-- After the fix was committed and pushed, Mac Studio fast-forwarded to
+- After the fix was committed and pushed, the secondary checkout fast-forwarded to
   `263df6147ea4f05fde8360badf004881804579f7`.
-- Mac Studio validation passed:
+- Remote validation passed:
   `./scripts/test-style-gate.sh`,
   `./scripts/eval-kalen-voice.sh`,
   `./scripts/style_gate.sh`, and
@@ -244,17 +174,12 @@ Expected:
   `rsync -a` into `~/.codex/skills/house-style-system/`.
 - Final remote proof at that checkpoint showed `HEAD == origin/main ==
   263df6147ea4f05fde8360badf004881804579f7`.
-- The wrapper smoke test passed on Mac Studio, and the installed skill contained
+- The wrapper smoke test passed, and the installed skill contained
   the wrapper reference.
 - Live evidence for the remote proof is stored in
   `docs/evidence/2026-06-29-mac-studio-house-style-rollout.md`.
 
-These areas were not changed:
-
-- broker or credential settings,
-- Caddy, launchd, or Tailscale settings,
-- Notion, Linear, or Model Context Protocol settings,
-- q-lab or model-runtime configuration,
-- host packages.
+Credentials, broker policy, host services, connector settings, model-runtime
+settings, and host package settings were not changed.
 
 No destructive command was run.
