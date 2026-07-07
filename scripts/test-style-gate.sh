@@ -79,6 +79,10 @@ expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-diagnostic-adjective-stack
 expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-vague-consequence.md" "AIVoice.VagueConsequence"
 expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-coordinated-abstraction.md" "AIVoice.CoordinatedAbstraction"
 expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-empty-work-noun.md" "AIVoice.EmptyWorkNouns"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-coordinated-abstraction-variant.md" "AIVoice.CoordinatedAbstraction"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-diagnostic-adjective-stack-variant.md" "AIVoice.DiagnosticAdjectiveStack"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-vague-consequence-variant.md" "AIVoice.VagueConsequence"
+expect_ai_rule "docs/test-fixtures/style-gate/fail-ai-empty-work-noun-variant.md" "AIVoice.EmptyWorkNouns"
 
 wrapper_positive_output="$(./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md 2>&1 || true)"
 if ! grep -q "0 errors, 0 warnings and 0 suggestions" <<<"$wrapper_positive_output"; then

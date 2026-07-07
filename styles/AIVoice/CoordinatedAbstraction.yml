@@ -5,3 +5,4 @@ ignorecase: true
 nonword: true
 tokens:
   - "\\bleadership\\s+visibility\\s+move\\s+together\\b"
+  - "\\b(?:visibility|alignment|ownership|priorities|execution|strategy|accountability|leadership|governance|delivery)\\b[^.]{0,80}?\\b(?:move|moves|moving|moved|come|comes|coming)\\s+together\\b"
