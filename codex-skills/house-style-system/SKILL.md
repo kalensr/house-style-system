@@ -112,8 +112,9 @@ Check:
 ### No Dramatic Punctuation Sentences
 
 Kalen's voice does not use short declarative sentences as dramatic
-punctuation. Treat this as a hard review rule for public writing, personal
-reflection, blog drafts, social posts, and leadership writing.
+punctuation. Treat this as a hard review rule for public writing and personal
+reflection. It also applies to blog drafts, social posts, and leadership
+writing.
 
 Flag and rewrite sentences that combine these traits:
 

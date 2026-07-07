@@ -1,26 +1,38 @@
 # House Style System
 
-A practical starter system for clearer, more trustworthy AI-assisted writing.
+A practical starter system for clearer AI-assisted writing.
 
-The goal is simple: keep human judgment in the writing loop.
+The goal is simple: keep human judgment in the writing loop, and make the
+repeatable checks easy to run.
 
-This repo gives you a working house style guide, a small Vale style gate, test fixtures, and examples you can use immediately. Start with the defaults. Then tune the rules to your own voice, audience, and risk.
+This repo gives you a working house style guide and a small Vale style gate. It
+also includes test fixtures, examples, and optional assistant skills. Start with
+the defaults. Then tune the rules to your own voice, audience, and risk.
 
 ![House Style Rules Engine Map](assets/house-style-rules-engine-map.png)
 
 ## Start Here
 
-- Use the writing standard: [HOUSE_STYLE.md](HOUSE_STYLE.md)
-- Run the style gate: [scripts/style_gate.sh](scripts/style_gate.sh)
-- Run Kalen voice review: [scripts/review-kalen-voice.sh](scripts/review-kalen-voice.sh)
-- Run AI voice review: [scripts/review-ai-voice.sh](scripts/review-ai-voice.sh)
-- Run the Kalen voice eval: [scripts/eval-kalen-voice.sh](scripts/eval-kalen-voice.sh)
-- Run the AI voice eval: [scripts/eval-ai-voice.sh](scripts/eval-ai-voice.sh)
-- Read the Codex setup guide: [docs/codex-handoff.md](docs/codex-handoff.md)
-- Create a ChatGPT writing Project: [docs/chatgpt-project/README.md](docs/chatgpt-project/README.md)
-- Block common AI voice patterns: [docs/chatgpt-project/ai-voice-avoidance-runbook.md](docs/chatgpt-project/ai-voice-avoidance-runbook.md)
-- Install the optional Codex skill: [codex-skills/house-style-system/SKILL.md](codex-skills/house-style-system/SKILL.md)
-- Review repo readiness: [docs/repo-evaluation.md](docs/repo-evaluation.md)
+Core files:
+
+- Writing standard: [HOUSE_STYLE.md](HOUSE_STYLE.md)
+- Style gate: [scripts/style_gate.sh](scripts/style_gate.sh)
+- Examples: [docs/examples.md](docs/examples.md)
+- Domain modes: [docs/domain-modes.md](docs/domain-modes.md)
+- Authorship boundary: [docs/ai-authorship-boundary.md](docs/ai-authorship-boundary.md)
+
+Optional review layers:
+
+- Kalen voice review: [scripts/review-kalen-voice.sh](scripts/review-kalen-voice.sh)
+- AI voice review: [scripts/review-ai-voice.sh](scripts/review-ai-voice.sh)
+- Kalen voice eval: [scripts/eval-kalen-voice.sh](scripts/eval-kalen-voice.sh)
+- AI voice eval: [scripts/eval-ai-voice.sh](scripts/eval-ai-voice.sh)
+
+Assistant setup:
+
+- Codex skill: [codex-skills/house-style-system/SKILL.md](codex-skills/house-style-system/SKILL.md)
+- Claude skill: [claude-skills/house-style/SKILL.md](claude-skills/house-style/SKILL.md)
+- ChatGPT Project setup: [docs/chatgpt-project/README.md](docs/chatgpt-project/README.md)
 
 ## What This Is
 
@@ -35,7 +47,7 @@ It helps writers and teams:
 - define what human review owns,
 - test style rules with examples.
 
-It also includes a public-safe Kalen voice review layer. That layer uses synthetic
+It also includes public-safe optional review layers. Those layers use synthetic
 fixtures and deterministic rules to flag repeatable review risks without
 committing private writing samples.
 
@@ -66,21 +78,16 @@ Run the style gate:
 ./scripts/style_gate.sh HOUSE_STYLE.md docs/examples.md
 ```
 
-Run the fixture test:
+Run the full fixture test:
 
 ```sh
 ./scripts/test-style-gate.sh
 ```
 
-Run the Kalen voice eval:
+Run the optional evals when you change voice rules:
 
 ```sh
 ./scripts/eval-kalen-voice.sh
-```
-
-Run the AI voice eval:
-
-```sh
 ./scripts/eval-ai-voice.sh
 ```
 
@@ -103,7 +110,22 @@ only runs when you use `review-kalen-voice.sh` or pass `--kalen-voice` to
 `style_gate.sh`. The AI voice layer is also opt-in and only runs when you use
 `review-ai-voice.sh` or pass `--ai-voice` to `style_gate.sh`.
 
-Use `HOUSE_STYLE.md` as your starter standard. Edit the rules, examples, and fixtures as your own house style becomes clearer.
+Use [HOUSE_STYLE.md](HOUSE_STYLE.md) as your starter standard. Edit the rules,
+examples, and fixtures as your own house style becomes clearer.
+
+## Review Layers
+
+The default `HouseStyle` rules run when you call `style_gate.sh`.
+
+Use the optional layers only when they fit the work:
+
+| Layer | Command | Use When |
+| --- | --- | --- |
+| House style | `./scripts/style_gate.sh <file>` | General writing quality checks |
+| Kalen voice | `./scripts/review-kalen-voice.sh <file>` | Leadership, reflection, public essay, or Kalen voice review |
+| AI voice | `./scripts/review-ai-voice.sh <file>` | Generic AI business or recruiter prose needs review |
+
+The optional layers are review aids. They do not detect authorship.
 
 ## Optional Codex Skill
 
@@ -145,6 +167,58 @@ gate if you edit the file.
 
 For a complete setup handoff, see [docs/codex-handoff.md](docs/codex-handoff.md).
 
+## Optional Claude Skill
+
+This repo also includes a Claude skill that works across Claude Chat, Claude
+Cowork, and Claude Code from one source:
+
+```text
+claude-skills/house-style/SKILL.md
+```
+
+The skill is self-contained. It embeds the core rules, domain modes, and AI
+voice patterns. It works even with no repo and no shell. When a shell and the
+repo are available, it runs the deterministic style gate on files it edits. It
+never detects authorship.
+
+Install it for Claude Code:
+
+```sh
+mkdir -p ~/.claude/skills
+cp -R claude-skills/house-style ~/.claude/skills/
+```
+
+For setup on all three surfaces, see
+[claude-skills/README.md](claude-skills/README.md).
+
+## ChatGPT Project Package
+
+The [docs/chatgpt-project](docs/chatgpt-project) package turns this repo into a
+private ChatGPT writing workspace.
+
+It includes:
+
+- Project instructions,
+- a voice rubric,
+- an AI voice avoidance runbook,
+- launch prompts,
+- a short manifesto.
+
+Keep private writing samples out of this public repo. If you add samples to a
+ChatGPT Project, use only material you are comfortable storing there.
+
+## Validation
+
+Run these before publishing changes:
+
+```sh
+./scripts/style_gate.sh
+./scripts/test-style-gate.sh
+./scripts/eval-kalen-voice.sh
+./scripts/eval-ai-voice.sh
+git diff --check
+```
+
 ## Repo Map
 
 ```text
@@ -155,9 +229,11 @@ house-style-system/
 │   └── house-style-rules-engine-map.png
 ├── docs/
 │   ├── ai-authorship-boundary.md
+│   ├── chatgpt-project/
 │   ├── codex-handoff.md
 │   ├── customizing.md
 │   ├── domain-modes.md
+│   ├── evidence/
 │   ├── evals/
 │   ├── examples.md
 │   ├── house-style-system.md
@@ -166,6 +242,10 @@ house-style-system/
 │   └── test-fixtures/style-gate/
 ├── codex-skills/
 │   └── house-style-system/SKILL.md
+├── claude-skills/
+│   └── house-style/
+│       ├── SKILL.md
+│       └── reference/
 ├── research/
 │   └── house-style-system-assessment.pdf
 ├── scripts/
@@ -188,9 +268,11 @@ house-style-system/
 
 Automation owns repeatable checks.
 
-Human review owns truth, evidence, and judgment. It also owns recommendation quality and tone.
+Human review owns truth, evidence, and judgment. It also owns recommendation
+quality and tone.
 
-That boundary matters. A clean style gate means the text avoided known style risks. It does not prove the writing is true, useful, or ready to publish.
+That boundary matters. A clean style gate means the text avoided known style
+risks. It does not prove the writing is true, useful, or ready to publish.
 
 ## How To Use This With AI
 
@@ -241,9 +323,11 @@ See [docs/customizing.md](docs/customizing.md).
 
 ## Research Note
 
-Read the public research artifact as a browser-friendly PDF: [House Style System Assessment](research/house-style-system-assessment.pdf).
+Read the public research artifact as a browser-friendly PDF:
+[House Style System Assessment](research/house-style-system-assessment.pdf).
 
-It explains the style-risk taxonomy behind this system and credits the research, synthesis, and AI-collaboration process used to prepare the assessment.
+It explains the style-risk taxonomy behind this system and credits the research,
+synthesis, and AI-collaboration process used to prepare the assessment.
 
 ## License
 
