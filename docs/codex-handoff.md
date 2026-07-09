@@ -25,9 +25,8 @@ human-centered subject framing, and validation.
 From the repo root:
 
 ```sh
-mkdir -p ~/.codex/skills
-rm -rf ~/.codex/skills/house-style-system
-cp -R codex-skills/house-style-system ~/.codex/skills/
+mkdir -p ~/.codex/skills/house-style-system
+cp -R codex-skills/house-style-system/. ~/.codex/skills/house-style-system/
 ```
 
 Install Vale if you do not already have it:
