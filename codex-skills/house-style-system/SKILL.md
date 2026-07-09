@@ -68,6 +68,10 @@ short question. Otherwise choose the closest domain and state the choice.
    When No Dramatic Punctuation review applies and
    `./scripts/review-dramatic-punctuation.sh` exists, run
    `./scripts/review-dramatic-punctuation.sh <file>`.
+   Vale coverage is format-dependent. If the edited file is `.mdx` and the
+   review output omits it, run the host repository's MDX build and tests and
+   inspect the rendered output. Report the omitted file instead of claiming
+   complete Vale coverage.
 6. If no local files exist, use the fallback rules in this skill.
 
 ## Fallback Core Rules
@@ -285,7 +289,9 @@ and balance the surrounding prose.
 14. If No Dramatic Punctuation rules were changed or reviewed, run
    `./scripts/eval-dramatic-punctuation.sh` when available.
 15. If the gate reports issues, rewrite only the violating text and rerun.
-16. In the final response, state the domain used and whether validation ran.
+16. If an edited MDX file was skipped by Vale, state that limitation and name
+   the build, test, or rendered-output validation that covered it.
+17. In the final response, state the domain used and whether validation ran.
 
 ## Stop Rules
 
