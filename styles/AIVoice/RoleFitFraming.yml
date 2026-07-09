@@ -4,5 +4,4 @@ level: suggestion
 ignorecase: true
 nonword: true
 tokens:
-  - "\\bthe\\s+roles\\s+that\\s+fit\\s+me\\s+best\\b"
-  - "\\broles\\s+that\\s+fit\\s+me\\s+best\\b"
+  - "\\b(?:roles?|positions?|opportunities)\\s+that\\s+(?:fit|suit|match)\\s+(?:me|my\\s+background)\\b"

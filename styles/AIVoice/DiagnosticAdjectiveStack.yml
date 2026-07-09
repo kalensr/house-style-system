@@ -4,5 +4,4 @@ level: suggestion
 ignorecase: true
 nonword: true
 tokens:
-  - "\\btechnology\\s+was\\s+small,\\s+reactive,\\s+and\\s+heavily\\s+dependent\\s+on\\s+outside\\s+vendors\\b"
   - "\\b(?:technology|the\\s+organization|the\\s+team|the\\s+systems?|the\\s+environment|the\\s+culture|the\\s+business|the\\s+function|engineering|operations)\\s+(?:was|were|is|are|had\\s+become|became)\\s+(?:\\w+ly\\s+)?[a-z]+,\\s+[a-z]+,\\s+and\\s+[^.]{2,60}"

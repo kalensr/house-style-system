@@ -66,7 +66,7 @@ Also watch: `the roles that fit`, `the work`, `the pattern`, and the template
 
 ### 1. Generic role-fit framing
 
-Weak: `The roles that fit me best`
+Weak: `The opportunities that match my background`
 
 State the role family directly. Do not narrate the matching logic.
 
@@ -74,7 +74,7 @@ Better: `I am interested in senior technology leadership roles, including...`
 
 ### 2. Abstract business-need clauses
 
-Weak: `where business-critical systems need stronger ownership`
+Weak: `where the reporting platform needs stronger ownership`
 
 If using `ownership`, name what is owned.
 
@@ -83,7 +83,7 @@ clearer executive ownership`
 
 ### 3. Pattern-recognition openings
 
-Weak: `The pattern I am most useful in is familiar`
+Weak: `The pattern across these projects is familiar`
 
 Show the situation first. Let the pattern emerge from the facts.
 
@@ -92,7 +92,7 @@ operational and technology challenges.`
 
 ### 4. Flattened before-state labels
 
-Weak: `technology was small, reactive, and heavily dependent on outside vendors`
+Weak: `The environment was fragmented, reactive, and dependent on manual handoffs`
 
 Use specific facts for the before state. Use one broad summary only if the
 surrounding detail earns it.
@@ -102,7 +102,7 @@ modernization, and the organization was working through urgent platform risk`
 
 ### 5. Vague consequence phrases
 
-Weak: `created operating strain`
+Weak: `introduced workflow friction`
 
 If using `strain` or `friction`, name the visible symptom. Apply the same rule
 to `complexity` and `risk`.
@@ -112,7 +112,7 @@ teams using the system`
 
 ### 6. Coordinated abstraction
 
-Weak: `leadership visibility move together`
+Weak: `Ownership and delivery move together`
 
 Replace `visibility`, `alignment`, and `move together`. Say what someone sees,
 decides, changes, or owns.
@@ -122,7 +122,7 @@ vendor tradeoffs early enough to act`
 
 ### 7. Empty work nouns
 
-Weak: `The work is not only selecting or replacing systems.`
+Weak: `The work is not just documenting requirements.`
 
 Name the work. Do not call it `the work` unless the prior sentence already made
 it concrete.
