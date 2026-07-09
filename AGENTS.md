@@ -3,8 +3,8 @@
 ## Purpose
 
 This public repository owns the reusable House Style System. Its public surface
-includes written guidance, Vale rules, synthetic fixtures, evals, and optional
-assistant integrations.
+includes written guidance and Vale rules. It also includes synthetic fixtures,
+evals, and optional assistant integrations.
 
 ## Source Priority
 
