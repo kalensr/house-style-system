@@ -4,6 +4,4 @@ level: suggestion
 ignorecase: true
 nonword: true
 tokens:
-  - "\\bthe\\s+pattern\\s+I\\s+am\\s+most\\s+useful\\s+in\\s+is\\s+familiar\\b"
-  - "\\bthe\\s+pattern\\s+I\\s+am\\s+useful\\s+in\\s+is\\s+familiar\\b"
   - "^\\s*The\\s+pattern\\s+[^.]{1,120}\\bis\\s+familiar\\b"

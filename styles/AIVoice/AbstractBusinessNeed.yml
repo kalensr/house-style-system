@@ -4,5 +4,4 @@ level: suggestion
 ignorecase: true
 nonword: true
 tokens:
-  - "\\bbusiness-critical\\s+systems\\s+need\\s+stronger\\s+ownership\\b"
   - "\\bwhere\\s+[^.]{1,80}\\bneed(?:s)?\\s+stronger\\s+ownership\\b"

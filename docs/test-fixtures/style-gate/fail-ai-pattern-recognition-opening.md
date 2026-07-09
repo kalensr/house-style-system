@@ -1,3 +1,3 @@
 # AI Pattern Recognition Opening Fixture
 
-The pattern I am most useful in is familiar: important systems are running the business.
+The pattern across these projects is familiar: important systems are running the business.
