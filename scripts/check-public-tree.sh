@@ -3,6 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DENYLIST="${PUBLIC_SCRUB_DENYLIST:-}"
+VOICE_CORPUS='voice''-corpus'
 
 if [[ -n "$DENYLIST" && ! -f "$DENYLIST" ]]; then
   echo "check-public-tree: denylist not found: $DENYLIST" >&2
@@ -18,7 +19,7 @@ declare -a SHAPES=(
   'BEGIN[[:space:]]+(RSA |EC |OPENSSH )?PRIVATE KEY'
   'com\.kalen\.'
   'runtime/penny/workspace\.json'
-  'voice-corpus'
+  "$VOICE_CORPUS"
 )
 
 FAIL=0
@@ -29,11 +30,15 @@ while IFS= read -r -d '' relative; do
     scripts/check-public-tree.sh|scripts/check-public-history.sh)
       continue
       ;;
-    .codex/orchestration/*|docs/plans/*|docs/evidence/*|runtime/*|drafts/*|*voice-corpus*)
+    .codex/orchestration/*|docs/plans/*|docs/evidence/*|runtime/*|drafts/*)
       echo "BLOCK sensitive path in candidate tree: $relative"
       FAIL=1
       ;;
   esac
+  if [[ "$relative" == *"$VOICE_CORPUS"* ]]; then
+    echo "BLOCK sensitive path in candidate tree: $relative"
+    FAIL=1
+  fi
 
   file="$ROOT/$relative"
   [[ -f "$file" ]] || continue

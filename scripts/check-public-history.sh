@@ -3,22 +3,23 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DENYLIST="${PUBLIC_SCRUB_DENYLIST:-}"
+VOICE_CORPUS='voice''-corpus'
 
 if [[ -n "$DENYLIST" && ! -f "$DENYLIST" ]]; then
   echo "check-public-history: denylist not found: $DENYLIST" >&2
   exit 2
 fi
 
-SHAPE='/Users/[A-Za-z0-9._/-]+|([0-9]{1,3}\.){3}[0-9]{1,3}|[A-Za-z0-9._-]+\.tail[A-Za-z0-9._-]*\.ts\.net|tail[0-9a-f]{6,}|(sk|pk|ghp|xox[a-z])[-_][A-Za-z0-9]{10,}|BEGIN[[:space:]]+(RSA |EC |OPENSSH )?PRIVATE KEY|com\.kalen\.|runtime/penny/workspace\.json|voice-corpus'
+SHAPE="/Users/[A-Za-z0-9._/-]+|([0-9]{1,3}\\.){3}[0-9]{1,3}|[A-Za-z0-9._-]+\\.tail[A-Za-z0-9._-]*\\.ts\\.net|tail[0-9a-f]{6,}|(sk|pk|ghp|xox[a-z])[-_][A-Za-z0-9]{10,}|BEGIN[[:space:]]+(RSA |EC |OPENSSH )?PRIVATE KEY|com\\.kalen\\.|runtime/penny/workspace\\.json|$VOICE_CORPUS"
 FAIL=0
 COUNT=0
 
 while IFS= read -r commit; do
   COUNT=$((COUNT + 1))
 
-  if git -C "$ROOT" ls-tree -r --name-only "$commit" | grep -Eq '^(\.codex/orchestration/|docs/plans/|docs/evidence/|runtime/|drafts/)|voice-corpus'; then
+  if git -C "$ROOT" ls-tree -r --name-only "$commit" | grep -Eq "^(\\.codex/orchestration/|docs/plans/|docs/evidence/|runtime/|drafts/)|$VOICE_CORPUS"; then
     echo "BLOCK sensitive path reachable from commit $commit"
-    git -C "$ROOT" ls-tree -r --name-only "$commit" | grep -E '^(\.codex/orchestration/|docs/plans/|docs/evidence/|runtime/|drafts/)|voice-corpus' | head -10
+    git -C "$ROOT" ls-tree -r --name-only "$commit" | grep -E "^(\\.codex/orchestration/|docs/plans/|docs/evidence/|runtime/|drafts/)|$VOICE_CORPUS" | head -10
     FAIL=1
   fi
 
