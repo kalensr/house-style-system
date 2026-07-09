@@ -1,0 +1,7 @@
+extends: existence
+message: "This coordinates abstract categories. Say what someone sees, decides, changes, or owns."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "\\b(?:visibility|alignment|ownership|priorities|execution|strategy|accountability|leadership|governance|delivery)\\b[^.]{0,80}?\\b(?:move|moves|moving|moved|come|comes|coming)\\s+together\\b"

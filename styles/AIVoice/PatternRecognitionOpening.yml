@@ -1,0 +1,7 @@
+extends: existence
+message: "This announces a pattern before showing the situation. Start with the concrete pressure, decision, or before state."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "^\\s*The\\s+pattern\\s+[^.]{1,120}\\bis\\s+familiar\\b"

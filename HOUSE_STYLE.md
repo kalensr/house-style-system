@@ -203,7 +203,7 @@ Use the core rules everywhere. Add the right mode for the work.
 - State the current search boundary.
 - Close with a plain invitation.
 - Do not over-teach the fit.
-- Avoid role-fit framing such as `The opportunities that match my background`.
+- Avoid role-fit framing such as `the opportunities that match my background`.
 
 ### Kalen Leadership Reflection
 

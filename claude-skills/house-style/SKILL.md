@@ -134,7 +134,7 @@ owner, or before-and-after change:
 - `complexity`
 - `modernization`
 
-Also watch role-fit openings such as `The opportunities that match my background`.
+Also watch role-fit openings such as `the opportunities that match my background`.
 Watch familiar-pattern openings such as `the pattern I am most useful in is
 familiar`. Watch empty work nouns such as `the work is not only...`.
 

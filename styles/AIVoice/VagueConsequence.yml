@@ -1,0 +1,9 @@
+extends: existence
+message: "This names the existence of a problem without the visible symptom. Say what happened and who felt it."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "\\b(?:created|creating|caused|causing|introduced|introducing|added|adding|drove|driving|led\\s+to|resulted\\s+in)\\s+(?:\\w+\\s+){0,3}?(?:strain|friction)\\b"
+  - "\\b(?:operating|operational)\\s+(?:strain|friction)\\b"
+  - "\\b(?:created|creating|introduced|introducing|added|adding)\\s+(?:unnecessary\\s+|significant\\s+|extra\\s+)?complexity\\b"

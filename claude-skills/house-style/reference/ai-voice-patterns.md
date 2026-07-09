@@ -112,7 +112,7 @@ teams using the system`
 
 ### 6. Coordinated abstraction
 
-Weak: `ownership and delivery move together`
+Weak: `Ownership and delivery move together`
 
 Replace `visibility`, `alignment`, and `move together`. Say what someone sees,
 decides, changes, or owns.
