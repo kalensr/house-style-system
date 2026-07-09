@@ -36,7 +36,7 @@ Assistant setup:
 
 - Codex skill: [codex-skills/house-style-system/SKILL.md](codex-skills/house-style-system/SKILL.md)
 - Claude skill: [claude-skills/house-style/SKILL.md](claude-skills/house-style/SKILL.md)
-- ChatGPT Project setup: [docs/chatgpt-project/README.md](docs/chatgpt-project/README.md)
+- ChatGPT Project template: [docs/chatgpt-project/README.md](docs/chatgpt-project/README.md)
 
 ## What This Is
 
@@ -122,8 +122,8 @@ Run No Dramatic Punctuation review on a specific draft:
 ```
 
 Vale review coverage is format-dependent. The current gate and optional review
-wrappers report Markdown files; they may skip `.mdx` entries. For an MDX draft,
-run the host repository's MDX build and tests, inspect the rendered output, and
+wrappers report Markdown files; they may skip `.mdx` entries. For that format,
+run the host repository's build and tests, inspect the rendered output, and
 report the Vale file count separately instead of treating the gate as complete
 coverage for that draft.
 
@@ -226,14 +226,14 @@ cp -R claude-skills/house-style ~/.claude/skills/
 For setup on all three surfaces, see
 [claude-skills/README.md](claude-skills/README.md).
 
-## ChatGPT Project Package
+## ChatGPT Project Template
 
-The [docs/chatgpt-project](docs/chatgpt-project) package turns this repo into a
-private ChatGPT writing workspace.
+The [docs/chatgpt-project](docs/chatgpt-project) package provides a reusable
+starting point for a private ChatGPT writing workspace.
 
 It includes:
 
-- Project instructions,
+- generic Project instructions,
 - a voice rubric,
 - an AI voice avoidance runbook,
 - launch prompts,
@@ -241,6 +241,21 @@ It includes:
 
 Keep private writing samples out of this public repo. If you add samples to a
 ChatGPT Project, use only material you are comfortable storing there.
+
+## Public And Private Profiles
+
+This repository includes a thin, opt-in `KalenVoice` reference profile to show
+how a named profile can add rules without changing the default gate. It uses
+synthetic fixtures and public-safe review patterns. It is an example, not a
+universal standard.
+
+Private corpora and draft excerpts do not belong in this public repository.
+Phrase provenance, personal assistant instructions, and ongoing calibration
+also stay private. Expose only reviewed, synthetic rules when you intend to
+publish them.
+
+The MIT license covers the public package, including its documentation and
+reference profile. No private profile source is included here.
 
 ## Validation
 
@@ -270,11 +285,9 @@ house-style-system/
 │   ├── codex-handoff.md
 │   ├── customizing.md
 │   ├── domain-modes.md
-│   ├── evidence/
 │   ├── evals/
 │   ├── examples.md
 │   ├── house-style-system.md
-│   ├── plans/
 │   ├── research/
 │   ├── repo-evaluation.md
 │   └── test-fixtures/style-gate/

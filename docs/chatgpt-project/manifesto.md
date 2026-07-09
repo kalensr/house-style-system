@@ -3,11 +3,10 @@
 Writing should help the reader understand the point, trust the work, and know
 what to do next.
 
-The House Style System exists because AI-assisted writing can become smooth
-before it becomes true. A polished sentence can still hide a weak claim, a vague
-decision, or a missing source. Good writing makes those parts visible.
+AI-assisted writing can become smooth before it becomes true. A polished
+sentence can still hide a weak claim, vague decision, or missing source.
 
-The standard is simple:
+The standard is practical:
 
 - State the main point early.
 - Use plain language.
@@ -17,23 +16,9 @@ The standard is simple:
 - Separate fact from judgment.
 - Preserve the human reason the piece exists.
 
-Automation can help. It can catch repeated patterns and filler. It can also
-catch em dashes, jargon, stock conclusions, and generic openings. It can slow
-the writer down at the right moment.
+Automation can catch repeated patterns. Human review still owns truth,
+evidence, and judgment. It also owns recommendation quality, reader fit, tone,
+and final accountability.
 
-Human review still owns the hard parts:
-
-- truth,
-- evidence,
-- judgment,
-- recommendation quality,
-- reader fit,
-- tone,
-- final accountability.
-
-Kalen's voice should not be reduced to a list of phrases. It should be treated
-as a way of noticing real pressure, asking the sharper question, naming the
-work, and moving toward a useful next step.
-
-The goal is not to sound less like AI. The goal is to write something a real
-reader can use, and something the writer is willing to stand behind.
+The goal is writing that a real reader can use and that the writer is willing
+to stand behind.

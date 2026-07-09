@@ -1,100 +1,67 @@
-# Kalen Voice Rubric
+# Voice Profile Rubric Template
 
-Use this rubric to review drafts for voice fit. It is a guide for judgment, not
-a score that proves authorship.
+Complete this rubric with traits you intentionally want the writing workspace
+to preserve. Use descriptions and synthetic examples. Do not upload private
+material merely to make the profile more detailed.
 
 ## Voice Center
 
-Kalen's strongest writing usually sounds like a person doing real work, not a
-brand trying to sound impressive.
-
-The best drafts show:
-
-- the situation or pressure that made the idea matter,
-- the question or decision underneath the work,
-- the thinking that connects the situation to a principle,
-- the path from insight to action,
-- the human or organizational horizon that gives the work weight.
-
-## Core Pattern
-
-Use this pattern when it fits the piece:
-
-```text
-concrete pressure or opportunity
--> reflective question
--> discernment, thinking, or strategy
--> principle
--> path or next step
--> service or mission horizon
-```
-
-The pattern is not mandatory for every draft. It is most useful for leadership
-reflections, public essays, and speeches. It also helps book material and
-executive writing that needs judgment instead of polish alone.
+- Primary audience: `[describe the reader]`
+- Reader need: `[understand, decide, act, reflect, or respond]`
+- Default tone: `[plainspoken, formal, conversational, technical, reflective]`
+- Evidence posture: `[how claims and uncertainty should appear]`
+- Point of view: `[first person, organizational, instructional, mixed]`
 
 ## Strong Signals
 
-A draft is closer to Kalen's voice when it:
+A draft fits this profile when it:
 
-- starts from a real task, decision, meeting, system, draft, or customer;
-- names the problem before compressing it into a framework;
-- uses first person when the source is personal or reflective;
-- admits uncertainty without losing conviction;
-- names the owner, review step, risk, or decision when action is needed;
-- keeps gratitude, service, and mission grounded in the actual situation;
-- uses plain language even when the topic is technical or strategic.
+- `[names the situation before the abstraction]`
+- `[uses the preferred level of directness]`
+- `[preserves uncertainty or conviction in an approved way]`
+- `[connects evidence to action]`
+- `[ends with the appropriate implication or next step]`
 
 ## Drift Signals
 
-A draft is drifting when it:
+A draft may be drifting when it:
 
-- opens with a broad claim about leadership, innovation, strategy, or change;
-- sounds like generic executive polish;
-- uses uplift without naming the work;
-- makes group claims without an example, evidence, or explicit assumption;
-- turns reflection into advice too quickly;
-- hides the actor, action, input, output, reviewer, or decision;
-- repeats contrast scaffolding instead of stating the point directly.
+- opens with a broad claim before the real situation;
+- sounds smoother or more certain than the evidence supports;
+- uses generic business language;
+- hides the actor, decision, or consequence;
+- imitates phrases from source material instead of preserving higher-level
+  characteristics;
+- turns every reflection into advice or every report into promotion.
 
-## Mode-Specific Voice
+## Mode Notes
 
-### Blog Posts
+### Blog Or Public Essay
 
-Use one strong idea. Start with the real problem or observation. Give examples.
-End with the implication or action, not a generic inspirational close.
+`[Describe idea density, example use, point of view, and ending.]`
 
-### Executive Memos
+### Executive Memo
 
-Lead with the recommendation. Make tradeoffs visible. Keep evidence near the
-claim it supports. Name the decision and owner. Name the risk, date, and next
-step when those details matter.
+`[Describe recommendation placement, evidence, tradeoffs, and decision ask.]`
 
 ### Formal Writing
 
-Use restrained language. Keep the structure clean. Avoid casual asides. Make
-claims precise and supported.
+`[Describe restraint, structure, and precision.]`
 
 ### Informal Writing
 
-Put the practical context first. Use a natural tone. Contractions are fine.
-Keep warmth, but cut padding.
+`[Describe warmth, contractions, brevity, and context.]`
 
-### Leadership Reflection
+### Reflection
 
-Let the reader see the question before the conclusion. Preserve tension,
-gratitude, discernment, and conviction when they belong to the source. Move from
-reflection to a path.
+`[Describe tension, inquiry, principle, and movement toward action.]`
 
 ## Review Questions
-
-Ask these before approving a draft:
 
 - What real situation makes this piece worth writing?
 - What should the reader understand, decide, or do?
 - Which claims need evidence or softer framing?
 - Where does the draft sound generic?
-- Did the edit remove pressure, humility, gratitude, or conviction that should
-  stay?
+- Did the edit remove meaning that should remain?
 - Is the path from idea to action visible?
-- Would Kalen stand behind every sentence as written?
+- Would the writer stand behind every sentence as written?
