@@ -46,6 +46,8 @@ Before requesting review or release, run:
 ./scripts/eval-ai-voice.sh
 ./scripts/eval-center-of-gravity.sh
 ./scripts/eval-dramatic-punctuation.sh
+./scripts/check-public-tree.sh
+./scripts/check-public-history.sh
 git diff --check
 ```
 

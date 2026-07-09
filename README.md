@@ -185,9 +185,8 @@ The skill helps Codex:
 Install it:
 
 ```sh
-mkdir -p ~/.codex/skills
-rm -rf ~/.codex/skills/house-style-system
-cp -R codex-skills/house-style-system ~/.codex/skills/
+mkdir -p ~/.codex/skills/house-style-system
+cp -R codex-skills/house-style-system/. ~/.codex/skills/house-style-system/
 ```
 
 Restart Codex after installing the skill.
@@ -268,8 +267,14 @@ Run these before publishing changes:
 ./scripts/eval-ai-voice.sh
 ./scripts/eval-center-of-gravity.sh
 ./scripts/eval-dramatic-punctuation.sh
+./scripts/check-public-tree.sh
+./scripts/check-public-history.sh
 git diff --check
 ```
+
+Set `PUBLIC_SCRUB_DENYLIST` to a private, local-only file when your release
+process has organization-specific terms to block. The denylist must never be
+committed.
 
 ## Repo Map
 
@@ -305,6 +310,8 @@ house-style-system/
 │   ├── review-ai-voice.sh
 │   ├── review-center-of-gravity.sh
 │   ├── review-dramatic-punctuation.sh
+│   ├── check-public-tree.sh
+│   ├── check-public-history.sh
 │   ├── eval-kalen-voice.sh
 │   ├── eval-ai-voice.sh
 │   ├── eval-center-of-gravity.sh
