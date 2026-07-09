@@ -121,6 +121,12 @@ Run No Dramatic Punctuation review on a specific draft:
 ./scripts/review-dramatic-punctuation.sh path/to/draft.md
 ```
 
+Vale review coverage is format-dependent. The current gate and optional review
+wrappers report Markdown files; they may skip `.mdx` entries. For an MDX draft,
+run the host repository's MDX build and tests, inspect the rendered output, and
+report the Vale file count separately instead of treating the gate as complete
+coverage for that draft.
+
 With no file arguments, `style_gate.sh` scans normal Markdown docs and skips
 test fixtures, eval fixtures, and implementation plans. Pass explicit paths
 when you want to check one of those files. The Kalen voice layer is opt-in and

@@ -211,6 +211,10 @@ actually edited. Check that each script exists first.
 If the gate reports issues, rewrite only the flagged text, preserve meaning, and
 rerun. If Vale is not installed, say so, apply the rules by judgment, and let the
 user run the gate later. Never treat a clean gate as proof the draft is ready.
+Vale coverage is format-dependent. If the edited file is `.mdx` and the gate
+output omits it, run the host repository's MDX build and tests and inspect the
+rendered output. Report the omitted file instead of claiming complete Vale
+coverage.
 
 ## Workflow
 
