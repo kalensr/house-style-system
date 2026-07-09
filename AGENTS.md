@@ -21,8 +21,8 @@ evals, and optional assistant integrations.
 - Use synthetic-from-scratch examples and fixtures.
 - Keep the public `KalenVoice` layer thin, opt-in, and free of private source
   excerpts or phrase provenance.
-- Keep personal assistant instructions and ongoing calibration in a private
-  profile source.
+- Keep full personal Project instructions, phrase provenance, and ongoing
+  calibration in a private profile source.
 - Treat every style signal as a review prompt, never proof of authorship.
 
 ## Workflow

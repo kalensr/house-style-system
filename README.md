@@ -250,9 +250,9 @@ synthetic fixtures and public-safe review patterns. It is an example, not a
 universal standard.
 
 Private corpora and draft excerpts do not belong in this public repository.
-Phrase provenance, personal assistant instructions, and ongoing calibration
-also stay private. Expose only reviewed, synthetic rules when you intend to
-publish them.
+Phrase provenance, full personal Project instructions, and ongoing calibration
+also stay private. Public assistant integrations may demonstrate only the thin,
+reviewed reference profile.
 
 The MIT license covers the public package, including its documentation and
 reference profile. No private profile source is included here.
