@@ -193,6 +193,13 @@ if [[ "$global_command_count" != "8" ]]; then
   exit 1
 fi
 
+for command in review-kalen-voice.sh review-ai-voice.sh review-center-of-gravity.sh review-dramatic-punctuation.sh; do
+  if ! "$global_bin_dir/$command" --help >/dev/null 2>&1; then
+    echo "Expected $command --help to succeed through the global dispatcher" >&2
+    exit 1
+  fi
+done
+
 printf 'The work is not just documenting requirements.\n' > "$external_workspace/draft.md"
 external_review_output="$(
   cd "$external_workspace"

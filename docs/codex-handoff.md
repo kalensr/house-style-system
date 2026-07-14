@@ -33,6 +33,8 @@ cp -R codex-skills/house-style-system/. ~/.codex/skills/house-style-system/
 The command installer makes all four review wrappers and all four eval
 wrappers available outside this repository. It defaults to `~/.local/bin`.
 Set `HOUSE_STYLE_BIN_DIR` when your system uses a different user bin directory.
+Set `HOUSE_STYLE_SYSTEM_ROOT` when the validated checkout is not at
+`~/Projects/house-style-system`.
 
 Install Vale if you do not already have it:
 
@@ -46,6 +48,22 @@ Other platforms: use the official Vale install instructions for your operating
 system, then confirm `vale --version` works in your terminal.
 
 Then restart Codex so it can discover the new skill.
+
+## Multiple Computers
+
+Treat each computer as a separate source and live-install boundary. Repeat the
+one-time setup and quick verification on every computer that should expose the
+commands. Verify all four surfaces independently:
+
+1. The checkout is on the intended commit and has no unexpected changes.
+2. The installed skill matches `codex-skills/house-style-system/`.
+3. All eight commands resolve from the user `PATH`.
+4. A review command accepts a document path from outside this repository, and
+   all four eval commands pass.
+
+Do not report cross-computer parity from a successful check on only one
+computer. Record the commit and validation result for each computer in the
+change review or release record.
 
 ## Quick Verification
 

@@ -192,7 +192,15 @@ cp -R codex-skills/house-style-system/. ~/.codex/skills/house-style-system/
 
 The installer places the four review and four eval commands in
 `~/.local/bin`. Set `HOUSE_STYLE_BIN_DIR` to use another directory already on
-your `PATH`. Restart Codex after installing the skill.
+your `PATH`. If the checkout is not at `~/Projects/house-style-system`, set
+`HOUSE_STYLE_SYSTEM_ROOT` to its location. Restart Codex after installing the
+skill.
+
+Each computer is a separate installation boundary. Update the checkout and
+install the skill on every computer that should expose these commands. Then run
+the command installer and complete the verification in
+[docs/codex-handoff.md](docs/codex-handoff.md). A successful installation on
+one computer does not prove another computer is current.
 
 Then use a prompt like:
 
