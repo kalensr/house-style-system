@@ -181,6 +181,36 @@ if ! grep -q "choose only one optional review layer" <<<"$mixed_optional_output"
   exit 1
 fi
 
+global_bin_dir="$(mktemp -d)"
+external_workspace="$(mktemp -d)"
+trap 'rm -f "$fake_vale_dir/vale"; rmdir "$fake_vale_dir"; rm -rf "$global_bin_dir" "$external_workspace"' EXIT
+
+HOUSE_STYLE_BIN_DIR="$global_bin_dir" ./scripts/install-global-commands.sh >/dev/null
+
+global_command_count="$(find "$global_bin_dir" -type f -perm -u+x | wc -l | tr -d ' ')"
+if [[ "$global_command_count" != "8" ]]; then
+  echo "Expected eight installed global commands, found $global_command_count" >&2
+  exit 1
+fi
+
+printf 'The work is not just documenting requirements.\n' > "$external_workspace/draft.md"
+external_review_output="$(
+  cd "$external_workspace"
+  HOUSE_STYLE_SYSTEM_ROOT="$ROOT" "$global_bin_dir/review-ai-voice.sh" draft.md 2>&1 || true
+)"
+if ! grep -q "AIVoice.EmptyWorkNouns" <<<"$external_review_output"; then
+  echo "Expected global review command to inspect a caller-relative path" >&2
+  echo "$external_review_output" >&2
+  exit 1
+fi
+
+global_eval_output="$(HOUSE_STYLE_SYSTEM_ROOT="$ROOT" "$global_bin_dir/eval-ai-voice.sh" 2>&1)"
+if ! grep -q "eval-ai-voice: passed" <<<"$global_eval_output"; then
+  echo "Expected global eval command to use canonical fixtures" >&2
+  echo "$global_eval_output" >&2
+  exit 1
+fi
+
 mixed_dramatic_output="$(./scripts/style_gate.sh --ai-voice --dramatic-punctuation docs/test-fixtures/style-gate/fail-dp-vague-punchline.md 2>&1 || true)"
 if ! grep -q "choose only one optional review layer" <<<"$mixed_dramatic_output"; then
   echo "Expected style gate to reject mixed dramatic punctuation layers" >&2

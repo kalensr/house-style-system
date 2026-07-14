@@ -187,9 +187,12 @@ Install it:
 ```sh
 mkdir -p ~/.codex/skills/house-style-system
 cp -R codex-skills/house-style-system/. ~/.codex/skills/house-style-system/
+./scripts/install-global-commands.sh
 ```
 
-Restart Codex after installing the skill.
+The installer places the four review and four eval commands in
+`~/.local/bin`. Set `HOUSE_STYLE_BIN_DIR` to use another directory already on
+your `PATH`. Restart Codex after installing the skill.
 
 Then use a prompt like:
 

@@ -27,7 +27,12 @@ From the repo root:
 ```sh
 mkdir -p ~/.codex/skills/house-style-system
 cp -R codex-skills/house-style-system/. ~/.codex/skills/house-style-system/
+./scripts/install-global-commands.sh
 ```
+
+The command installer makes all four review wrappers and all four eval
+wrappers available outside this repository. It defaults to `~/.local/bin`.
+Set `HOUSE_STYLE_BIN_DIR` when your system uses a different user bin directory.
 
 Install Vale if you do not already have it:
 
@@ -57,6 +62,10 @@ Run:
 ./scripts/review-ai-voice.sh docs/test-fixtures/style-gate/fail-ai-empty-work-noun.md
 ./scripts/review-center-of-gravity.sh docs/test-fixtures/style-gate/fail-cog-ai-protagonist.md
 ./scripts/review-dramatic-punctuation.sh docs/test-fixtures/style-gate/fail-dp-vague-punchline.md
+command -v review-kalen-voice.sh review-ai-voice.sh
+command -v review-center-of-gravity.sh review-dramatic-punctuation.sh
+command -v eval-kalen-voice.sh eval-ai-voice.sh
+command -v eval-center-of-gravity.sh eval-dramatic-punctuation.sh
 ```
 
 Expected result:
