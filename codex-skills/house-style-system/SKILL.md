@@ -88,6 +88,12 @@ short question. Otherwise choose the closest domain and state the choice.
 - Remove the default AI business voice. Watch for abstract labels before
   concrete facts, role-fit framing, polished but impersonal business language,
   broad diagnosis before proof, and nouns stacked in place of visible action.
+- Test whether each noun and verb belong together in natural speech. A phrase
+  can be grammatical and still sound synthetic when it makes people depend on,
+  support, confront, or transform an abstraction they would not normally
+  describe that way. Name the business, person, operation, system, or service
+  actually involved. Do not invent an abstract object merely to complete a
+  polished sentence.
 - Keep the right grammatical center of gravity. When the topic is people,
   teams, customers, decisions, workflows, or organizations adapting to AI, do
   not make AI, agents, abstract work, or nominalized actions the protagonist.
@@ -112,6 +118,11 @@ concrete pressure or opportunity
 
 Check:
 
+- Treat human irregularity as part of the voice, not an automatic defect.
+  Distinguish grammatical errors and confusing language from conversational
+  awkwardness, familiar phrasing, repetition, and mild redundancy that sound
+  natural to the writer. Do not smooth those qualities away unless they impede
+  meaning or the user asks for a more polished register.
 - Start from the real situation, not a broad abstraction.
 - Keep the unresolved question or pressure visible when it matters.
 - Preserve first-person inquiry in reflective writing.
