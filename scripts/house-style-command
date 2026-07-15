@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+COMMAND="$(basename "$0")"
+ROOT="${HOUSE_STYLE_SYSTEM_ROOT:-$HOME/Projects/house-style-system}"
+TARGET="$ROOT/scripts/$COMMAND"
+
+case "$COMMAND" in
+  review-kalen-voice.sh|review-ai-voice.sh|review-center-of-gravity.sh|review-dramatic-punctuation.sh|eval-kalen-voice.sh|eval-ai-voice.sh|eval-center-of-gravity.sh|eval-dramatic-punctuation.sh)
+    ;;
+  *)
+    echo "house-style-command: unsupported command name: $COMMAND" >&2
+    exit 2
+    ;;
+esac
+
+if [[ ! -x "$TARGET" ]]; then
+  echo "house-style-command: cannot find executable $TARGET" >&2
+  echo "Set HOUSE_STYLE_SYSTEM_ROOT to the validated house-style-system checkout." >&2
+  exit 1
+fi
+
+if [[ "$COMMAND" == review-*.sh ]]; then
+  ARGS=()
+  for argument in "$@"; do
+    if [[ "$argument" == "-h" || "$argument" == "--help" || "$argument" == /* ]]; then
+      ARGS+=("$argument")
+    else
+      ARGS+=("$PWD/$argument")
+    fi
+  done
+  exec "$TARGET" "${ARGS[@]}"
+fi
+
+exec "$TARGET" "$@"

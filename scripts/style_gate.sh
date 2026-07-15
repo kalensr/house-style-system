@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+CALLER_PWD="$PWD"
 cd "$ROOT"
 
 CONFIG="$ROOT/.vale.ini"
@@ -40,7 +41,11 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
     *)
-      ARGS+=("$1")
+      if [[ "$1" == /* ]]; then
+        ARGS+=("$1")
+      else
+        ARGS+=("$CALLER_PWD/$1")
+      fi
       shift
       ;;
   esac

@@ -57,17 +57,10 @@ short question. Otherwise choose the closest domain and state the choice.
    use it for AI voice avoidance in executive, recruiter-facing, public, and
    leadership writing.
 5. If the active project has `./scripts/style_gate.sh`, run it at deliverable
-   checkpoints when files were edited.
-   When Kalen voice review applies and `./scripts/review-kalen-voice.sh`
-   exists, run `./scripts/review-kalen-voice.sh <file>`.
-   When AI voice review applies and `./scripts/review-ai-voice.sh` exists, run
-   `./scripts/review-ai-voice.sh <file>`.
-   When Center of Gravity review applies and
-   `./scripts/review-center-of-gravity.sh` exists, run
-   `./scripts/review-center-of-gravity.sh <file>`.
-   When No Dramatic Punctuation review applies and
-   `./scripts/review-dramatic-punctuation.sh` exists, run
-   `./scripts/review-dramatic-punctuation.sh <file>`.
+   checkpoints when files were edited. Prefer project-local specialized
+   wrappers when they exist. Otherwise use the system-wide commands:
+   `review-kalen-voice.sh`, `review-ai-voice.sh`,
+   `review-center-of-gravity.sh`, and `review-dramatic-punctuation.sh`.
    Vale coverage is format-dependent. If the edited file is `.mdx` and the
    review output omits it, run the host repository's build and tests for that
    format and
@@ -272,27 +265,16 @@ and balance the surrounding prose.
 5. Preserve meaning, facts, and uncertainty.
 6. If editing files and a local `style_gate.sh` exists, run it at the
    checkpoint.
-7. If Kalen voice review applies and a file path is available, run
-   `./scripts/review-kalen-voice.sh <file>` when available. If the wrapper is
-   missing, run `./scripts/style_gate.sh --kalen-voice <file>`.
-8. If AI voice review applies and a file path is available, run
-   `./scripts/review-ai-voice.sh <file>` when available.
-9. If Center of Gravity review applies and a file path is available, run
-   `./scripts/review-center-of-gravity.sh <file>` when available.
-10. If No Dramatic Punctuation review applies and a file path is available, run
-   `./scripts/review-dramatic-punctuation.sh <file>` when available.
-11. If Kalen voice rules were changed or reviewed, run
-   `./scripts/eval-kalen-voice.sh` when available.
-12. If AI voice rules were changed or reviewed, run
-   `./scripts/eval-ai-voice.sh` when available.
-13. If Center of Gravity rules were changed or reviewed, run
-   `./scripts/eval-center-of-gravity.sh` when available.
-14. If No Dramatic Punctuation rules were changed or reviewed, run
-   `./scripts/eval-dramatic-punctuation.sh` when available.
-15. If the gate reports issues, rewrite only the violating text and rerun.
-16. If an edited `.mdx` file was skipped by Vale, state that limitation and name
+7. If a specialized review applies and a file path is available, prefer its
+   project-local `./scripts/review-*.sh` wrapper. Otherwise run the matching
+   system-wide `review-*.sh` command.
+8. If specialized rules were changed or reviewed, prefer the project-local
+   `./scripts/eval-*.sh` wrapper. Otherwise run the matching system-wide
+   `eval-*.sh` command.
+9. If the gate reports issues, rewrite only the violating text and rerun.
+10. If an edited `.mdx` file was skipped by Vale, state that limitation and name
    the build, test, or rendered-output validation that covered it.
-17. In the final response, state the domain used and whether validation ran.
+11. In the final response, state the domain used and whether validation ran.
 
 ## Stop Rules
 
