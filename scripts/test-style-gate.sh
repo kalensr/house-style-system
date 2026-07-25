@@ -57,6 +57,7 @@ expect_kalen_rule "docs/test-fixtures/style-gate/fail-abstract-leadership-openin
 expect_kalen_rule "docs/test-fixtures/style-gate/fail-vision-without-pathway.md" "KalenVoice.PathwaySupport"
 expect_kalen_rule "docs/test-fixtures/style-gate/fail-detached-leadership-claim.md" "KalenVoice.EvidenceSupport"
 expect_kalen_rule "docs/test-fixtures/style-gate/fail-generic-executive-tone.md" "KalenVoice.ExecutiveTone"
+expect_kalen_rule "docs/test-fixtures/style-gate/fail-kalen-negative-first-framing.md" "KalenVoice.NegativeFirstFraming"
 expect_wrapper_rule "docs/test-fixtures/style-gate/fail-generic-ai-opening.md" "KalenVoice.GenericAIOpenings"
 
 expect_ai_rule() {
@@ -121,6 +122,7 @@ expect_center_of_gravity_rule_count() {
 
 expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-ai-protagonist.md" "CenterOfGravity.ToolProtagonist"
 expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-empty-work-subject.md" "CenterOfGravity.EmptyWorkSubject"
+expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-empty-work-subject-variant.md" "CenterOfGravity.EmptyWorkSubject"
 expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-nominalized-human-action.md" "CenterOfGravity.NominalizedHumanAction"
 expect_center_of_gravity_rule_count "docs/test-fixtures/style-gate/fail-cog-ai-protagonist-with-frontmatter.md" "CenterOfGravity.ToolProtagonist" "1" "9"
 

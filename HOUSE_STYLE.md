@@ -71,6 +71,11 @@ this method.
 - Avoid jargon unless the reader uses it.
 - Avoid repeated contrast scaffolding such as `not X, but Y`, `X can do A. It cannot do B.`, or repeated `not the...` sentence clusters.
 - Use direct claims, ownership language, or specific standards instead.
+- Avoid negation-first framing such as `The value is not X. It is Y.` State Y
+  directly, then explain why it matters.
+- Do not use a run of parallel questions or short sentences merely to create
+  cadence. Keep a question when it frames a real inquiry. Otherwise, combine
+  related details into a natural explanatory sentence or paragraph.
 - Do not use Unicode em dash characters.
 
 ## Kalen Voice Review Layer
@@ -110,6 +115,9 @@ Human review owns the deeper questions:
 - Did editing remove real pressure, gratitude, uncertainty, or conviction?
 - Does the piece move from insight to action?
 - Does it fit the audience and domain?
+- Does the prose use repeated sentence openings or question chains for
+  manufactured cadence?
+- Does career language preserve the author’s intended leadership scope?
 
 Do not use this layer to imitate private writing samples, certify authorship, or
 claim that a clean gate means a draft is ready. It is a review aid.
@@ -143,6 +151,12 @@ Prefer sentences where the actor and action are visible:
 Engineering teams are changing how they use AI to review architecture
 decisions.
 ```
+
+When a workflow is the topic, make a concrete actor the subject of the
+sentence. Name the team or leader involved. Name the customer, system, or
+decision involved.
+A workflow can be the object being examined; phrases such as `the work can stay
+connected` leave the actor hidden.
 
 Run the optional checks with
 `./scripts/review-center-of-gravity.sh <file>`.
@@ -292,6 +306,12 @@ Use the core rules everywhere. Add the right mode for the work.
 - Use examples.
 - Avoid generic uplift and stock conclusions.
 - Do not overstate evidence.
+- State the positive claim directly instead of opening with a negation.
+- Use questions for genuine inquiry. Summarize related operating details in
+  prose when a question chain would create artificial rhythm.
+- When career positioning belongs in the article, describe the leadership scope
+  the author intends to communicate. Do not narrow it to a single engagement
+  model unless that focus is deliberate.
 
 ### Long-Form Report
 

@@ -15,6 +15,7 @@ SUPPORTED_GROUP="docs/evals/kalen-voice/near-miss-supported-group-claim.md"
 SUPPORTED_PATH="docs/evals/kalen-voice/near-miss-supported-pathway.md"
 SUPPORTED_FUTURE_STATE="docs/evals/kalen-voice/near-miss-supported-future-state.md"
 QUOTED_MID_DOC="docs/evals/kalen-voice/near-miss-quoted-generic-phrase.md"
+NEGATIVE_FIRST="docs/test-fixtures/style-gate/fail-kalen-negative-first-framing.md"
 
 positive_output="$(./scripts/style_gate.sh --kalen-voice "$POSITIVE" 2>&1 || true)"
 if ! grep -q "0 errors, 0 warnings and 0 suggestions" <<<"$positive_output"; then
@@ -45,6 +46,13 @@ for fixture in "$SUPPORTED_GROUP" "$SUPPORTED_PATH" "$SUPPORTED_FUTURE_STATE" "$
     exit 1
   fi
 done
+
+negative_first_output="$(./scripts/style_gate.sh --kalen-voice "$NEGATIVE_FIRST" 2>&1 || true)"
+if ! grep -q "KalenVoice.NegativeFirstFraming" <<<"$negative_first_output"; then
+  echo "Expected KalenVoice.NegativeFirstFraming for $NEGATIVE_FIRST" >&2
+  echo "$negative_first_output" >&2
+  exit 1
+fi
 
 default_voice_output="$(./scripts/style_gate.sh "$NEGATIVE" 2>&1 || true)"
 if grep -q "KalenVoice" <<<"$default_voice_output"; then
