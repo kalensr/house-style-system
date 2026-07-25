@@ -179,6 +179,31 @@ Automation owns repeatable checks.
 
 A style gate flags known style risks. Human review proves claims, earns conclusions, and decides whether the work is ready.
 
+## Release Review And Outcome Evaluation
+
+For a publishable Markdown draft, run the required multi-layer review:
+
+```sh
+./scripts/review-release-writing.sh path/to/draft.md
+./scripts/review-release-writing.sh --kalen-voice path/to/draft.md
+```
+
+The default release review runs the core House Style, AI Voice, Center of
+Gravity, and No Dramatic Punctuation layers together. Add `--kalen-voice` when
+Kalen's leadership, reflection, or public-essay review applies. Fix or record
+an intentional exception for every alert before release.
+
+The release review checks known patterns. It does not measure whether the
+revision improved a real draft. Do not claim that a rule, evaluator, or workflow
+improved writing quality until an independent evaluator completes a blind A/B
+outcome review. The evaluator needs the source packet for factual checks, must
+not have authored the revision, and must attest to independence.
+
+Record factual and meaning preservation with evidence integrity. Also record
+voice fit, reader usefulness, and generic-pattern reduction. Record the blind
+A/B preference and revision mapping after unblinding. Keep the completed packet
+private and validate its structure with `./scripts/check-outcome-evaluation.sh`.
+
 ## Preferred Patterns
 
 Use:

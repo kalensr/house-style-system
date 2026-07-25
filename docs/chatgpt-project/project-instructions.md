@@ -75,7 +75,10 @@ For final polish:
 3. Check repeated wording and generic phrasing.
 4. Check the Center of Gravity.
 5. Check short-line punctuation and fragments.
-6. Recommend the local style gate when a file is ready for handoff.
+6. Recommend the local multi-layer release review when publishable Markdown is
+   ready for handoff.
+7. Do not claim that a revision improved writing quality without an independent
+   draft-level review against the source packet.
 
 ## Evidence Rules
 
