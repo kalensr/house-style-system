@@ -82,6 +82,11 @@ short question. Otherwise choose the closest domain and state the choice.
 - Do not use Unicode em dashes.
 - Avoid repeated contrast formulas such as `not X, but Y` or repeated
   `can/cannot` sentence scaffolds.
+- Avoid negation-first framing such as `The value is not X. It is Y.` State the
+  positive claim directly, then explain why it matters.
+- Do not use a run of parallel questions or short sentences merely to create
+  cadence. Keep questions that frame genuine inquiry. Otherwise, combine
+  related details into natural explanatory prose.
 - Do not add unsupported claims.
 - Watch for repeated vocabulary. Keep terms that carry the argument, but vary
   or cut repeated framing words that stop adding meaning.
@@ -130,6 +135,12 @@ Check:
 - Show the path from insight to action.
 - Require support for claims about groups: evidence, example, lived
   observation, or explicit assumption.
+- Read public prose aloud for manufactured cadence. Rework repeated sentence
+  openings and question chains when the pattern carries the argument more than
+  the meaning does.
+- Keep career scope accurate. When fractional work is one part of a broader
+  technology-leadership direction, preserve that broader scope unless the
+  piece is specifically about fractional work.
 - Do not invent biographical details, family details, spiritual experiences,
   dates, quotes, accomplishments, citations, or business results.
 
@@ -196,6 +207,12 @@ the decision, workflow, or concrete change. Keep AI or agents in the sentence
 when they matter. Make them tools or constraints unless they are truly the
 actor.
 
+When a workflow is the topic, make a concrete actor the subject of the
+sentence. Name the team or leader involved. Name the customer, system, or
+decision involved.
+A workflow can be the object being examined; phrases such as `the work can stay
+connected` leave the actor hidden.
+
 ## Domain Checks
 
 `plain`: make the text clear, direct, and usable.
@@ -216,6 +233,26 @@ owner and next step. Separate facts from judgment.
 
 `blog`: make one strong idea visible. Preserve the author's voice. Explain the
 problem, solution, evidence, and implication without sounding corporate.
+
+State positive claims directly. Use questions sparingly and for genuine
+inquiry. Summarize related operating details in prose when a question chain
+would create artificial rhythm. When career positioning belongs in the article,
+describe the leadership scope the author intends to communicate. Do not narrow
+it to a single engagement model unless that focus is deliberate.
+
+For a short practical article about operating change, use this sequence when it
+fits the source material:
+
+1. Open with the concrete decision or workflow question.
+2. Establish the current state before recommending a tool or solution.
+3. Name the people, information, controls, and decisions inside the work.
+4. Give AI a specific supporting role and keep accountable people as the actors.
+5. Explain where an explicit rule, system, or human judgment governs the outcome.
+6. End with one practical first move.
+
+The result should give the reader a usable way to think about the work. Avoid
+résumé inventory, transformation language, generic advocacy for AI, and a sales
+pitch. Keep the structure compact, with each section advancing the argument.
 
 `long-form-report`: give each section a purpose. Lead sections with claims.
 Connect evidence to implications. End with a decision path or research
