@@ -65,13 +65,33 @@ short question. Otherwise choose the closest domain and state the choice.
    checkpoints when files were edited. Prefer project-local specialized
    wrappers when they exist. Otherwise use the system-wide commands:
    `review-kalen-voice.sh`, `review-ai-voice.sh`,
-   `review-center-of-gravity.sh`, and `review-dramatic-punctuation.sh`.
+   `review-center-of-gravity.sh`, `review-dramatic-punctuation.sh`, and
+   `review-release-writing.sh`. For publishable Markdown, prefer
+   `review-release-writing.sh`; add `--kalen-voice` when the Kalen profile
+   applies.
    Vale coverage is format-dependent. If the edited file is `.mdx` and the
    review output omits it, run the host repository's build and tests for that
    format and
    inspect the rendered output. Report the omitted file instead of claiming
    complete Vale coverage.
 7. If no local files exist, use the fallback rules in this skill.
+
+## Release And Outcome Evidence
+
+For publishable Markdown, run the multi-layer release review before release.
+It combines the core, AI Voice, Center of Gravity, and No Dramatic Punctuation
+layers; add `--kalen-voice` when that profile applies.
+
+Do not claim a system change improved writing quality from gate alerts alone.
+Require a completed independent draft-outcome packet. It needs an independence
+attestation and evidence-backed scores. Score factual and meaning preservation,
+evidence integrity, and voice fit. Score reader usefulness and generic-pattern
+reduction. Also record a blind A/B preference and the post-unblinding revision
+mapping.
+Use `check-outcome-evaluation.sh` for a packet and
+`eval-outcome-evaluation.sh` for the public fixture and negative controls. Do
+not publish real draft packets unless the underlying draft and sources are
+approved for publication.
 
 ## Fallback Core Rules
 
@@ -340,7 +360,8 @@ and balance the surrounding prose.
    client-usefulness, and voice-fit passes described in
    `docs/client-facing-artifacts.md` when that file is available.
 7. If editing files and a local `style_gate.sh` exists, run it at the
-   checkpoint.
+   checkpoint. For publishable Markdown, run the local release-review wrapper
+   instead of a single optional layer.
 8. If a specialized review applies and a file path is available, prefer its
    project-local `./scripts/review-*.sh` wrapper. Otherwise run the matching
    system-wide `review-*.sh` command.
@@ -350,7 +371,12 @@ and balance the surrounding prose.
 10. If the gate reports issues, rewrite only the violating text and rerun.
 11. If an edited `.mdx` file was skipped by Vale, state that limitation and name
    the build, test, or rendered-output validation that covered it.
-12. In the final response, state the domain used and whether validation ran.
+12. For a system-quality claim, require an independent outcome-evaluation packet
+    with an independence attestation, factual and meaning preservation,
+    evidence integrity, voice fit, reader usefulness, generic-pattern-reduction,
+    and blind-preference scores. Record the revision mapping after unblinding.
+    Do not claim that a clean release review proves quality improved.
+13. In the final response, state the domain used and whether validation ran.
 
 ## Stop Rules
 

@@ -150,6 +150,27 @@ if ! grep -q "0 errors, 0 warnings and 0 suggestions" <<<"$wrapper_positive_outp
   exit 1
 fi
 
+release_clean_output="$(./scripts/review-release-writing.sh docs/evals/release-review-clean.md 2>&1 || true)"
+if ! grep -q "0 errors, 0 warnings and 0 suggestions" <<<"$release_clean_output"; then
+  echo "Expected multi-layer release review control to be clean" >&2
+  echo "$release_clean_output" >&2
+  exit 1
+fi
+
+release_ai_output="$(./scripts/review-release-writing.sh docs/test-fixtures/style-gate/fail-ai-role-fit-framing.md 2>&1 || true)"
+if ! grep -q "AIVoice.RoleFitFraming" <<<"$release_ai_output"; then
+  echo "Expected multi-layer release review to include AIVoice" >&2
+  echo "$release_ai_output" >&2
+  exit 1
+fi
+
+release_kalen_output="$(./scripts/review-release-writing.sh --kalen-voice docs/test-fixtures/style-gate/fail-kalen-negative-first-framing.md 2>&1 || true)"
+if ! grep -q "KalenVoice.NegativeFirstFraming" <<<"$release_kalen_output"; then
+  echo "Expected Kalen release review to include KalenVoice" >&2
+  echo "$release_kalen_output" >&2
+  exit 1
+fi
+
 default_output="$(STYLE_GATE_PRINT_FILES=1 ./scripts/style_gate.sh)"
 if grep -q "docs/test-fixtures/" <<<"$default_output"; then
   echo "Default style gate should skip test fixtures" >&2
@@ -213,12 +234,12 @@ trap 'rm -f "$fake_vale_dir/vale"; rmdir "$fake_vale_dir"; rm -rf "$global_bin_d
 HOUSE_STYLE_BIN_DIR="$global_bin_dir" ./scripts/install-global-commands.sh >/dev/null
 
 global_command_count="$(find "$global_bin_dir" -type f -perm -u+x | wc -l | tr -d ' ')"
-if [[ "$global_command_count" != "8" ]]; then
-  echo "Expected eight installed global commands, found $global_command_count" >&2
+if [[ "$global_command_count" != "11" ]]; then
+  echo "Expected eleven installed global commands, found $global_command_count" >&2
   exit 1
 fi
 
-for command in review-kalen-voice.sh review-ai-voice.sh review-center-of-gravity.sh review-dramatic-punctuation.sh; do
+for command in review-kalen-voice.sh review-ai-voice.sh review-center-of-gravity.sh review-dramatic-punctuation.sh review-release-writing.sh check-outcome-evaluation.sh; do
   if ! "$global_bin_dir/$command" --help >/dev/null 2>&1; then
     echo "Expected $command --help to succeed through the global dispatcher" >&2
     exit 1
@@ -236,10 +257,31 @@ if ! grep -q "AIVoice.EmptyWorkNouns" <<<"$external_review_output"; then
   exit 1
 fi
 
+global_release_output="$(HOUSE_STYLE_SYSTEM_ROOT="$ROOT" "$global_bin_dir/review-release-writing.sh" --kalen-voice "$ROOT/docs/evals/release-review-clean.md" 2>&1 || true)"
+if ! grep -q "0 errors, 0 warnings and 0 suggestions" <<<"$global_release_output"; then
+  echo "Expected global release review to preserve its --kalen-voice option" >&2
+  echo "$global_release_output" >&2
+  exit 1
+fi
+
 global_eval_output="$(HOUSE_STYLE_SYSTEM_ROOT="$ROOT" "$global_bin_dir/eval-ai-voice.sh" 2>&1)"
 if ! grep -q "eval-ai-voice: passed" <<<"$global_eval_output"; then
   echo "Expected global eval command to use canonical fixtures" >&2
   echo "$global_eval_output" >&2
+  exit 1
+fi
+
+global_outcome_eval_output="$(HOUSE_STYLE_SYSTEM_ROOT="$ROOT" "$global_bin_dir/eval-outcome-evaluation.sh" 2>&1)"
+if ! grep -q "eval-outcome-evaluation: passed" <<<"$global_outcome_eval_output"; then
+  echo "Expected global outcome-evaluation command to use canonical fixtures" >&2
+  echo "$global_outcome_eval_output" >&2
+  exit 1
+fi
+
+global_outcome_packet_output="$(HOUSE_STYLE_SYSTEM_ROOT="$ROOT" "$global_bin_dir/check-outcome-evaluation.sh" "$ROOT/docs/evals/outcome-evaluation/positive-independent-review.md" 2>&1)"
+if ! grep -q "check-outcome-evaluation: passed" <<<"$global_outcome_packet_output"; then
+  echo "Expected global outcome-packet check to accept a canonical packet" >&2
+  echo "$global_outcome_packet_output" >&2
   exit 1
 fi
 

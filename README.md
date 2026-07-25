@@ -22,6 +22,7 @@ Core files:
 - Client-facing artifact method: [docs/client-facing-artifacts.md](docs/client-facing-artifacts.md)
 - Client-facing artifact eval: [docs/evals/client-facing-artifacts/README.md](docs/evals/client-facing-artifacts/README.md)
 - Authorship boundary: [docs/ai-authorship-boundary.md](docs/ai-authorship-boundary.md)
+- Release and outcome evaluation: [docs/release-and-outcome-evaluation.md](docs/release-and-outcome-evaluation.md)
 
 Optional review layers:
 
@@ -29,10 +30,13 @@ Optional review layers:
 - AI voice review: [scripts/review-ai-voice.sh](scripts/review-ai-voice.sh)
 - Center of Gravity review: [scripts/review-center-of-gravity.sh](scripts/review-center-of-gravity.sh)
 - No Dramatic Punctuation review: [scripts/review-dramatic-punctuation.sh](scripts/review-dramatic-punctuation.sh)
+- Multi-layer release review: [scripts/review-release-writing.sh](scripts/review-release-writing.sh)
 - Kalen voice eval: [scripts/eval-kalen-voice.sh](scripts/eval-kalen-voice.sh)
 - AI voice eval: [scripts/eval-ai-voice.sh](scripts/eval-ai-voice.sh)
 - Center of Gravity eval: [scripts/eval-center-of-gravity.sh](scripts/eval-center-of-gravity.sh)
 - No Dramatic Punctuation eval: [scripts/eval-dramatic-punctuation.sh](scripts/eval-dramatic-punctuation.sh)
+- Outcome-evaluation schema check: [scripts/check-outcome-evaluation.sh](scripts/check-outcome-evaluation.sh)
+- Outcome-evaluation fixture suite: [scripts/eval-outcome-evaluation.sh](scripts/eval-outcome-evaluation.sh)
 
 Assistant setup:
 
@@ -124,6 +128,16 @@ Run No Dramatic Punctuation review on a specific draft:
 ./scripts/review-dramatic-punctuation.sh path/to/draft.md
 ```
 
+Run the release review before publishing a Markdown draft:
+
+```sh
+./scripts/review-release-writing.sh path/to/draft.md
+./scripts/review-release-writing.sh --kalen-voice path/to/draft.md
+```
+
+The release review runs House Style, AI Voice, Center of Gravity, and No
+Dramatic Punctuation together. Add `--kalen-voice` when that profile applies.
+
 Vale review coverage is format-dependent. The current gate and optional review
 wrappers report Markdown files; they may skip `.mdx` entries. For that format,
 run the host repository's build and tests, inspect the rendered output, and
@@ -159,6 +173,7 @@ Use the optional layers only when they fit the work:
 | AI voice | `./scripts/review-ai-voice.sh <file>` | Generic AI business or recruiter prose needs review |
 | Center of Gravity | `./scripts/review-center-of-gravity.sh <file>` | AI, agents, abstract work, or nominalized action may be displacing people as the subject |
 | No Dramatic Punctuation | `./scripts/review-dramatic-punctuation.sh <file>` | Short lines, fragments, or one-sentence paragraphs imply significance without explanation |
+| Release review | `./scripts/review-release-writing.sh <file>` | A publishable Markdown draft needs the core, AI Voice, Center of Gravity, and No Dramatic Punctuation layers together |
 
 The optional layers are review aids. They do not detect authorship.
 
@@ -193,7 +208,7 @@ cp -R codex-skills/house-style-system/. ~/.codex/skills/house-style-system/
 ./scripts/install-global-commands.sh
 ```
 
-The installer places the four review and four eval commands in
+The installer places the review, eval, and outcome-evaluation commands in
 `~/.local/bin`. Set `HOUSE_STYLE_BIN_DIR` to use another directory already on
 your `PATH`. If the checkout is not at `~/Projects/house-style-system`, set
 `HOUSE_STYLE_SYSTEM_ROOT` to its location. Restart Codex after installing the
@@ -281,6 +296,7 @@ Run these before publishing changes:
 ./scripts/eval-ai-voice.sh
 ./scripts/eval-center-of-gravity.sh
 ./scripts/eval-dramatic-punctuation.sh
+./scripts/eval-outcome-evaluation.sh
 ./scripts/check-public-tree.sh
 ./scripts/check-public-history.sh
 git diff --check
@@ -324,12 +340,15 @@ house-style-system/
 │   ├── review-ai-voice.sh
 │   ├── review-center-of-gravity.sh
 │   ├── review-dramatic-punctuation.sh
+│   ├── review-release-writing.sh
 │   ├── check-public-tree.sh
 │   ├── check-public-history.sh
 │   ├── eval-kalen-voice.sh
 │   ├── eval-ai-voice.sh
 │   ├── eval-center-of-gravity.sh
 │   ├── eval-dramatic-punctuation.sh
+│   ├── check-outcome-evaluation.sh
+│   ├── eval-outcome-evaluation.sh
 │   └── test-style-gate.sh
 ├── styles/
 │   ├── AIVoice/
@@ -361,8 +380,13 @@ risks. It does not prove the writing is true, useful, or ready to publish.
 3. Cut anything you are not willing to stand behind.
 4. Check facts, assumptions, sources, and recommendations.
 5. Run the style gate.
-6. Fix warnings that weaken clarity or trust.
-7. Add new examples when you see the same failure twice.
+6. Run the multi-layer release review before publishing Markdown.
+7. Fix warnings that weaken clarity or trust.
+8. Add new examples when you see the same failure twice.
+
+When you change the system itself, validate a private independent outcome packet
+before claiming the change improved writing quality. See
+[the outcome-evaluation guide](docs/evals/outcome-evaluation/README.md).
 
 ## Public-Safe Defaults
 

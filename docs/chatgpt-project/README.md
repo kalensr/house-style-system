@@ -60,6 +60,7 @@ for deterministic checks:
 ./scripts/review-ai-voice.sh path/to/draft.md
 ./scripts/review-center-of-gravity.sh path/to/draft.md
 ./scripts/review-dramatic-punctuation.sh path/to/draft.md
+./scripts/review-release-writing.sh path/to/draft.md
 ```
 
 The optional `KalenVoice` layer remains a public reference profile. Build your

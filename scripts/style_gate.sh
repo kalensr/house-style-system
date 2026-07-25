@@ -14,7 +14,7 @@ select_optional_layer() {
   local next_config="$2"
 
   if [[ "$MODE" != "house" ]]; then
-    echo "style-gate: choose only one optional review layer: --kalen-voice, --ai-voice, --center-of-gravity, or --dramatic-punctuation" >&2
+    echo "style-gate: choose only one optional review layer or release-review mode: --kalen-voice, --ai-voice, --center-of-gravity, --dramatic-punctuation, --release-review, or --release-review-kalen" >&2
     exit 2
   fi
 
@@ -38,6 +38,14 @@ while [[ $# -gt 0 ]]; do
       ;;
     --dramatic-punctuation)
       select_optional_layer "dramatic-punctuation" "$ROOT/.vale-dramatic-punctuation.ini"
+      shift
+      ;;
+    --release-review)
+      select_optional_layer "release-review" "$ROOT/.vale-release.ini"
+      shift
+      ;;
+    --release-review-kalen)
+      select_optional_layer "release-review-kalen" "$ROOT/.vale-release-kalen.ini"
       shift
       ;;
     *)
