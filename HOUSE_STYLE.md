@@ -211,6 +211,15 @@ Use the core rules everywhere. Add the right mode for the work.
 - Let the reader see the tension before the conclusion when the piece is reflective.
 - Preserve first-person inquiry when it helps the reader follow the thinking.
 - Preserve discernment language when it belongs to the source and audience.
+- Simplify the operating claim, and preserve the reflective anchor. Keep an
+  original sentence when its human question, image, tension, or cadence carries
+  the idea. Revise surrounding sentences when they hide action, ownership, or
+  practical meaning. Do not mechanically shorten or split every dense sentence.
+- Keep a metaphor that gives the piece its meaning when a plainer replacement
+  would flatten it. Make the next operating sentence direct instead: name what
+  people will do, how AI helps, and who remains accountable for the decision.
+- Treat this as a human-review question. Automated findings are prompts, not
+  instructions to remove an intentional voice choice.
 - Show the path from idea to action.
 - Tie leadership to service, team, organization, community, or mission when that horizon matters.
 
