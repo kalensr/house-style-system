@@ -97,9 +97,32 @@ expect_center_of_gravity_rule() {
   fi
 }
 
+expect_center_of_gravity_rule_count() {
+  local fixture="$1"
+  local rule="$2"
+  local expected_count="$3"
+  local expected_line="$4"
+  local output
+  local actual_count
+
+  output="$(./scripts/review-center-of-gravity.sh "$fixture" 2>&1 || true)"
+  actual_count="$(grep -c "$rule" <<<"$output" || true)"
+  if [[ "$actual_count" != "$expected_count" ]]; then
+    echo "Expected $expected_count $rule alert(s) for $fixture, found $actual_count" >&2
+    echo "$output" >&2
+    exit 1
+  fi
+  if ! grep -qE "^[[:space:]]*${expected_line}:[0-9]+[[:space:]]+suggestion.*${rule}" <<<"$output"; then
+    echo "Expected $rule to alert on line $expected_line for $fixture" >&2
+    echo "$output" >&2
+    exit 1
+  fi
+}
+
 expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-ai-protagonist.md" "CenterOfGravity.ToolProtagonist"
 expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-empty-work-subject.md" "CenterOfGravity.EmptyWorkSubject"
 expect_center_of_gravity_rule "docs/test-fixtures/style-gate/fail-cog-nominalized-human-action.md" "CenterOfGravity.NominalizedHumanAction"
+expect_center_of_gravity_rule_count "docs/test-fixtures/style-gate/fail-cog-ai-protagonist-with-frontmatter.md" "CenterOfGravity.ToolProtagonist" "1" "9"
 
 expect_dramatic_punctuation_rule() {
   local fixture="$1"

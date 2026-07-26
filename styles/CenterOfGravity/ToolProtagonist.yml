@@ -1,6 +1,7 @@
 extends: existence
 message: "This makes AI or agents the protagonist. Name the person, team, customer, or organization doing the work."
 level: suggestion
+scope: ~text.frontmatter
 ignorecase: true
 nonword: true
 tokens:
