@@ -44,6 +44,11 @@ A draft may be drifting when it:
 
 `[Describe recommendation placement, evidence, tradeoffs, and decision ask.]`
 
+### Client-Facing Artifact
+
+`[Describe how workstreams, observable outcomes, proof, safeguards, and the
+client relationship should appear.]`
+
 ### Formal Writing
 
 `[Describe restraint, structure, and precision.]`

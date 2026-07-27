@@ -25,6 +25,30 @@ Check:
 - Is the tradeoff plain?
 - Are dates, owners, and open questions visible?
 
+## Client Proposal Or Client-Facing Artifact
+
+Use for proposals, statements of work, and completion reports. It also applies
+to client updates and other documents that explain what a client will receive
+or be able to do.
+
+Check:
+
+- Does the opening start from the client's situation and desired change?
+- Does each workstream say what it covers in language the client uses?
+- Does each outcome name a person or team, an action, and a visible result?
+- Can the client tell how the result will be demonstrated or verified?
+- Are supporting artifacts connected to an operating result instead of listed
+  as the result by themselves?
+- Are scope boundaries, assumptions, approval gates, and unresolved decisions
+  preserved?
+- Have internal planning fields, repository terms, and agent activity been
+  removed unless the agreement requires them?
+
+Review in three passes: factual preservation, client usefulness, and voice
+fit. The assigned writer or reviewer can complete these passes autonomously.
+Do not require a separate owner review unless the engagement or risk requires
+one.
+
 ## Personal Positioning Or Recruiter-Facing Writing
 
 Use when the writing supports recruiter outreach or executive search. This mode

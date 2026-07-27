@@ -5,10 +5,10 @@ description: >-
   for house style, style gate, plain language, clearer writing, and removing
   generic or AI-sounding business and recruiter prose. Covers executive memos,
   decision briefs, leadership reflection, blog and public essays, long-form
-  reports, informal notes, social posts, and personal positioning or
-  recruiter-facing writing. Runs the deterministic Vale style gate when a shell
-  and the repo are available. Applies the same rules by judgment when they are
-  not. Never used to detect authorship.
+  reports, client-facing artifacts, informal notes, social posts, and personal
+  positioning or recruiter-facing writing. Runs the deterministic Vale style
+  gate when a shell and the repo are available. Applies the same rules by
+  judgment when they are not. Never used to detect authorship.
 ---
 
 # House Style
@@ -31,6 +31,7 @@ Use this skill when the user asks for any of the following:
 - executive memo, decision brief, or leadership update,
 - leadership reflection, public essay, or personal voice review,
 - blog, report, business doc, social post, or informal note,
+- client proposal, statement of work, completion report, or client update,
 - personal positioning, recruiter-facing, or cover-letter writing,
 - checking for repeated words, verbal tics, or filler.
 
@@ -64,14 +65,16 @@ Use this source-priority ladder:
 4. If it has `docs/chatgpt-project/ai-voice-avoidance-runbook.md`, use it for AI
    voice avoidance in executive, recruiter-facing, public, and leadership
    writing.
-5. If it has `docs/research/center-of-gravity-writing-eval.md`, use it for
+5. If it has `docs/client-facing-artifacts.md`, use it for proposals,
+   completion reports, statements of work, and client updates.
+6. If it has `docs/research/center-of-gravity-writing-eval.md`, use it for
    Center of Gravity review when people, teams, customers, organizations,
    decisions, or workflows should stay visible as the subject.
-6. If it has `docs/research/no-dramatic-punctuation-eval.md`, use it for
+7. If it has `docs/research/no-dramatic-punctuation-eval.md`, use it for
    short-line, fragment, and staccato-emphasis review.
-7. If it has a style gate script and you edited files, run the gate at the
+8. If it has a style gate script and you edited files, run the gate at the
    checkpoint (see Deterministic Gate below).
-8. If none of these are present, use the self-contained rules in this skill and
+9. If none of these are present, use the self-contained rules in this skill and
    its reference files. This is the normal case in Claude Chat.
 
 ## Domain Selection
@@ -83,6 +86,7 @@ Otherwise pick the closest domain and state the choice.
 | User says | Domain |
 | --- | --- |
 | executive memo, leadership update, decision brief | `executive` |
+| client proposal, statement of work, completion report, client update | `client-facing` |
 | leadership reflection, personal essay, voice review | `leadership-reflection` |
 | recruiter, executive search, cover letter, career positioning | `personal-positioning` |
 | business doc, recommendation, status update | `business` |
@@ -112,6 +116,16 @@ These apply in every domain and work with no repo present.
 - Avoid repeated contrast scaffolds such as `not X, but Y` or paired
   `can / cannot` lines. State the point directly.
 - Do not add unsupported claims. Preserve the author's meaning and uncertainty.
+- For client-facing work, name who acts, what they can do, the concrete output
+  or changed state, and how the result is verified. Use internal artifacts as
+  supporting evidence, not as a substitute for the outcome.
+
+Before rewriting a client-facing artifact, inspect or create a source ledger.
+Record facts and commitments. Keep assumptions, approval gates, and unresolved
+decisions visible.
+Review the result for factual preservation, client usefulness, and voice fit.
+The assigned writer or reviewer completes these passes. A separate owner review
+is required only when the task, engagement, or risk explicitly requires it.
 
 More before-and-after patterns are in `reference/house-style-core.md`.
 
