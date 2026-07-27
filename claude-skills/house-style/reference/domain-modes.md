@@ -17,6 +17,20 @@ Use when a leader needs to decide, approve, redirect, or understand a tradeoff.
 - Name owners, dates, and next steps.
 - Remove throat-clearing.
 
+## client-facing
+
+Use for proposals, statements of work, completion reports, and client updates.
+
+- Start from the client's situation and proposed change.
+- Organize the document around workstreams the client can recognize.
+- Explain what each workstream covers in plain language.
+- State each outcome as a person or team, an action, a concrete output or
+  changed operating state, visible proof, and any safeguard or boundary.
+- Connect supporting artifacts to the operating result.
+- Remove internal planning fields, agent activity, estimation mechanics, and
+  repository language unless the agreement requires them.
+- Preserve scope boundaries, assumptions, approval gates, and open decisions.
+
 ## leadership-reflection
 
 Use for leadership or strategy reflection, public essays, and speeches when the

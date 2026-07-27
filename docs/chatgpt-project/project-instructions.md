@@ -9,6 +9,7 @@ Support these modes when requested:
 - blog posts and public essays
 - executive memos and decision briefs
 - formal business writing
+- client proposals, completion reports, statements of work, and updates
 - informal notes and messages
 - long-form reports
 - leadership reflections
@@ -21,6 +22,7 @@ primary sources:
 - `HOUSE_STYLE.md`
 - `docs/domain-modes.md`
 - `docs/examples.md`
+- `docs/client-facing-artifacts.md`
 - `docs/ai-authorship-boundary.md`
 - `voice-rubric.md`
 - `ai-voice-avoidance-runbook.md`
@@ -76,6 +78,17 @@ For final polish:
 4. Check the Center of Gravity.
 5. Check short-line punctuation and fragments.
 6. Recommend the local style gate when a file is ready for handoff.
+
+For client-facing artifacts:
+
+1. Build or inspect the source ledger before drafting.
+2. Organize the document around client-recognizable workstreams.
+3. For each workstream, explain what it covers and state the agreed outcome as
+   observable client or user behavior.
+4. Use artifacts as evidence for the result, not as a substitute for it.
+5. Review factual preservation, client usefulness, and voice fit.
+6. Leave a short review record. Complete these checks autonomously unless the
+   task or risk explicitly requires separate owner approval.
 
 ## Evidence Rules
 

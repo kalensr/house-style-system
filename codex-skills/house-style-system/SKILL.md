@@ -20,6 +20,8 @@ Use this skill when the user asks for:
   voice preservation,
 - blog, public essay, business, executive, report, student, social, or
   informal writing,
+- client proposal, statement of work, completion report, client update, or
+  client-facing artifact,
 - AI voice avoidance, common AI phrases, recruiter-facing voice drift, or
   personal positioning prose,
 - Center of Gravity review, human-centered framing, actor/action clarity, or
@@ -36,6 +38,7 @@ If the user names a domain, use it. If not, default to `plain`.
 | User says | Domain |
 | --- | --- |
 | executive memo, leadership update, decision brief | `executive` |
+| client proposal, statement of work, completion report, client update | `client-facing` |
 | Kalen voice review, leadership reflection, personal essay | `kalen-leadership-reflection` |
 | recruiter, executive search, cover letter, career positioning | `personal-positioning` |
 | business doc, recommendation, status update | `business` |
@@ -56,7 +59,9 @@ short question. Otherwise choose the closest domain and state the choice.
 4. If the active project has `docs/chatgpt-project/ai-voice-avoidance-runbook.md`,
    use it for AI voice avoidance in executive, recruiter-facing, public, and
    leadership writing.
-5. If the active project has `./scripts/style_gate.sh`, run it at deliverable
+5. If the active project has `docs/client-facing-artifacts.md`, use it for
+   proposals, completion reports, statements of work, and client updates.
+6. If the active project has `./scripts/style_gate.sh`, run it at deliverable
    checkpoints when files were edited. Prefer project-local specialized
    wrappers when they exist. Otherwise use the system-wide commands:
    `review-kalen-voice.sh`, `review-ai-voice.sh`,
@@ -66,7 +71,7 @@ short question. Otherwise choose the closest domain and state the choice.
    format and
    inspect the rendered output. Report the omitted file instead of claiming
    complete Vale coverage.
-6. If no local files exist, use the fallback rules in this skill.
+7. If no local files exist, use the fallback rules in this skill.
 
 ## Fallback Core Rules
 
@@ -99,6 +104,13 @@ short question. Otherwise choose the closest domain and state the choice.
   not make AI, agents, abstract work, or nominalized actions the protagonist.
 - Do not use short lines as dramatic punctuation. Keep them only when they
   state a concrete fact, decision, or boundary.
+- For client-facing work, describe the outcome from the client's working point
+  of view. Name who acts, what they can do, the concrete output or changed
+  state, and how the result is verified. Use internal artifacts as supporting
+  evidence, not as a substitute for the outcome.
+- Before rewriting client-facing work, create or inspect a source ledger of
+  facts, commitments, assumptions, approval gates, and unresolved decisions.
+  Do not invent specificity.
 
 ## Kalen Voice Review Checks
 
@@ -207,6 +219,19 @@ visible. Do not turn personal reflection into generic executive prose.
 `executive`: state the answer or recommendation early. Make tradeoffs and risks
 visible. Name owners, dates, and next steps. Remove throat-clearing.
 
+`client-facing`: start from the client's situation and proposed change.
+Organize the document around recognizable workstreams. For each workstream,
+state what it covers and the agreed outcome. The outcome should name the
+client or user and the action. It should state the concrete output or changed
+operating state, visible proof, and any safeguard or boundary. Keep internal planning fields,
+agent activity, estimation mechanics, and repository language out unless they
+are explicitly part of the agreement.
+
+Review client-facing work in three passes: factual preservation, client
+usefulness, and voice fit. The assigned agent completes those passes and leaves
+a short review record. Do not make a separate user review a completion gate
+unless the task, engagement, or risk explicitly requires it.
+
 `personal-positioning`: open politely. State the role family directly. Show the
 before state and what changed. Use proof across career stages. State the current
 search boundary and close with a plain invitation. Do not over-teach the fit.
@@ -274,18 +299,21 @@ and balance the surrounding prose.
 4. For publishable or long-form prose, run the Repetition And House Vocabulary
    Check before final polish.
 5. Preserve meaning, facts, and uncertainty.
-6. If editing files and a local `style_gate.sh` exists, run it at the
+6. For client-facing work, complete the factual-preservation,
+   client-usefulness, and voice-fit passes described in
+   `docs/client-facing-artifacts.md` when that file is available.
+7. If editing files and a local `style_gate.sh` exists, run it at the
    checkpoint.
-7. If a specialized review applies and a file path is available, prefer its
+8. If a specialized review applies and a file path is available, prefer its
    project-local `./scripts/review-*.sh` wrapper. Otherwise run the matching
    system-wide `review-*.sh` command.
-8. If specialized rules were changed or reviewed, prefer the project-local
+9. If specialized rules were changed or reviewed, prefer the project-local
    `./scripts/eval-*.sh` wrapper. Otherwise run the matching system-wide
    `eval-*.sh` command.
-9. If the gate reports issues, rewrite only the violating text and rerun.
-10. If an edited `.mdx` file was skipped by Vale, state that limitation and name
+10. If the gate reports issues, rewrite only the violating text and rerun.
+11. If an edited `.mdx` file was skipped by Vale, state that limitation and name
    the build, test, or rendered-output validation that covered it.
-11. In the final response, state the domain used and whether validation ran.
+12. In the final response, state the domain used and whether validation ran.
 
 ## Stop Rules
 

@@ -19,6 +19,8 @@ Core files:
 - Style gate: [scripts/style_gate.sh](scripts/style_gate.sh)
 - Examples: [docs/examples.md](docs/examples.md)
 - Domain modes: [docs/domain-modes.md](docs/domain-modes.md)
+- Client-facing artifact method: [docs/client-facing-artifacts.md](docs/client-facing-artifacts.md)
+- Client-facing artifact eval: [docs/evals/client-facing-artifacts/README.md](docs/evals/client-facing-artifacts/README.md)
 - Authorship boundary: [docs/ai-authorship-boundary.md](docs/ai-authorship-boundary.md)
 
 Optional review layers:
@@ -45,6 +47,7 @@ House Style System is a lightweight writing quality framework.
 It helps writers and teams:
 
 - make writing clearer,
+- describe client outcomes as observable changes in the working day,
 - reduce generic AI-sounding prose,
 - separate facts from assumptions,
 - define what automation checks,

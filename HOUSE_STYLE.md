@@ -10,6 +10,53 @@ Write for the reader's purpose, context, and time.
 
 Every sentence should help the reader understand the point, make a decision, take action, or trust the work.
 
+## Observable Client Outcomes
+
+Use this rule for proposals, statements of work, and completion reports. It
+also applies to client updates and other writing that explains what a client
+will receive.
+
+Describe the result from the client's working point of view. Name the people
+who will use the result, what they will be able to do, what they will see or
+receive, and how they can verify that the work is complete. Concrete operating
+behavior should lead. Supporting artifacts, controls, and technical work
+should explain how that behavior becomes trustworthy.
+
+Avoid using an inventory of internal deliverables as a substitute for the
+outcome. A list may include an `implementation brief`, `workflow map`,
+`architecture decision record`, and `acceptance evidence`. The list may be
+accurate without showing the client what changes in the working day.
+
+Use this sequence when it fits:
+
+```text
+client or user
+-> action or decision
+-> concrete output or changed operating state
+-> visible proof
+-> safeguard or boundary
+```
+
+Before rewriting, build a source ledger. Record facts, commitments,
+assumptions, and unresolved decisions. Preserve those facts exactly. Do not
+make the prose more concrete by inventing a role or artifact. Do not invent
+behavior, results, or acceptance conditions.
+
+Review the draft in three passes:
+
+1. **Factual preservation:** every material claim traces to the source, and no
+   uncertainty has been converted into a promise.
+2. **Client usefulness:** the reader can tell what changes, who acts, what they
+   receive, and what decision or next step is required.
+3. **Voice fit:** the writing is direct, concrete, and natural for the client
+   relationship without sounding like an internal plan or a generic sales
+   document.
+
+The writer or assigned reviewer can perform these passes autonomously. A
+separate client or owner review is required only when the engagement, approval
+policy, or risk calls for it; it is not a default prerequisite for applying
+this method.
+
 ## Default Rules
 
 - State the main point early.
@@ -193,6 +240,21 @@ Use the core rules everywhere. Add the right mode for the work.
 - State the tradeoff plainly.
 - End with the action needed.
 
+### Client Proposal Or Client-Facing Artifact
+
+- Start with the client's situation and the proposed change.
+- Organize work around client-recognizable workstreams or operating outcomes.
+- Explain what each workstream covers in plain language.
+- State the agreed outcome as observable behavior, concrete output, or a
+  decision the client can verify.
+- Name supporting artifacts only when they help the reader understand or trust
+  the result.
+- Keep internal planning fields, agent activity, estimation mechanics, and
+  repository language out of the client document unless they are explicitly
+  part of the agreement.
+- Preserve scope boundaries, assumptions, approval gates, and unresolved
+  decisions.
+
 ### Personal Positioning Or Recruiter-Facing Writing
 
 - Open politely.
@@ -268,6 +330,10 @@ Before handoff, ask:
 - Are next steps concrete when action is needed?
 - Did the style gate run?
 - Are accepted warnings intentional?
+- For a client-facing artifact, can the reader see who will do what, what will
+  change, and how the result will be verified?
+- Did the review preserve every material fact, boundary, assumption, and open
+  decision from the source?
 
 ## Exception Policy
 
