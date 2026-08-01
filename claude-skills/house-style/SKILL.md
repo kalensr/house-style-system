@@ -54,6 +54,10 @@ Detect what the runtime allows, then choose the strongest available path.
 Claude Code and Claude Cowork usually have a shell and the repo folder. When
 they do, run the deterministic gate on files you edit.
 
+When the project has no local gate, check whether the source-managed global
+review commands are available. Use the matching `review-*.sh` command only for
+the review layer that fits the draft. State when no deterministic gate ran.
+
 Claude Chat usually has no shell and no repo. There, apply the rules by
 judgment, and tell the user which local command to run before final handoff.
 
@@ -126,6 +130,64 @@ decisions visible.
 Review the result for factual preservation, client usefulness, and voice fit.
 The assigned writer or reviewer completes these passes. A separate owner review
 is required only when the task, engagement, or risk explicitly requires it.
+
+## Spoken-Voice And Anti-Cadence Rules
+
+Treat these as hard rules for authored prose in every domain. Leave quoted text
+and code unchanged. Keep commands and citations exact. Preserve required legal
+language, product names, and technical terms. Preserve facts and evidence
+boundaries. Keep uncertainty and necessary distinctions. When a comparison or
+uncertainty matters, state the concrete evidence, scope, or condition directly.
+
+- **No antithesis.** Do not frame a point through balanced opposition.
+- **No corrective negation.** Do not reject one formulation so a second
+  formulation can replace it. State the intended claim first.
+- **No paragraph pinning.** Do not open a paragraph with a claim and close by
+  restating or intensifying the same claim.
+- **No parataxis.** Do not place independent clauses or short declarative
+  sentences side by side for cadence. Explain the relationship between ideas.
+- **No summary beats.** Do not add a sentence that recaps the sentence,
+  example, paragraph, or section that came immediately before it.
+- **No rhetorical crutches.** Remove framing such as `Here is the thing`,
+  `What matters is`, `The key is`, or `It is worth noting`.
+- **No negative parallelisms.** Do not build parallel clauses around repeated
+  negation.
+- **No negative anaphoras.** Do not begin successive sentences or clauses with
+  `No`, `Not`, `Never`, or another repeated negative opening.
+- **No contrasting pairs.** Do not organize an idea as a rhetorical binary.
+  Present necessary comparisons as concrete facts, conditions, or tradeoffs.
+- **No rule of three.** Do not manufacture triads for rhythm or memorability.
+  Include the number of items the subject requires.
+- **No em dashes.** Use a comma, colon, parentheses, or a sentence break.
+- **No throat-clearing openers.** Begin with the subject, situation, decision,
+  or request.
+- **No landing sentences.** Do not add a final sentence whose only purpose is
+  to restate significance, deliver a punchline, or create closure.
+- **No setup/payoff constructions.** Do not withhold the main point to stage a
+  reveal. Give the reader the point when it becomes relevant.
+- **No parallel sentence structures within a paragraph.** Change syntax and
+  sentence movement instead of repeating the same grammatical frame.
+- **Vary sentence length unpredictably.** Let meaning determine length. Avoid
+  a recurring short-medium-long pattern or a run of similar lengths.
+- **No stacked noun phrases.** Name an actor, use a finite verb, and make the
+  object or result concrete.
+- **No filler intensifiers.** Remove `genuinely`, `really`, `truly`, and
+  `actually` unless the word changes the literal meaning of quoted material.
+- **No corporate-register verbs.** Replace `leverage`, `underscore`, and
+  `reflect` with the specific action or claim.
+- **No nominalization.** Use a named actor and a finite verb when an action is
+  available. Keep fixed technical terms when precision requires them.
+- **No hedging qualifiers.** Do not use a qualifier to avoid making the claim.
+  Name the evidence limit, unknown, condition, or confidence level directly.
+- **Write for the spoken voice.** Prefer words and sentence movement the writer
+  would use aloud with the intended reader.
+- **No performed enthusiasm.** Do not add excitement or uplift. Preserve
+  gratitude and confidence only when the writer expressed them. State interest
+  or appreciation plainly when it is real.
+
+Automation catches only high-confidence surface patterns. Human review owns
+antithesis and cadence. It also owns paragraph structure, spoken fit, evidence
+limits, and whether a necessary technical construction should remain.
 
 More before-and-after patterns are in `reference/house-style-core.md`.
 

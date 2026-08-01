@@ -13,7 +13,29 @@ COMMANDS=(
   eval-ai-voice.sh
   eval-center-of-gravity.sh
   eval-dramatic-punctuation.sh
+  review-release-writing.sh
+  eval-outcome-evaluation.sh
+  check-outcome-evaluation.sh
 )
+
+if [[ $# -gt 1 || ( $# -eq 1 && "$1" != "--check" ) ]]; then
+  printf 'Usage: %s [--check]\n' "$(basename "$0")" >&2
+  exit 2
+fi
+
+if [[ "${1:-}" == "--check" ]]; then
+  status=0
+  for command in "${COMMANDS[@]}"; do
+    if ! cmp -s "$LAUNCHER" "$BIN_DIR/$command"; then
+      printf 'House Style command differs: %s\n' "$BIN_DIR/$command" >&2
+      status=1
+    fi
+  done
+  if [[ $status -eq 0 ]]; then
+    printf 'House Style commands are current in %s\n' "$BIN_DIR"
+  fi
+  exit "$status"
+fi
 
 mkdir -p "$BIN_DIR"
 

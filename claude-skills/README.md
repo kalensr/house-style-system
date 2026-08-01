@@ -50,9 +50,14 @@ Copy the skill into your project or personal skills directory so Claude Code can
 discover it:
 
 ```sh
-mkdir -p ~/.claude/skills
-cp -R claude-skills/house-style ~/.claude/skills/
+./scripts/install-claude-house-style.sh
 ```
+
+The installer also creates `~/.claude/rules/house-style-writing.md` and updates
+the global review commands. The rule keeps every session lightweight and sends
+human-facing prose through `/house-style`. Run
+`./scripts/install-claude-house-style.sh --check --expect-revision "$(git rev-parse HEAD)"`
+to verify the installed package.
 
 You can also keep it in-repo under a project `.claude/skills/` directory if you
 prefer per-project skills. Restart or reload Claude Code after installing.

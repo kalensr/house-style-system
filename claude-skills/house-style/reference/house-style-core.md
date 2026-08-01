@@ -25,6 +25,43 @@ work.
   `can / cannot` lines.
 - Do not use Unicode em dash characters.
 
+## Spoken-Voice And Anti-Cadence Rules
+
+These hard rules apply to authored prose. Preserve quoted text and code. Keep
+commands and citations exact. Preserve required legal language, product names,
+and technical terms. Keep facts, evidence boundaries, uncertainty, and
+necessary distinctions intact.
+
+- **No antithesis.** State the claim without balanced opposition.
+- **No corrective negation.** State the intended claim first.
+- **No paragraph pinning.** Do not close a paragraph by restating its opening.
+- **No parataxis.** Explain relationships instead of chaining clauses for
+  cadence.
+- **No summary beats.** Do not recap the immediately preceding point.
+- **No rhetorical crutches.** Remove generic framing that delays the subject.
+- **No negative parallelisms.** Do not repeat negation across parallel clauses.
+- **No negative anaphoras.** Do not repeat negative sentence openings.
+- **No contrasting pairs.** Give necessary comparisons as facts or conditions.
+- **No rule of three.** Do not manufacture triads for effect.
+- **No em dashes.** Use another punctuation mark or rewrite the sentence.
+- **No throat-clearing openers.** Begin with the subject or situation.
+- **No landing sentences.** End on the last necessary detail, decision, or
+  request.
+- **No setup/payoff constructions.** Give the reader the point when relevant.
+- **No parallel sentence structures within a paragraph.** Vary syntax.
+- **Vary sentence length unpredictably.** Let meaning determine length.
+- **No stacked noun phrases.** Use a named actor, finite verb, and concrete
+  object or result.
+- **No filler intensifiers.** Remove `genuinely`, `really`, `truly`, and
+  `actually` outside quoted material.
+- **No corporate-register verbs.** Replace `leverage`, `underscore`, and
+  `reflect` with the specific action or claim.
+- **No nominalization.** Use a named actor and finite verb when possible.
+- **No hedging qualifiers.** Name the evidence limit, unknown, condition, or
+  confidence level directly.
+- **Write for the spoken voice.** Use words and movement that work aloud.
+- **No performed enthusiasm.** Preserve only enthusiasm the writer expressed.
+
 ## Preferred Replacements
 
 - `use` instead of `utilize`

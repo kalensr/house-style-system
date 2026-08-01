@@ -33,6 +33,8 @@ Optional review layers:
 - AI voice eval: [scripts/eval-ai-voice.sh](scripts/eval-ai-voice.sh)
 - Center of Gravity eval: [scripts/eval-center-of-gravity.sh](scripts/eval-center-of-gravity.sh)
 - No Dramatic Punctuation eval: [scripts/eval-dramatic-punctuation.sh](scripts/eval-dramatic-punctuation.sh)
+- Spoken-voice rule eval: [scripts/eval-spoken-voice-rules.sh](scripts/eval-spoken-voice-rules.sh)
+- Claude Code installer test: [scripts/test-claude-house-style-install.sh](scripts/test-claude-house-style-install.sh)
 
 Assistant setup:
 
@@ -98,6 +100,7 @@ Run the optional evals when you change voice rules:
 ./scripts/eval-ai-voice.sh
 ./scripts/eval-center-of-gravity.sh
 ./scripts/eval-dramatic-punctuation.sh
+./scripts/eval-spoken-voice-rules.sh
 ```
 
 Run Kalen voice review on a specific draft:
@@ -232,8 +235,15 @@ never detects authorship.
 Install it for Claude Code:
 
 ```sh
-mkdir -p ~/.claude/skills
-cp -R claude-skills/house-style ~/.claude/skills/
+./scripts/install-claude-house-style.sh
+```
+
+The installer places the full `/house-style` skill in the personal Claude Code
+skills directory. It also installs a compact global rule and current global
+review commands. Check the installed copies against a clean checkout with:
+
+```sh
+./scripts/install-claude-house-style.sh --check --expect-revision "$(git rev-parse HEAD)"
 ```
 
 For setup on all three surfaces, see
@@ -281,6 +291,8 @@ Run these before publishing changes:
 ./scripts/eval-ai-voice.sh
 ./scripts/eval-center-of-gravity.sh
 ./scripts/eval-dramatic-punctuation.sh
+./scripts/eval-spoken-voice-rules.sh
+./scripts/test-claude-house-style-install.sh
 ./scripts/check-public-tree.sh
 ./scripts/check-public-history.sh
 git diff --check

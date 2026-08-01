@@ -211,8 +211,8 @@ trap 'rm -f "$fake_vale_dir/vale"; rmdir "$fake_vale_dir"; rm -rf "$global_bin_d
 HOUSE_STYLE_BIN_DIR="$global_bin_dir" ./scripts/install-global-commands.sh >/dev/null
 
 global_command_count="$(find "$global_bin_dir" -type f -perm -u+x | wc -l | tr -d ' ')"
-if [[ "$global_command_count" != "8" ]]; then
-  echo "Expected eight installed global commands, found $global_command_count" >&2
+if [[ "$global_command_count" != "11" ]]; then
+  echo "Expected eleven installed global commands, found $global_command_count" >&2
   exit 1
 fi
 
