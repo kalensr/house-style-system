@@ -28,7 +28,12 @@ fi
 
 if [[ "${1:-}" == "--check" ]]; then
   status=0
-  if ! diff -qr "$SOURCE_SKILL" "$TARGET_SKILL"; then
+  skill_changes="$(rsync -rcn --itemize-changes "$SOURCE_SKILL/" "$TARGET_SKILL/" 2>&1)" || {
+    printf '%s\n' "$skill_changes" >&2
+    status=1
+  }
+  if [[ -n "$skill_changes" ]]; then
+    printf 'Claude house-style source files differ:\n%s\n' "$skill_changes" >&2
     status=1
   fi
   if ! cmp -s "$SOURCE_RULE" "$TARGET_RULE"; then
@@ -42,7 +47,7 @@ if [[ "${1:-}" == "--check" ]]; then
 fi
 
 mkdir -p "$(dirname "$TARGET_SKILL")" "$(dirname "$TARGET_RULE")"
-rsync -a --delete "$SOURCE_SKILL/" "$TARGET_SKILL/"
+rsync -a "$SOURCE_SKILL/" "$TARGET_SKILL/"
 install -m 0644 "$SOURCE_RULE" "$TARGET_RULE"
 
 printf 'Installed Claude house-style skill in %s\n' "$TARGET_SKILL"

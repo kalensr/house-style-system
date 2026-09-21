@@ -7,8 +7,14 @@ trap 'rm -rf "$TEMP_ROOT"' EXIT
 
 CLAUDE_CONFIG_DIR="$TEMP_ROOT/.claude" "$ROOT/scripts/install-claude-house-style.sh"
 
-diff -qr "$ROOT/claude-skills/house-style" \
-  "$TEMP_ROOT/.claude/skills/house-style"
+printf 'preserve me\n' > "$TEMP_ROOT/.claude/skills/house-style/unrelated-user-file.txt"
+CLAUDE_CONFIG_DIR="$TEMP_ROOT/.claude" "$ROOT/scripts/install-claude-house-style.sh"
+grep -Fx 'preserve me' "$TEMP_ROOT/.claude/skills/house-style/unrelated-user-file.txt"
+
+while IFS= read -r -d '' source_file; do
+  relative_path="${source_file#"$ROOT/claude-skills/house-style/"}"
+  cmp "$source_file" "$TEMP_ROOT/.claude/skills/house-style/$relative_path"
+done < <(find "$ROOT/claude-skills/house-style" -type f -print0)
 cmp "$ROOT/claude-rules/house-style-writing.md" \
   "$TEMP_ROOT/.claude/rules/house-style-writing.md"
 CLAUDE_CONFIG_DIR="$TEMP_ROOT/.claude" \
