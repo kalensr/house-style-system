@@ -40,6 +40,7 @@ Assistant setup:
 
 - Codex skill: [codex-skills/house-style-system/SKILL.md](codex-skills/house-style-system/SKILL.md)
 - Claude skill: [claude-skills/house-style/SKILL.md](claude-skills/house-style/SKILL.md)
+- Claude Code installer: [scripts/install-claude-house-style.sh](scripts/install-claude-house-style.sh)
 - ChatGPT Project template: [docs/chatgpt-project/README.md](docs/chatgpt-project/README.md)
 
 ## What This Is
@@ -244,8 +245,16 @@ never detects authorship.
 Install it for Claude Code:
 
 ```sh
-mkdir -p ~/.claude/skills
-cp -R claude-skills/house-style ~/.claude/skills/
+./scripts/install-claude-house-style.sh
+```
+
+The installer places the full `/house-style` skill in the personal Claude Code
+skills directory. It also installs a compact global rule that sends
+human-facing prose through the skill. Check that both installed copies match
+the checkout with:
+
+```sh
+./scripts/install-claude-house-style.sh --check
 ```
 
 For setup on all three surfaces, see

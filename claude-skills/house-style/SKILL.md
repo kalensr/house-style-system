@@ -5,10 +5,10 @@ description: >-
   for house style, style gate, plain language, clearer writing, and removing
   generic or AI-sounding business and recruiter prose. Covers executive memos,
   decision briefs, leadership reflection, blog and public essays, long-form
-  reports, informal notes, social posts, and personal positioning or
-  recruiter-facing writing. Runs the deterministic Vale style gate when a shell
-  and the repo are available. Applies the same rules by judgment when they are
-  not. Never used to detect authorship.
+  reports, client-facing artifacts, informal notes, social posts, and personal
+  positioning or recruiter-facing writing. Runs the deterministic Vale style
+  gate when a shell and the repo are available. Applies the same rules by
+  judgment when they are not. Never used to detect authorship.
 ---
 
 # House Style
@@ -31,6 +31,7 @@ Use this skill when the user asks for any of the following:
 - executive memo, decision brief, or leadership update,
 - leadership reflection, public essay, or personal voice review,
 - blog, report, business doc, social post, or informal note,
+- client proposal, statement of work, completion report, or client update,
 - personal positioning, recruiter-facing, or cover-letter writing,
 - checking for repeated words, verbal tics, or filler.
 
@@ -64,14 +65,16 @@ Use this source-priority ladder:
 4. If it has `docs/chatgpt-project/ai-voice-avoidance-runbook.md`, use it for AI
    voice avoidance in executive, recruiter-facing, public, and leadership
    writing.
-5. If it has `docs/research/center-of-gravity-writing-eval.md`, use it for
+5. If it has `docs/client-facing-artifacts.md`, use it for proposals,
+   completion reports, statements of work, and client updates.
+6. If it has `docs/research/center-of-gravity-writing-eval.md`, use it for
    Center of Gravity review when people, teams, customers, organizations,
    decisions, or workflows should stay visible as the subject.
-6. If it has `docs/research/no-dramatic-punctuation-eval.md`, use it for
+7. If it has `docs/research/no-dramatic-punctuation-eval.md`, use it for
    short-line, fragment, and staccato-emphasis review.
-7. If it has a style gate script and you edited files, run the gate at the
+8. If it has a style gate script and you edited files, run the gate at the
    checkpoint (see Deterministic Gate below).
-8. If none of these are present, use the self-contained rules in this skill and
+9. If none of these are present, use the self-contained rules in this skill and
    its reference files. This is the normal case in Claude Chat.
 
 ## Domain Selection
@@ -83,6 +86,7 @@ Otherwise pick the closest domain and state the choice.
 | User says | Domain |
 | --- | --- |
 | executive memo, leadership update, decision brief | `executive` |
+| client proposal, statement of work, completion report, client update | `client-facing` |
 | leadership reflection, personal essay, voice review | `leadership-reflection` |
 | recruiter, executive search, cover letter, career positioning | `personal-positioning` |
 | business doc, recommendation, status update | `business` |
@@ -112,8 +116,108 @@ These apply in every domain and work with no repo present.
 - Avoid repeated contrast scaffolds such as `not X, but Y` or paired
   `can / cannot` lines. State the point directly.
 - Do not add unsupported claims. Preserve the author's meaning and uncertainty.
+- For client-facing work, name who acts, what they can do, the concrete output
+  or changed state, and how the result is verified. Use internal artifacts as
+  supporting evidence, not as a substitute for the outcome.
+
+Before rewriting a client-facing artifact, inspect or create a source ledger.
+Record facts and commitments. Keep assumptions, approval gates, and unresolved
+decisions visible.
+Review the result for factual preservation, client usefulness, and voice fit.
+The assigned writer or reviewer completes these passes. A separate owner review
+is required only when the task, engagement, or risk explicitly requires it.
+
+## Spoken-Voice And Anti-Cadence Rules
+
+Treat these as hard rules for authored prose in every domain. Leave quoted text
+and code unchanged. Keep commands and citations exact. Preserve required legal
+language, product names, and technical terms. Preserve facts and evidence
+boundaries. Keep uncertainty and necessary distinctions. When a comparison or
+uncertainty matters, state the concrete evidence, scope, or condition directly.
+
+- **No antithesis.** Do not frame a point through balanced opposition.
+- **No corrective negation.** Do not reject one formulation so a second
+  formulation can replace it. State the intended claim first.
+- **No paragraph pinning.** Do not open a paragraph with a claim and close by
+  restating or intensifying the same claim.
+- **No parataxis.** Do not place independent clauses or short declarative
+  sentences side by side for cadence. Explain the relationship between ideas.
+- **No summary beats.** Do not add a sentence that recaps the sentence,
+  example, paragraph, or section that came immediately before it.
+- **No rhetorical crutches.** Remove framing such as `Here is the thing`,
+  `What matters is`, `The key is`, or `It is worth noting`.
+- **No negative parallelisms.** Do not build parallel clauses around repeated
+  negation.
+- **No negative anaphoras.** Do not begin successive sentences or clauses with
+  `No`, `Not`, `Never`, or another repeated negative opening.
+- **No contrasting pairs.** Do not organize an idea as a rhetorical binary.
+  Present necessary comparisons as concrete facts, conditions, or tradeoffs.
+- **No rule of three.** Do not manufacture triads for rhythm or memorability.
+  Include the number of items the subject requires.
+- **No em dashes.** Use a comma, colon, parentheses, or a sentence break.
+- **No throat-clearing openers.** Begin with the subject, situation, decision,
+  or request.
+- **No landing sentences.** Do not add a final sentence whose only purpose is
+  to restate significance, deliver a punchline, or create closure.
+- **No setup/payoff constructions.** Do not withhold the main point to stage a
+  reveal. Give the reader the point when it becomes relevant.
+- **No parallel sentence structures within a paragraph.** Change syntax and
+  sentence movement instead of repeating the same grammatical frame.
+- **Vary sentence length unpredictably.** Let meaning determine length. Avoid
+  a recurring short-medium-long pattern or a run of similar lengths.
+- **No stacked noun phrases.** Name an actor, use a finite verb, and make the
+  object or result concrete.
+- **No filler intensifiers.** Remove `genuinely`, `really`, `truly`, and
+  `actually` unless the word changes the literal meaning of quoted material.
+- **No corporate-register verbs.** Replace `leverage`, `underscore`, and
+  `reflect` with the specific action or claim.
+- **No nominalization.** Use a named actor and a finite verb when an action is
+  available. Keep fixed technical terms when precision requires them.
+- **No hedging qualifiers.** Do not use a qualifier to avoid making the claim.
+  Name the evidence limit, unknown, condition, or confidence level directly.
+- **Write for the spoken voice.** Prefer words and sentence movement the writer
+  would use aloud with the intended reader.
+- **No performed enthusiasm.** Do not add excitement or uplift. Preserve
+  gratitude and confidence only when the writer expressed them. State interest
+  or appreciation plainly when it is real.
+
+Automation catches only high-confidence surface patterns. Human review owns
+antithesis and cadence. It also owns paragraph structure, spoken fit, evidence
+limits, and whether a necessary technical construction should remain.
 
 More before-and-after patterns are in `reference/house-style-core.md`.
+
+## Natural Voice And Sloganized Synthesis
+
+Treat **sloganized synthesis** as an umbrella review finding. It appears when a
+draft compresses a concrete situation into a polished formula that sounds more
+finished than the underlying reasoning. Review these four demonstrated forms:
+
+- **Abstract causal formula.** Two abstract ideas are connected through a
+  spatial or causal metaphor, such as one idea being upstream or downstream of
+  another, without explaining the actual sequence.
+- **Sloganized parallelism.** Repeated words, mirrored clauses, or wordplay make
+  a sentence memorable while leaving the practical claim unclear.
+- **Depersonalized case narration.** A generic consultant, company, or team
+  appears in a case-study voice even when the source permits clearer
+  attribution of who observed, decided, or acted.
+- **Authoritative solution label.** Phrases such as `The fix was`, `The answer
+  is`, or `The lesson is` announce a clean conclusion before the evidence has
+  earned it.
+
+Start with the person, situation, observation, or decision. Explain the real
+sequence before drawing a lesson. Preserve friction, uncertainty, and causal
+gaps that remain in the source. Do not force a list of three or a neat ending.
+Read the passage aloud and ask whether the writer would explain it that way in
+conversation.
+
+Nominate these passages for review instead of rejecting them automatically.
+Technical uses of terms such as `upstream` and `downstream` may remain. Factual
+lists and source-required anonymity may remain. The same exception applies to
+quotations, legal language, and precise technical terms. Resolve each
+nomination as `revised`,
+`retained_with_reason`, or `protected_source`. A disposition applies only to
+the exact passage and rule reviewed.
 
 ## Remove The Default AI Voice
 
