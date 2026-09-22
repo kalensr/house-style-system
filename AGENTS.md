@@ -46,6 +46,7 @@ Before requesting review or release, run:
 ./scripts/eval-ai-voice.sh
 ./scripts/eval-center-of-gravity.sh
 ./scripts/eval-dramatic-punctuation.sh
+./scripts/eval-outcome-evaluation.sh
 ./scripts/check-public-tree.sh
 ./scripts/check-public-history.sh
 git diff --check
@@ -54,6 +55,12 @@ git diff --check
 The default style gate must report zero errors, warnings, and suggestions.
 Document any format that Vale does not inspect and run the host repository's
 build or rendered-output validation for that format.
+
+For a publishable Markdown draft, run `./scripts/review-release-writing.sh`.
+Add `--kalen-voice` for Kalen leadership, reflection, or public-essay review.
+Before claiming that a system change improves writing quality, record a completed
+private outcome-evaluation packet and validate it with
+`./scripts/check-outcome-evaluation.sh`.
 
 ## Release Boundary
 

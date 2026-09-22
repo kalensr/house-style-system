@@ -65,13 +65,33 @@ short question. Otherwise choose the closest domain and state the choice.
    checkpoints when files were edited. Prefer project-local specialized
    wrappers when they exist. Otherwise use the system-wide commands:
    `review-kalen-voice.sh`, `review-ai-voice.sh`,
-   `review-center-of-gravity.sh`, and `review-dramatic-punctuation.sh`.
+   `review-center-of-gravity.sh`, `review-dramatic-punctuation.sh`, and
+   `review-release-writing.sh`. For publishable Markdown, prefer
+   `review-release-writing.sh`; add `--kalen-voice` when the Kalen profile
+   applies.
    Vale coverage is format-dependent. If the edited file is `.mdx` and the
    review output omits it, run the host repository's build and tests for that
    format and
    inspect the rendered output. Report the omitted file instead of claiming
    complete Vale coverage.
 7. If no local files exist, use the fallback rules in this skill.
+
+## Release And Outcome Evidence
+
+For publishable Markdown, run the multi-layer release review before release.
+It combines the core, AI Voice, Center of Gravity, and No Dramatic Punctuation
+layers; add `--kalen-voice` when that profile applies.
+
+Do not claim a system change improved writing quality from gate alerts alone.
+Require a completed independent draft-outcome packet. It needs an independence
+attestation and evidence-backed scores. Score factual and meaning preservation,
+evidence integrity, and voice fit. Score reader usefulness and generic-pattern
+reduction. Also record a blind A/B preference and the post-unblinding revision
+mapping.
+Use `check-outcome-evaluation.sh` for a packet and
+`eval-outcome-evaluation.sh` for the public fixture and negative controls. Do
+not publish real draft packets unless the underlying draft and sources are
+approved for publication.
 
 ## Fallback Core Rules
 
@@ -87,6 +107,11 @@ short question. Otherwise choose the closest domain and state the choice.
 - Do not use Unicode em dashes.
 - Avoid repeated contrast formulas such as `not X, but Y` or repeated
   `can/cannot` sentence scaffolds.
+- Avoid negation-first framing such as `The value is not X. It is Y.` State the
+  positive claim directly, then explain why it matters.
+- Do not use a run of parallel questions or short sentences merely to create
+  cadence. Keep questions that frame genuine inquiry. Otherwise, combine
+  related details into natural explanatory prose.
 - Do not add unsupported claims.
 - Watch for repeated vocabulary. Keep terms that carry the argument, but vary
   or cut repeated framing words that stop adding meaning.
@@ -112,6 +137,95 @@ short question. Otherwise choose the closest domain and state the choice.
   facts, commitments, assumptions, approval gates, and unresolved decisions.
   Do not invent specificity.
 
+## Spoken-Voice And Anti-Cadence Rules
+
+Treat these as hard rules for authored prose in every domain. Leave quoted text
+and code unchanged. Keep commands and citations exact. Preserve required legal
+language, product names, and technical terms. Preserve facts and evidence
+boundaries. Keep uncertainty and necessary distinctions. When a comparison or
+uncertainty matters, state the concrete evidence, scope, or condition directly.
+
+- **No antithesis.** Do not frame a point through balanced opposition.
+- **No corrective negation.** Do not reject one formulation so a second
+  formulation can replace it. State the intended claim first.
+- **No paragraph pinning.** Do not open a paragraph with a claim and close by
+  restating or intensifying the same claim.
+- **No parataxis.** Do not place independent clauses or short declarative
+  sentences side by side for cadence. Explain the relationship between ideas.
+- **No summary beats.** Do not add a sentence that recaps the sentence,
+  example, paragraph, or section that came immediately before it.
+- **No rhetorical crutches.** Remove framing such as `Here is the thing`,
+  `What matters is`, `The key is`, or `It is worth noting`.
+- **No negative parallelisms.** Do not build parallel clauses around repeated
+  negation.
+- **No negative anaphoras.** Do not begin successive sentences or clauses with
+  `No`, `Not`, `Never`, or another repeated negative opening.
+- **No contrasting pairs.** Do not organize an idea as a rhetorical binary.
+  Present necessary comparisons as concrete facts, conditions, or tradeoffs.
+- **No rule of three.** Do not manufacture triads for rhythm or memorability.
+  Include the number of items the subject requires.
+- **No em dashes.** Use a comma, colon, parentheses, or a sentence break.
+- **No throat-clearing openers.** Begin with the subject, situation, decision,
+  or request.
+- **No landing sentences.** Do not add a final sentence whose only purpose is
+  to restate significance, deliver a punchline, or create closure.
+- **No setup/payoff constructions.** Do not withhold the main point to stage a
+  reveal. Give the reader the point when it becomes relevant.
+- **No parallel sentence structures within a paragraph.** Change syntax and
+  sentence movement instead of repeating the same grammatical frame.
+- **Vary sentence length unpredictably.** Let meaning determine length. Avoid
+  a recurring short-medium-long pattern or a run of similar lengths.
+- **No stacked noun phrases.** Name an actor, use a finite verb, and make the
+  object or result concrete.
+- **No filler intensifiers.** Remove `genuinely`, `really`, `truly`, and
+  `actually` unless the word changes the literal meaning of quoted material.
+- **No corporate-register verbs.** Replace `leverage`, `underscore`, and
+  `reflect` with the specific action or claim.
+- **No nominalization.** Use a named actor and a finite verb when an action is
+  available. Keep fixed technical terms when precision requires them.
+- **No hedging qualifiers.** Do not use a qualifier to avoid making the claim.
+  Name the evidence limit, unknown, condition, or confidence level directly.
+- **Write for the spoken voice.** Prefer words and sentence movement the writer
+  would use aloud with the intended reader.
+- **No performed enthusiasm.** Do not add excitement or uplift. Preserve
+  gratitude and confidence only when the writer expressed them. State interest
+  or appreciation plainly when it is real.
+
+Automation catches only high-confidence surface patterns. Human review owns
+antithesis and cadence. It also owns paragraph structure, spoken fit, evidence
+limits, and whether a necessary technical construction should remain.
+
+## Natural Voice And Sloganized Synthesis
+
+Treat **sloganized synthesis** as an umbrella review finding. It appears when a
+draft compresses a concrete situation into a polished formula that sounds more
+finished than the underlying reasoning. Review these four demonstrated forms:
+
+- **Abstract causal formula.** Two abstract ideas are connected through a
+  spatial or causal metaphor, such as one idea being upstream or downstream of
+  another, without explaining the actual sequence.
+- **Sloganized parallelism.** Repeated words, mirrored clauses, or wordplay make
+  a sentence memorable while leaving the practical claim unclear.
+- **Depersonalized case narration.** A generic consultant, company, or team
+  appears in a case-study voice even when the source permits clearer
+  attribution of who observed, decided, or acted.
+- **Authoritative solution label.** Phrases such as `The fix was`, `The answer
+  is`, or `The lesson is` announce a clean conclusion before the evidence has
+  earned it.
+
+Start with the person, situation, observation, or decision. Explain the real
+sequence before drawing a lesson. Preserve friction, uncertainty, and causal
+gaps that remain in the source. Do not force a list of three or a neat ending.
+Read the passage aloud and ask whether the writer would explain it that way in
+conversation.
+
+Nominate these passages for review instead of rejecting them automatically.
+Technical uses of terms such as `upstream` and `downstream` may remain. Factual
+lists and source-required anonymity may remain. The same exception applies to
+quotations, legal language, and precise technical terms. Resolve each
+nomination as `revised`,
+`retained_with_reason`, or `protected_source`. A disposition applies only to
+the exact passage and rule reviewed.
 ## Kalen Voice Review Checks
 
 Use these checks when the user asks for Kalen voice review. Treat them as
@@ -142,6 +256,12 @@ Check:
 - Show the path from insight to action.
 - Require support for claims about groups: evidence, example, lived
   observation, or explicit assumption.
+- Read public prose aloud for manufactured cadence. Rework repeated sentence
+  openings and question chains when the pattern carries the argument more than
+  the meaning does.
+- Keep career scope accurate. When fractional work is one part of a broader
+  technology-leadership direction, preserve that broader scope unless the
+  piece is specifically about fractional work.
 - Do not invent biographical details, family details, spiritual experiences,
   dates, quotes, accomplishments, citations, or business results.
 
@@ -208,6 +328,12 @@ the decision, workflow, or concrete change. Keep AI or agents in the sentence
 when they matter. Make them tools or constraints unless they are truly the
 actor.
 
+When a workflow is the topic, make a concrete actor the subject of the
+sentence. Name the team or leader involved. Name the customer, system, or
+decision involved.
+A workflow can be the object being examined; phrases such as `the work can stay
+connected` leave the actor hidden.
+
 ## Domain Checks
 
 `plain`: make the text clear, direct, and usable.
@@ -241,6 +367,26 @@ owner and next step. Separate facts from judgment.
 
 `blog`: make one strong idea visible. Preserve the author's voice. Explain the
 problem, solution, evidence, and implication without sounding corporate.
+
+State positive claims directly. Use questions sparingly and for genuine
+inquiry. Summarize related operating details in prose when a question chain
+would create artificial rhythm. When career positioning belongs in the article,
+describe the leadership scope the author intends to communicate. Do not narrow
+it to a single engagement model unless that focus is deliberate.
+
+For a short practical article about operating change, use this sequence when it
+fits the source material:
+
+1. Open with the concrete decision or workflow question.
+2. Establish the current state before recommending a tool or solution.
+3. Name the people, information, controls, and decisions inside the work.
+4. Give AI a specific supporting role and keep accountable people as the actors.
+5. Explain where an explicit rule, system, or human judgment governs the outcome.
+6. End with one practical first move.
+
+The result should give the reader a usable way to think about the work. Avoid
+résumé inventory, transformation language, generic advocacy for AI, and a sales
+pitch. Keep the structure compact, with each section advancing the argument.
 
 `long-form-report`: give each section a purpose. Lead sections with claims.
 Connect evidence to implications. End with a decision path or research
@@ -303,7 +449,8 @@ and balance the surrounding prose.
    client-usefulness, and voice-fit passes described in
    `docs/client-facing-artifacts.md` when that file is available.
 7. If editing files and a local `style_gate.sh` exists, run it at the
-   checkpoint.
+   checkpoint. For publishable Markdown, run the local release-review wrapper
+   instead of a single optional layer.
 8. If a specialized review applies and a file path is available, prefer its
    project-local `./scripts/review-*.sh` wrapper. Otherwise run the matching
    system-wide `review-*.sh` command.
@@ -313,7 +460,12 @@ and balance the surrounding prose.
 10. If the gate reports issues, rewrite only the violating text and rerun.
 11. If an edited `.mdx` file was skipped by Vale, state that limitation and name
    the build, test, or rendered-output validation that covered it.
-12. In the final response, state the domain used and whether validation ran.
+12. For a system-quality claim, require an independent outcome-evaluation packet
+    with an independence attestation, factual and meaning preservation,
+    evidence integrity, voice fit, reader usefulness, generic-pattern-reduction,
+    and blind-preference scores. Record the revision mapping after unblinding.
+    Do not claim that a clean release review proves quality improved.
+13. In the final response, state the domain used and whether validation ran.
 
 ## Stop Rules
 

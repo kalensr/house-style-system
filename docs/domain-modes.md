@@ -95,6 +95,13 @@ Check:
 - Are examples concrete?
 - Are claims supported or framed as experience?
 - Does the ending avoid generic uplift?
+- Does the article state its positive claim directly instead of opening with a
+  negation?
+- Do questions serve real inquiry, rather than create a repeated cadence?
+- Does every sentence name the person, team, customer, system, or decision
+  doing the work?
+- When career positioning appears, does it preserve the author’s intended
+  leadership scope?
 
 ## Long-Form Report
 

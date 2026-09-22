@@ -9,10 +9,13 @@ COMMANDS=(
   review-ai-voice.sh
   review-center-of-gravity.sh
   review-dramatic-punctuation.sh
+  review-release-writing.sh
   eval-kalen-voice.sh
   eval-ai-voice.sh
   eval-center-of-gravity.sh
   eval-dramatic-punctuation.sh
+  eval-outcome-evaluation.sh
+  check-outcome-evaluation.sh
 )
 
 mkdir -p "$BIN_DIR"

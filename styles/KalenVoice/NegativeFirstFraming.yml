@@ -1,0 +1,7 @@
+extends: existence
+message: "This begins with a negation. State the positive claim directly."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - "\\b(?:the\\s+(?:value|goal|work|point)|this|it)\\s+(?:is|was|means?)\\s+not\\b[^.]{0,160}\\.\\s+(?:it\\s+is|it's|the\\s+(?:value|goal|point|work)\\s+(?:is|means))\\b"

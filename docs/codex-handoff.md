@@ -15,6 +15,10 @@ This repo gives Codex seven useful things:
    `scripts/eval-center-of-gravity.sh`.
 7. An optional No Dramatic Punctuation review layer in
    `scripts/eval-dramatic-punctuation.sh`.
+8. A required multi-layer release review in
+   `scripts/review-release-writing.sh`.
+9. An independent outcome-evaluation packet check in
+   `scripts/check-outcome-evaluation.sh`.
 
 The skill teaches Codex when to use the style system and how to choose a
 writing domain. It also covers repeated phrasing, stock AI business voice,
@@ -30,8 +34,9 @@ cp -R codex-skills/house-style-system/. ~/.codex/skills/house-style-system/
 ./scripts/install-global-commands.sh
 ```
 
-The command installer makes all four review wrappers and all four eval
-wrappers available outside this repository. It defaults to `~/.local/bin`.
+The command installer makes five review commands, five eval commands, and one
+outcome-packet check available outside this repository. It defaults to
+`~/.local/bin`.
 Set `HOUSE_STYLE_BIN_DIR` when your system uses a different user bin directory.
 Set `HOUSE_STYLE_SYSTEM_ROOT` when the validated checkout is not at
 `~/Projects/house-style-system`.
@@ -57,9 +62,9 @@ commands. Verify all four surfaces independently:
 
 1. The checkout is on the intended commit and has no unexpected changes.
 2. The installed skill matches `codex-skills/house-style-system/`.
-3. All eight commands resolve from the user `PATH`.
+3. All eleven commands resolve from the user `PATH`.
 4. A review command accepts a document path from outside this repository, and
-   all four eval commands pass.
+   all five eval commands pass.
 
 Do not report cross-computer parity from a successful check on only one
 computer. Record the commit and validation result for each computer in the
@@ -76,14 +81,17 @@ Run:
 ./scripts/eval-ai-voice.sh
 ./scripts/eval-center-of-gravity.sh
 ./scripts/eval-dramatic-punctuation.sh
+./scripts/eval-outcome-evaluation.sh
 ./scripts/review-kalen-voice.sh docs/evals/kalen-voice/positive-leadership-reflection.md
 ./scripts/review-ai-voice.sh docs/test-fixtures/style-gate/fail-ai-empty-work-noun.md
 ./scripts/review-center-of-gravity.sh docs/test-fixtures/style-gate/fail-cog-ai-protagonist.md
 ./scripts/review-dramatic-punctuation.sh docs/test-fixtures/style-gate/fail-dp-vague-punchline.md
+./scripts/review-release-writing.sh docs/evals/release-review-clean.md
 command -v review-kalen-voice.sh review-ai-voice.sh
-command -v review-center-of-gravity.sh review-dramatic-punctuation.sh
+command -v review-center-of-gravity.sh review-dramatic-punctuation.sh review-release-writing.sh
 command -v eval-kalen-voice.sh eval-ai-voice.sh
-command -v eval-center-of-gravity.sh eval-dramatic-punctuation.sh
+command -v eval-center-of-gravity.sh eval-dramatic-punctuation.sh eval-outcome-evaluation.sh
+command -v check-outcome-evaluation.sh
 ```
 
 Expected result:
@@ -94,10 +102,12 @@ Expected result:
 - the AI voice eval prints `eval-ai-voice: passed`.
 - the Center of Gravity eval prints `eval-center-of-gravity: passed`.
 - the No Dramatic Punctuation eval prints `eval-dramatic-punctuation: passed`.
+- the outcome-evaluation fixture suite prints `eval-outcome-evaluation: passed`.
 - the Kalen voice wrapper finishes without errors on the positive control.
 - the AI voice wrapper flags the stock AI voice fixture.
 - the Center of Gravity wrapper flags the AI protagonist fixture.
 - the No Dramatic Punctuation wrapper flags the vague punchline fixture.
+- the release review finishes without alerts on the release control.
 
 ## Paste-Ready Codex Prompt
 
@@ -138,6 +148,13 @@ subject lines, or fragments into concrete sentences that name the actor,
 action, standard, mechanism, or consequence. Run
 ./scripts/review-dramatic-punctuation.sh on the draft when a file path is
 available.
+
+For publishable Markdown, run ./scripts/review-release-writing.sh after the
+substance review. Add --kalen-voice for Kalen leadership, reflection, or public
+essay work. Treat a clean release review as known-pattern coverage only. Before
+claiming the system improved writing quality, require a completed private
+independent outcome-evaluation packet and validate it with
+./scripts/check-outcome-evaluation.sh.
 ```
 
 ## Common Workflows

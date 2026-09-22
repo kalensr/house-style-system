@@ -25,6 +25,43 @@ work.
   `can / cannot` lines.
 - Do not use Unicode em dash characters.
 
+## Spoken-Voice And Anti-Cadence Rules
+
+These hard rules apply to authored prose. Preserve quoted text and code. Keep
+commands and citations exact. Preserve required legal language, product names,
+and technical terms. Keep facts, evidence boundaries, uncertainty, and
+necessary distinctions intact.
+
+- **No antithesis.** State the claim without balanced opposition.
+- **No corrective negation.** State the intended claim first.
+- **No paragraph pinning.** Do not close a paragraph by restating its opening.
+- **No parataxis.** Explain relationships instead of chaining clauses for
+  cadence.
+- **No summary beats.** Do not recap the immediately preceding point.
+- **No rhetorical crutches.** Remove generic framing that delays the subject.
+- **No negative parallelisms.** Do not repeat negation across parallel clauses.
+- **No negative anaphoras.** Do not repeat negative sentence openings.
+- **No contrasting pairs.** Give necessary comparisons as facts or conditions.
+- **No rule of three.** Do not manufacture triads for effect.
+- **No em dashes.** Use another punctuation mark or rewrite the sentence.
+- **No throat-clearing openers.** Begin with the subject or situation.
+- **No landing sentences.** End on the last necessary detail, decision, or
+  request.
+- **No setup/payoff constructions.** Give the reader the point when relevant.
+- **No parallel sentence structures within a paragraph.** Vary syntax.
+- **Vary sentence length unpredictably.** Let meaning determine length.
+- **No stacked noun phrases.** Use a named actor, finite verb, and concrete
+  object or result.
+- **No filler intensifiers.** Remove `genuinely`, `really`, `truly`, and
+  `actually` outside quoted material.
+- **No corporate-register verbs.** Replace `leverage`, `underscore`, and
+  `reflect` with the specific action or claim.
+- **No nominalization.** Use a named actor and finite verb when possible.
+- **No hedging qualifiers.** Name the evidence limit, unknown, condition, or
+  confidence level directly.
+- **Write for the spoken voice.** Use words and movement that work aloud.
+- **No performed enthusiasm.** Preserve only enthusiasm the writer expressed.
+
 ## Preferred Replacements
 
 - `use` instead of `utilize`
@@ -32,6 +69,38 @@ work.
 - `clear` or `specific` instead of `robust`
 - direct standards instead of negative framing
 - one direct statement of ownership instead of paired `can / cannot` lines
+
+## Natural Voice And Sloganized Synthesis
+
+Treat **sloganized synthesis** as an umbrella review finding. It appears when a
+draft compresses a concrete situation into a polished formula that sounds more
+finished than the underlying reasoning. Review these four demonstrated forms:
+
+- **Abstract causal formula.** Two abstract ideas are connected through a
+  spatial or causal metaphor, such as one idea being upstream or downstream of
+  another, without explaining the actual sequence.
+- **Sloganized parallelism.** Repeated words, mirrored clauses, or wordplay make
+  a sentence memorable while leaving the practical claim unclear.
+- **Depersonalized case narration.** A generic consultant, company, or team
+  appears in a case-study voice even when the source permits clearer
+  attribution of who observed, decided, or acted.
+- **Authoritative solution label.** Phrases such as `The fix was`, `The answer
+  is`, or `The lesson is` announce a clean conclusion before the evidence has
+  earned it.
+
+Start with the person, situation, observation, or decision. Explain the real
+sequence before drawing a lesson. Preserve friction, uncertainty, and causal
+gaps that remain in the source. Do not force a list of three or a neat ending.
+Read the passage aloud and ask whether the writer would explain it that way in
+conversation.
+
+Nominate these passages for review instead of rejecting them automatically.
+Technical uses of terms such as `upstream` and `downstream` may remain. Factual
+lists and source-required anonymity may remain. The same exception applies to
+quotations, legal language, and precise technical terms. Resolve each
+nomination as `revised`,
+`retained_with_reason`, or `protected_source`. A disposition applies only to
+the exact passage and rule reviewed.
 
 ## Rewrite Patterns
 
